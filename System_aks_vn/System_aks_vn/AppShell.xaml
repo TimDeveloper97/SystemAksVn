@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:view="clr-namespace:System_aks_vn.Views" 
+       
+       Shell.FlyoutBehavior="Disabled"
+       Shell.TabBarBackgroundColor="{StaticResource AppColor}"
+       xmlns:lang="clr-namespace:System_aks_vn.Resources.Languages"
+       
+       x:Class="System_aks_vn.AppShell">
+
+    <Shell.Resources>
+        <ResourceDictionary>
+            <Style x:Key="BaseStyle" TargetType="Element">
+                <Setter Property="Shell.BackgroundColor" Value="{StaticResource AppColor}" />
+                <Setter Property="Shell.ForegroundColor" Value="White" />
+                <Setter Property="Shell.TitleColor" Value="White" />
+                <Setter Property="Shell.DisabledColor" Value="{StaticResource GrayLight}" />
+                <Setter Property="Shell.UnselectedColor" Value="{StaticResource GrayLight}" />
+                <Setter Property="Shell.TabBarBackgroundColor" Value="{StaticResource AppColor}" />
+                <Setter Property="Shell.TabBarForegroundColor" Value="White"/>
+                <Setter Property="Shell.TabBarUnselectedColor" Value="{StaticResource GrayLight}"/>
+                <Setter Property="Shell.TabBarTitleColor" Value="White"/>
+            </Style>
+            <Style TargetType="TabBar" BasedOn="{StaticResource BaseStyle}" />
+            <Style TargetType="FlyoutItem" BasedOn="{StaticResource BaseStyle}" />
+        </ResourceDictionary>
+    </Shell.Resources>
+
+    <ShellItem Route="LoginPage">
+        <ShellContent ContentTemplate="{DataTemplate view:LoginPage}" />
+    </ShellItem>
+
+    <TabBar>
+        <ShellContent Title="{Static lang:LanguageResource.shellHome}" 
+                      Icon="home.png" FlyoutIcon="20" Route="HomePage" ContentTemplate="{DataTemplate view:HomePage}" />
+        <ShellContent Title="{Static lang:LanguageResource.shellSetting}"
+                      Icon="setting.png" FlyoutIcon="20" Route="SettingPage" ContentTemplate="{DataTemplate view:SettingPage}" />
+    </TabBar>
+    
+    <TabBar>
+        <ShellContent Route="LoginPage"  ContentTemplate="{DataTemplate view:LoginPage}" />
+    </TabBar>
+</Shell>

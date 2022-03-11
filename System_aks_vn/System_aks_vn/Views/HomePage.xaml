@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:System_aks_vn.ViewModels"
+             
+             Shell.NavBarIsVisible="False"
+             xmlns:mdc="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+             xmlns:xf="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:icon="clr-namespace:System_aks_vn.Resources"
+             xmlns:lang="clr-namespace:System_aks_vn.Resources.Languages"
+             x:Name="homepage"
+             
+             x:Class="System_aks_vn.Views.HomePage">
+
+    <ContentPage.BindingContext>
+        <vm:HomeViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Behaviors>
+        <xct:EventToCommandBehavior
+                EventName="Appearing"
+                Command="{Binding PageAppearingCommand}" />
+    </ContentPage.Behaviors>
+    
+    <ContentPage.Content>
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="Fill"
+              RowSpacing="0" 
+              BackgroundColor="{AppThemeBinding Dark={StaticResource BlackSmoke} ,Light={StaticResource WhiteSmoke}}"
+              Margin="0,-10,0,0">
+
+            <!--#region Layout -->
+            <Frame Padding="0" CornerRadius="20"
+                   HasShadow="true" IsClippedToBounds="True" 
+                   VerticalOptions="Start" HeightRequest="70"
+                   BackgroundColor="{AppThemeBinding Dark={StaticResource AppColor} ,Light={StaticResource AppColor}}"/>
+
+            <Frame Padding="0"
+                   HasShadow="true" IsClippedToBounds="True" 
+                   VerticalOptions="Start" HeightRequest="40"
+                   BackgroundColor="{AppThemeBinding Dark={StaticResource AppColor} ,Light={StaticResource AppColor}}"/>
+            <!--#endregion-->
+
+            <Grid x:Name="gMain" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+                  RowDefinitions="auto, auto, *">
+
+                <!--#region Header -->
+                <Grid Grid.Row="0" ColumnDefinitions="*, auto" Margin="0,30,20,0">
+                    <!--#region Title-->
+                    <StackLayout Grid.Row="0" Margin="20,0,0,0"
+                                     HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                        <Image
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Aspect="AspectFit"
+                                HeightRequest="24"
+                                Source="server"
+                                WidthRequest="24" />
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span   FontAttributes="Bold"
+                                            FontSize="{OnPlatform Android=20, iOS=18}"
+                                            Text="S"
+                                            TextColor="{AppThemeBinding Dark={StaticResource Yellow} ,Light={StaticResource Yellow}}"/>
+                                    <Span   FontSize="{OnPlatform Android=20, iOS=18}"
+                                            Text=" AKS"
+                                            TextColor="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource White}}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </StackLayout>
+                    <!--#endregion-->
+                </Grid>
+                <!--#endregion-->
+
+                <!--#region Title -->
+                <Label Grid.Row="1"
+                       VerticalTextAlignment="Center"
+                       FontSize="{OnPlatform Android=22, iOS=20}" Text="{Static lang:LanguageResource.homeDevice}"
+                       TextColor="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource Black}}"
+                       Margin="20,15,0,0" />
+                <!--#endregion-->
+
+                <!--#region Classroom -->
+                <RefreshView Grid.Row="2" Margin="20,10,20,0" x:Name="gView"
+                             RefreshColor="{AppThemeBinding Dark={StaticResource AppColor} ,Light={StaticResource AppColor}}"
+                             Command="{Binding LoadDeviceCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+                    <ScrollView>
+                        <FlexLayout Direction="Row" Wrap="Wrap" AlignContent="Start" AlignItems="Start"
+                                    HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+                                    JustifyContent="SpaceBetween" BindableLayout.ItemsSource="{Binding Devices}">
+                            <!--<FlexLayout.Behaviors>
+                                <behaviors:FlexLayoutItemTappedBehavior Command="{Binding DetailClassroomCommand}" Paramater="{Binding .}"/>
+                            </FlexLayout.Behaviors>-->
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+                                    <Frame CornerRadius="10" Padding="0,20,20,20"
+                                           BorderColor="{AppThemeBinding Dark={StaticResource BlackSmoke} ,Light={StaticResource White}}"
+                                           HasShadow="True" 
+                                           WidthRequest="{Binding Path=BindingContext.WidthCard, Source={x:Reference Name=gView}}"
+                                           HorizontalOptions="Fill" VerticalOptions="Fill">
+                                        <Grid ColumnDefinitions="auto, *"
+                                              HorizontalOptions="Fill" VerticalOptions="Fill">
+                                            <BoxView Grid.Column="0" WidthRequest="3" 
+                                                     BackgroundColor="{AppThemeBinding Dark={StaticResource AppColor}, Light={StaticResource AppColor}}"
+                                                     Margin="0,0,10,0"/>
+                                            <Grid Grid.Column="1" RowDefinitions="auto, auto, *,*">
+                                                <Label Grid.Row="0" Text="{Binding Id}" FontSize="{OnPlatform Android=22, iOS=20}"
+                                                       TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black}}"
+                                                       MaxLines="1" LineBreakMode="HeadTruncation"/>
+                                                <BoxView Grid.Row="1" HeightRequest="1" 
+                                                         BackgroundColor="{AppThemeBinding Dark={StaticResource WhiteSmoke}, Light={StaticResource BlackSmoke}}"/>
+                                                
+                                                <Label Grid.Row="2" Text="{Binding Model, StringFormat='Model {0}'}"
+                                                       FontSize="{OnPlatform Android=14, iOS=12}"
+                                                       TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black}}"/>
+                                                <Label Grid.Row="3" Text="{Binding Version, StringFormat='Version {0}'}"
+                                                       FontSize="{OnPlatform Android=14, iOS=12}"
+                                                       TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black}}"/>
+                                            </Grid>
+                                        </Grid>
+                                        <Frame.GestureRecognizers>
+                                            <TapGestureRecognizer NumberOfTapsRequired="1" CommandParameter="{Binding .}"
+                                                                  Command="{Binding Path=BindingContext.DetailDeviceCommand, Source={x:Reference Name=homepage}}"/>
+                                        </Frame.GestureRecognizers>
+                                    </Frame>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </FlexLayout>
+                    </ScrollView>
+                </RefreshView>
+                <!--#endregion-->
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
