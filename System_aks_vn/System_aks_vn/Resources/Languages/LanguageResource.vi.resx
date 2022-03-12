@@ -141,6 +141,9 @@
   <data name="loginUserNamePlaceHold" xml:space="preserve">
     <value>Tài khoản</value>
   </data>
+  <data name="settingCall" xml:space="preserve">
+    <value>Cuộc gọi</value>
+  </data>
   <data name="settingConfirmPassword" xml:space="preserve">
     <value>Gõ lại mật khẩu</value>
   </data>
@@ -148,16 +151,25 @@
     <value>Đăng xuất</value>
   </data>
   <data name="settingNewPassword" xml:space="preserve">
-    <value />
+    <value>Hãy nhập mật khẩu mới của bạn</value>
   </data>
   <data name="settingNewPasswordPlaceHold" xml:space="preserve">
     <value>Mật khẩu mới</value>
   </data>
   <data name="settingOldPassword" xml:space="preserve">
-    <value />
+    <value>Hãy nhập mật khẩu hiện tại của bạn</value>
   </data>
   <data name="settingOldPasswordPlaceHold" xml:space="preserve">
-    <value>Mật khẩu cũ</value>
+    <value>Mật khẩu hiện tại</value>
+  </data>
+  <data name="settingProfile" xml:space="preserve">
+    <value>Cá nhân</value>
+  </data>
+  <data name="settingSchedule" xml:space="preserve">
+    <value>Lịch trình</value>
+  </data>
+  <data name="settingSms" xml:space="preserve">
+    <value>Tin nhắn</value>
   </data>
   <data name="settingSubmitBtn" xml:space="preserve">
     <value>Gửi</value>

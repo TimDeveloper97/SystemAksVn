@@ -21,89 +21,219 @@
                 Command="{Binding PageAppearingCommand}" />
     </ContentPage.Behaviors>
     <ContentPage.Content>
-        <Grid BackgroundColor="{AppThemeBinding Dark={StaticResource BlackSmoke}, Light={StaticResource WhiteSmoke}}">
-            <StackLayout Orientation="Horizontal" HorizontalOptions="End" VerticalOptions="Start"
-                         Margin="10">
-                <Label  FontFamily="MaterialIcons" Text="{Static icon:FontIcons.Logout}" FontSize="30"
-                        VerticalTextAlignment="Center" HorizontalOptions="End" Margin="0,0,-5,0"
-                        TextColor="{AppThemeBinding Dark={StaticResource Red}, Light={StaticResource Red}}"/>
-                <Label Text="{Static lang:LanguageResource.settingLogout}"
-                       FontSize="{OnPlatform Android=20, iOS=18}" Margin="0,0,5,0"
-                       TextColor="{AppThemeBinding Dark={StaticResource Red}, Light={StaticResource Red}}"/>
-                <StackLayout.GestureRecognizers>
-                    <TapGestureRecognizer NumberOfTapsRequired="1" CommandParameter="{Binding .}"
-                                          Command="{Binding Path=BindingContext.LogoutCommand, Source={x:Reference Name=settingpage}}"/>
-                </StackLayout.GestureRecognizers>
-            </StackLayout>
-            
-            <Frame BackgroundColor="{AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}"
-                   BorderColor="{AppThemeBinding Dark={StaticResource GrayLight}, Light={StaticResource WhiteGray}}"
-                   HorizontalOptions="Center" VerticalOptions="Center" Margin="30,0"
-                   HasShadow="True" IsClippedToBounds="True" CornerRadius="10" Padding="0">
-                <Grid>
-                    <StackLayout Orientation="Vertical" 
-                                 VerticalOptions="FillAndExpand" HorizontalOptions="Center">
+        <Grid BackgroundColor="{AppThemeBinding Dark={StaticResource BlackSmoke}, Light={StaticResource WhiteSmoke}}"
+              RowDefinitions="auto, 50, *">
+            <!--#region Background -->
+            <Frame Grid.Row="0" Padding="0" HasShadow="False" IsClippedToBounds="True" 
+                       BackgroundColor="{AppThemeBinding Dark={StaticResource BlackSmoke} ,Light={StaticResource WhiteSmoke}}"/>
+            <!--#region Header -->
+            <Grid Grid.Row="0" ColumnDefinitions="*, auto" Margin="0,30,20,0">
+                <!--#region Title-->
+                <StackLayout Grid.Row="0" Margin="20,0,0,0"
+                                     HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                    <Image Grid.Row="0"
+                           Grid.Column="0"
+                           Aspect="AspectFit"
+                           HeightRequest="24"
+                           Source="server"
+                           WidthRequest="24" />
+                    <Label>
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span   FontAttributes="Bold"
+                                        FontSize="{OnPlatform Android=20, iOS=18}"
+                                        Text="S"
+                                        TextColor="{AppThemeBinding Dark={StaticResource Yellow} ,Light={StaticResource Yellow}}"/>
+                                <Span   FontSize="{OnPlatform Android=20, iOS=18}"
+                                        Text=" AKS"
+                                        TextColor="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource Black}}" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </StackLayout>
+                <!--#endregion-->
+            </Grid>
+            <!--#endregion-->
 
-                        <Label Text="{Static lang:LanguageResource.settingTitle}" 
-                               HeightRequest="50" VerticalOptions="Center" Padding="20,0" VerticalTextAlignment="Center"
-                               TextColor="{AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}"
-                               BackgroundColor="{AppThemeBinding Dark={StaticResource AppColor}, Light={StaticResource AppColor}}"
-                               FontSize="{OnPlatform Android=20, iOS=18}" FontAttributes="Bold" FontFamily="MuliBold"/>
+            <!--#region Card -->
+            <Grid x:Name="gMain" Grid.Row="2">
+                <!--#region background -->
+                <Frame BackgroundColor="{AppThemeBinding Dark={StaticResource Black} ,Light={StaticResource White}}"
+                       Padding="15" Margin="0,0,0,0" 
+                       BorderColor="{AppThemeBinding Dark={StaticResource BlackSmoke} ,Light={StaticResource WhiteSmoke}}"
+                       HasShadow="False" CornerRadius="40" IsClippedToBounds="True"/>
+                <Frame BackgroundColor="{AppThemeBinding Dark={StaticResource Black} ,Light={StaticResource White}}"
+                       Padding="15" Margin="0,50,0,0"
+                       BorderColor="{AppThemeBinding Dark={StaticResource Black} ,Light={StaticResource White}}"
+                       HasShadow="True" IsClippedToBounds="True"/>
+                <!--#endregion-->
 
-                        <StackLayout Margin="20,0">
-                            <mdc:MaterialEntry Type="Filled" LeadingIcon="password" Padding="0"
-                                                LabelText="{Static lang:LanguageResource.settingOldPassword}" 
-                                                Placeholder="{Static lang:LanguageResource.settingOldPasswordPlaceHold}"
-                                                MaxLength="20" Text="{Binding OldPassword}"
-                                                AssistiveText="{Binding ErrorOldPassword}" 
-                                                AnimateError="True" TabIndex="0"
-                                                LabelMargin="0,0,10,5" FontSize="{OnPlatform Android=15, iOS=13}"
-                                                LabelTextColor="{AppThemeBinding Dark={StaticResource AppColor}, Light={StaticResource AppColor}}"
-                                                TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black}}"
-                                                PlaceholderColor="{AppThemeBinding Dark={StaticResource GrayLight}, Light={StaticResource GrayLight}}"
-                                                BackgroundColor="{AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}"
-                                                BorderColor="{AppThemeBinding Dark={StaticResource GrayLight}, Light={StaticResource GrayLight}}" 
-                                                AssistiveTextColor="{StaticResource Red}" />
+                <StackLayout Padding="0">
+                    <!--#region Title -->
+                    <Label Grid.Row="2" FontFamily="MuliBold" VerticalTextAlignment="Center"
+                           FontSize="Title" Text="{Static lang:LanguageResource.shellSetting}" 
+                           TextColor="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource Black}}"
+                           Margin="30,25,0,0" 
+                           BackgroundColor="{AppThemeBinding Dark={StaticResource Black} ,Light={StaticResource White}}"/>
+                    <!--#endregion-->
 
+                    <ScrollView>
+                        <StackLayout Spacing="-1" Orientation="Vertical">
 
-                            <mdc:MaterialEntry Type="Filled" LeadingIcon="password" Padding="0" Margin="0,15,0,0"
-                                               LabelText="{Static lang:LanguageResource.settingNewPassword}" 
-                                               Placeholder="{Static lang:LanguageResource.settingNewPasswordPlaceHold}"
-                                               MaxLength="20" Text="{Binding NewPassword}"
-                                               AssistiveText="{Binding ErrorNewPassword}" 
-                                               AnimateError="True" TabIndex="1"
-                                               LabelMargin="0,0,10,5" FontSize="{OnPlatform Android=15, iOS=13}"
-                                               LabelTextColor="{AppThemeBinding Dark={StaticResource AppColor}, Light={StaticResource AppColor}}"
-                                               TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black}}"
-                                               PlaceholderColor="{AppThemeBinding Dark={StaticResource GrayLight}, Light={StaticResource GrayLight}}"
-                                               BackgroundColor="{AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}"
-                                               BorderColor="{AppThemeBinding Dark={StaticResource GrayLight}, Light={StaticResource GrayLight}}" 
-                                               AssistiveTextColor="{StaticResource Red}" />
-                            <mdc:MaterialEntry Type="Filled" LeadingIcon="password" Padding="0"
-                                               Placeholder="{Static lang:LanguageResource.settingConfirmPassword}"
-                                               IsPassword="True" MaxLength="20" Text="{Binding ConfirmPassword}"
-                                               AssistiveText="{Binding ErrorConfirmPassword}" 
-                                               AnimateError="True" TabIndex="1"
-                                               LabelMargin="0,0,10,5" FontSize="{OnPlatform Android=15, iOS=13}"
-                                               LabelTextColor="{AppThemeBinding Dark={StaticResource AppColor}, Light={StaticResource AppColor}}"
-                                               TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black}}"
-                                               PlaceholderColor="{AppThemeBinding Dark={StaticResource GrayLight}, Light={StaticResource GrayLight}}"
-                                               BackgroundColor="{AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}"
-                                               BorderColor="{AppThemeBinding Dark={StaticResource GrayLight}, Light={StaticResource GrayLight}}" 
-                                               AssistiveTextColor="{StaticResource Red}" />
+                            <!--#region Item -->
+                            <Frame HasShadow="False" Padding="0"
+                                   BackgroundColor="{AppThemeBinding Dark={StaticResource Black} ,Light={StaticResource White}}"
+                                   BorderColor="{AppThemeBinding Dark={StaticResource Black} ,Light={StaticResource White}}">
+                                <Grid ColumnDefinitions="60, *, 60" Padding="5,10">
+                                    <Frame BackgroundColor="{AppThemeBinding Dark={StaticResource Black} ,Light={StaticResource White}}" 
+                                           CornerRadius="30"
+                                           BorderColor="{AppThemeBinding Dark={StaticResource BlackSmoke} ,Light={StaticResource WhiteSmoke}}"
+                                           HorizontalOptions="End" VerticalOptions="Center" HasShadow="False" IsClippedToBounds="False"
+                                           WidthRequest="30" HeightRequest="30" Padding="0">
+                                        <Label FontFamily="MaterialIcons" Text="{x:Static icon:FontIcons.Account}"
+                                               VerticalOptions="Center" FontSize="Subtitle" HorizontalOptions="Center" 
+                                               TextColor="{AppThemeBinding Dark={StaticResource Blue} ,Light={StaticResource Blue}}"/>
+                                    </Frame>
+                                    <Label Grid.Column="1" Text="{Static lang:LanguageResource.settingProfile}" FontSize="Subtitle"
+                                           VerticalOptions="Center" 
+                                           TextColor="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource Black}}"/>
+
+                                    <Label Grid.Column="2" FontFamily="MaterialIcons" Text="{x:Static icon:FontIcons.ChevronRight}"
+                                           VerticalOptions="Center" HorizontalOptions="Center"
+                                           TextColor="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource Black}}"
+                                           FontSize="Title"/>
+                                </Grid>
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" CommandParameter="{Binding .}"
+                                                          Command="{Binding Path=BindingContext.ProfileCommand, Source={x:Reference Name=settingpage}}"/>
+                                </Frame.GestureRecognizers>
+                            </Frame>
+                            <!--#endregion-->
+
+                            <!--#region Item -->
+                            <Frame HasShadow="False" Padding="0"
+                                   BackgroundColor="{AppThemeBinding Dark={StaticResource Black} ,Light={StaticResource White}}"
+                                   BorderColor="{AppThemeBinding Dark={StaticResource Black} ,Light={StaticResource White}}">
+                                <Grid ColumnDefinitions="60, *, 60" Padding="5,10">
+                                    <Frame BackgroundColor="{AppThemeBinding Dark={StaticResource Black} ,Light={StaticResource White}}" 
+                                           CornerRadius="30"
+                                           BorderColor="{AppThemeBinding Dark={StaticResource BlackSmoke} ,Light={StaticResource WhiteSmoke}}"
+                                           HorizontalOptions="End" VerticalOptions="Center" HasShadow="False" IsClippedToBounds="False"
+                                           WidthRequest="30" HeightRequest="30" Padding="0">
+                                        <Label FontFamily="MaterialIcons" Text="{x:Static icon:FontIcons.Message}"
+                                               VerticalOptions="Center" FontSize="Subtitle" HorizontalOptions="Center" 
+                                               TextColor="{AppThemeBinding Dark={StaticResource Green} ,Light={StaticResource Green}}"/>
+                                    </Frame>
+                                    <Label Grid.Column="1" Text="{Static lang:LanguageResource.settingSms}" FontSize="Subtitle"
+                                           VerticalOptions="Center" 
+                                           TextColor="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource Black}}"/>
+
+                                    <Label Grid.Column="2" FontFamily="MaterialIcons" Text="{x:Static icon:FontIcons.ChevronRight}"
+                                           VerticalOptions="Center" HorizontalOptions="Center"
+                                           TextColor="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource Black}}"
+                                           FontSize="Title"/>
+                                </Grid>
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" CommandParameter="{Binding .}"
+                                                          Command="{Binding Path=BindingContext.SmsConfigCommand, Source={x:Reference Name=settingpage}}"/>
+                                </Frame.GestureRecognizers>
+                            </Frame>
+                            <!--#endregion-->
+
+                            <!--#region Item -->
+                            <Frame HasShadow="False" Padding="0"
+                                   BackgroundColor="{AppThemeBinding Dark={StaticResource Black} ,Light={StaticResource White}}"
+                                   BorderColor="{AppThemeBinding Dark={StaticResource Black} ,Light={StaticResource White}}">
+                                <Grid ColumnDefinitions="60, *, 60" Padding="5,10">
+                                    <Frame BackgroundColor="{AppThemeBinding Dark={StaticResource Black} ,Light={StaticResource White}}" 
+                                           CornerRadius="30"
+                                           BorderColor="{AppThemeBinding Dark={StaticResource BlackSmoke} ,Light={StaticResource WhiteSmoke}}"
+                                           HorizontalOptions="End" VerticalOptions="Center" HasShadow="False" IsClippedToBounds="False"
+                                           WidthRequest="30" HeightRequest="30" Padding="0">
+                                        <Label FontFamily="MaterialIcons" Text="{x:Static icon:FontIcons.Phone}"
+                                               VerticalOptions="Center" FontSize="Subtitle" HorizontalOptions="Center" 
+                                               TextColor="{AppThemeBinding Dark={StaticResource Yellow} ,Light={StaticResource Yellow}}"/>
+                                    </Frame>
+                                    <Label Grid.Column="1" Text="{Static lang:LanguageResource.settingCall}" FontSize="Subtitle"
+                                           VerticalOptions="Center" 
+                                           TextColor="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource Black}}"/>
+
+                                    <Label Grid.Column="2" FontFamily="MaterialIcons" Text="{x:Static icon:FontIcons.ChevronRight}"
+                                           VerticalOptions="Center" HorizontalOptions="Center"
+                                           TextColor="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource Black}}"
+                                           FontSize="Title"/>
+                                </Grid>
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" CommandParameter="{Binding .}"
+                                                          Command="{Binding Path=BindingContext.CallConfigCommand, Source={x:Reference Name=settingpage}}"/>
+                                </Frame.GestureRecognizers>
+                            </Frame>
+                            <!--#endregion-->
+
+                            <!--#region Item -->
+                            <Frame HasShadow="False" Padding="0"
+                                   BackgroundColor="{AppThemeBinding Dark={StaticResource Black} ,Light={StaticResource White}}"
+                                   BorderColor="{AppThemeBinding Dark={StaticResource Black} ,Light={StaticResource White}}">
+                                <Grid ColumnDefinitions="60, *, 60" Padding="5,10">
+                                    <Frame BackgroundColor="{AppThemeBinding Dark={StaticResource Black} ,Light={StaticResource White}}" 
+                                           CornerRadius="30"
+                                           BorderColor="{AppThemeBinding Dark={StaticResource BlackSmoke} ,Light={StaticResource WhiteSmoke}}"
+                                           HorizontalOptions="End" VerticalOptions="Center" HasShadow="False" IsClippedToBounds="False"
+                                           WidthRequest="30" HeightRequest="30" Padding="0">
+                                        <Label FontFamily="MaterialIcons" Text="{x:Static icon:FontIcons.Calendar}"
+                                               VerticalOptions="Center" FontSize="Subtitle" HorizontalOptions="Center" 
+                                               TextColor="{AppThemeBinding Dark={StaticResource Violet} ,Light={StaticResource Violet}}"/>
+                                    </Frame>
+                                    <Label Grid.Column="1" Text="{Static lang:LanguageResource.settingSchedule}" FontSize="Subtitle"
+                                           VerticalOptions="Center" 
+                                           TextColor="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource Black}}"/>
+
+                                    <Label Grid.Column="2" FontFamily="MaterialIcons" Text="{x:Static icon:FontIcons.ChevronRight}"
+                                           VerticalOptions="Center" HorizontalOptions="Center"
+                                           TextColor="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource Black}}"
+                                           FontSize="Title"/>
+                                </Grid>
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" CommandParameter="{Binding .}"
+                                                          Command="{Binding Path=BindingContext.ScheduleConfigCommand, Source={x:Reference Name=settingpage}}"/>
+                                </Frame.GestureRecognizers>
+                            </Frame>
+                            <!--#endregion-->
+
+                            <!--#region Item -->
+                            <Frame HasShadow="False" Padding="0"
+                                   BackgroundColor="{AppThemeBinding Dark={StaticResource Black} ,Light={StaticResource White}}"
+                                   BorderColor="{AppThemeBinding Dark={StaticResource Black} ,Light={StaticResource White}}">
+                                <Grid ColumnDefinitions="60, *, 60" Padding="5,10">
+                                    <Frame BackgroundColor="{AppThemeBinding Dark={StaticResource Black} ,Light={StaticResource White}}" 
+                                           CornerRadius="30"
+                                           BorderColor="{AppThemeBinding Dark={StaticResource BlackSmoke} ,Light={StaticResource WhiteSmoke}}"
+                                           HorizontalOptions="End" VerticalOptions="Center" HasShadow="False" IsClippedToBounds="False"
+                                           WidthRequest="30" HeightRequest="30" Padding="0">
+                                        <Label FontFamily="MaterialIcons" Text="{x:Static icon:FontIcons.Logout}"
+                                               VerticalOptions="Center" FontSize="Subtitle" HorizontalOptions="Center" 
+                                               TextColor="{AppThemeBinding Dark={StaticResource Red} ,Light={StaticResource Red}}"/>
+                                    </Frame>
+                                    <Label Grid.Column="1" Text="{Static lang:LanguageResource.settingLogout}" FontSize="Subtitle"
+                                           VerticalOptions="Center" 
+                                           TextColor="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource Black}}"/>
+
+                                    <Label Grid.Column="2" FontFamily="MaterialIcons" Text="{x:Static icon:FontIcons.ChevronRight}"
+                                           VerticalOptions="Center" HorizontalOptions="Center"
+                                           TextColor="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource Black}}"
+                                           FontSize="Title"/>
+                                </Grid>
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" CommandParameter="{Binding .}"
+                                                          Command="{Binding Path=BindingContext.LogoutCommand, Source={x:Reference Name=settingpage}}"/>
+                                </Frame.GestureRecognizers>
+                            </Frame>
+                            <!--#endregion-->
                         </StackLayout>
-
-                        <Grid BackgroundColor="{AppThemeBinding Dark={StaticResource BlackSmoke}, Light={StaticResource WhiteSmoke}}"
-                              Padding="0,10" HorizontalOptions="Fill">
-                            <mdc:MaterialButton BackgroundColor="{AppThemeBinding Dark={StaticResource AppColor}, Light={StaticResource AppColor}}"
-                                                TextColor="{AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}"
-                                                WidthRequest="100" Text="{Static lang:LanguageResource.settingSubmitBtn}"
-                                                FontSize="{OnPlatform Android=18, iOS=16}"
-                                                HorizontalOptions="Center" Command="{Binding ChangePasswordCommand}"/>
-                        </Grid>
-                    </StackLayout>
-                </Grid>
-            </Frame>
+                    </ScrollView>
+                </StackLayout>
+            </Grid>
+            <!--#endregion-->
         </Grid>
     </ContentPage.Content>
 </ContentPage>

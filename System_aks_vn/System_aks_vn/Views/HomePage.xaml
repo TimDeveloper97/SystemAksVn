@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:vm="clr-namespace:System_aks_vn.ViewModels"
              
              Shell.NavBarIsVisible="False"
              xmlns:mdc="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
@@ -9,6 +8,7 @@
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              xmlns:icon="clr-namespace:System_aks_vn.Resources"
              xmlns:lang="clr-namespace:System_aks_vn.Resources.Languages"
+             xmlns:vm="clr-namespace:System_aks_vn.ViewModels"
              x:Name="homepage"
              
              x:Class="System_aks_vn.Views.HomePage">

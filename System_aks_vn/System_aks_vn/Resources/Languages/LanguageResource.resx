@@ -141,23 +141,35 @@
   <data name="loginUserNamePlaceHold" xml:space="preserve">
     <value>User</value>
   </data>
+  <data name="settingCall" xml:space="preserve">
+    <value>Call config</value>
+  </data>
   <data name="settingConfirmPassword" xml:space="preserve">
-    <value>Confirm password</value>
+    <value>Confirm</value>
   </data>
   <data name="settingLogout" xml:space="preserve">
     <value>Logout</value>
   </data>
   <data name="settingNewPassword" xml:space="preserve">
-    <value />
+    <value>Enter and confirm your new password</value>
   </data>
   <data name="settingNewPasswordPlaceHold" xml:space="preserve">
     <value>New password</value>
   </data>
   <data name="settingOldPassword" xml:space="preserve">
-    <value />
+    <value>Enter your current password</value>
   </data>
   <data name="settingOldPasswordPlaceHold" xml:space="preserve">
-    <value>Old password</value>
+    <value>Current password</value>
+  </data>
+  <data name="settingProfile" xml:space="preserve">
+    <value>Profile</value>
+  </data>
+  <data name="settingSchedule" xml:space="preserve">
+    <value>Schedule config</value>
+  </data>
+  <data name="settingSms" xml:space="preserve">
+    <value>Sms config</value>
   </data>
   <data name="settingSubmitBtn" xml:space="preserve">
     <value>Submit</value>

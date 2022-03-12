@@ -133,7 +133,16 @@ namespace System_aks_vn.Resources.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Confirm password.
+        ///   Looks up a localized string similar to Call config.
+        /// </summary>
+        internal static string settingCall {
+            get {
+                return ResourceManager.GetString("settingCall", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirm.
         /// </summary>
         internal static string settingConfirmPassword {
             get {
@@ -151,7 +160,7 @@ namespace System_aks_vn.Resources.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Enter and confirm your new password.
         /// </summary>
         internal static string settingNewPassword {
             get {
@@ -169,7 +178,7 @@ namespace System_aks_vn.Resources.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Enter your current password.
         /// </summary>
         internal static string settingOldPassword {
             get {
@@ -178,11 +187,38 @@ namespace System_aks_vn.Resources.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Old password.
+        ///   Looks up a localized string similar to Current password.
         /// </summary>
         internal static string settingOldPasswordPlaceHold {
             get {
                 return ResourceManager.GetString("settingOldPasswordPlaceHold", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Profile.
+        /// </summary>
+        internal static string settingProfile {
+            get {
+                return ResourceManager.GetString("settingProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Schedule config.
+        /// </summary>
+        internal static string settingSchedule {
+            get {
+                return ResourceManager.GetString("settingSchedule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sms config.
+        /// </summary>
+        internal static string settingSms {
+            get {
+                return ResourceManager.GetString("settingSms", resourceCulture);
             }
         }
         

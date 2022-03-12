@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             
+             Shell.NavBarIsVisible="False"
+             xmlns:mdc="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+             xmlns:xf="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:icon="clr-namespace:System_aks_vn.Resources"
+             xmlns:lang="clr-namespace:System_aks_vn.Resources.Languages"
+             xmlns:vm="clr-namespace:System_aks_vn.ViewModels"
+             x:Name="profilepage"
+             
+             x:Class="System_aks_vn.Views.ProfilePage">
+    <ContentPage.BindingContext>
+        <vm:ProfileViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Behaviors>
+        <xct:EventToCommandBehavior
+                EventName="Appearing"
+                Command="{Binding PageAppearingCommand}" />
+    </ContentPage.Behaviors>
+    <ContentPage.Content>
+        <Grid BackgroundColor="{AppThemeBinding Dark={StaticResource BlackSmoke}, Light={StaticResource WhiteSmoke}}">
+            <StackLayout HorizontalOptions="Start" VerticalOptions="Start" Margin="7,10"
+                         Orientation="Horizontal">
+                <!--#region Backbutton -->
+                <xf:MaterialCard Padding="5" BackgroundColor="Transparent" 
+                                 HasShadow="False" CornerRadius="20" 
+                                 IsClickable="True"
+                                 ClickCommand="{Binding PreviousCommand}">
+                    <Label FontFamily="MaterialIcons" Text="{Static icon:FontIcons.ArrowLeft}" FontSize="30" 
+                       TextColor="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource Black}}"/>
+                </xf:MaterialCard>
+                <!--#endregion-->
+                <Label Text="{Static lang:LanguageResource.settingProfile}" HorizontalOptions="Center" VerticalOptions="Center"
+                       FontSize="{OnPlatform Android=20, iOS=18}" 
+                       TextColor="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource Black}}"/>
+            </StackLayout>
+            
+            <Frame BackgroundColor="{AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}"
+                   BorderColor="{AppThemeBinding Dark={StaticResource GrayLight}, Light={StaticResource WhiteGray}}"
+                   HorizontalOptions="Center" VerticalOptions="Center" Margin="30,0"
+                   HasShadow="True" IsClippedToBounds="True" CornerRadius="10" Padding="0">
+                <Grid>
+                    <StackLayout Orientation="Vertical" 
+                                 VerticalOptions="FillAndExpand" HorizontalOptions="Center">
+
+                        <Label Text="{Static lang:LanguageResource.settingTitle}" 
+                               HeightRequest="50" VerticalOptions="Center" Padding="20,0" VerticalTextAlignment="Center"
+                               TextColor="{AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}"
+                               BackgroundColor="{AppThemeBinding Dark={StaticResource AppColor}, Light={StaticResource AppColor}}"
+                               FontSize="{OnPlatform Android=20, iOS=18}" FontAttributes="Bold" FontFamily="MuliBold"/>
+
+                        <StackLayout Margin="20,0">
+                            <mdc:MaterialEntry Type="Filled" LeadingIcon="password" Padding="0"
+                                                LabelText="{Static lang:LanguageResource.settingOldPassword}" 
+                                                Placeholder="{Static lang:LanguageResource.settingOldPasswordPlaceHold}"
+                                                MaxLength="20" Text="{Binding OldPassword}"
+                                                AssistiveText="{Binding ErrorOldPassword}" 
+                                                AnimateError="True" TabIndex="0"
+                                                LabelMargin="0,0,10,5" FontSize="{OnPlatform Android=15, iOS=13}"
+                                                LabelTextColor="{AppThemeBinding Dark={StaticResource AppColor}, Light={StaticResource AppColor}}"
+                                                TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black}}"
+                                                PlaceholderColor="{AppThemeBinding Dark={StaticResource GrayLight}, Light={StaticResource GrayLight}}"
+                                                BackgroundColor="{AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}"
+                                                BorderColor="{AppThemeBinding Dark={StaticResource GrayLight}, Light={StaticResource GrayLight}}" 
+                                                AssistiveTextColor="{StaticResource Red}" />
+
+
+                            <mdc:MaterialEntry Type="Filled" LeadingIcon="password" Padding="0" Margin="0,15,0,0"
+                                               LabelText="{Static lang:LanguageResource.settingNewPassword}" 
+                                               Placeholder="{Static lang:LanguageResource.settingNewPasswordPlaceHold}"
+                                               MaxLength="20" Text="{Binding NewPassword}"
+                                               AssistiveText="{Binding ErrorNewPassword}" 
+                                               AnimateError="True" TabIndex="1"
+                                               LabelMargin="0,0,10,5" FontSize="{OnPlatform Android=15, iOS=13}"
+                                               LabelTextColor="{AppThemeBinding Dark={StaticResource AppColor}, Light={StaticResource AppColor}}"
+                                               TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black}}"
+                                               PlaceholderColor="{AppThemeBinding Dark={StaticResource GrayLight}, Light={StaticResource GrayLight}}"
+                                               BackgroundColor="{AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}"
+                                               BorderColor="{AppThemeBinding Dark={StaticResource GrayLight}, Light={StaticResource GrayLight}}" 
+                                               AssistiveTextColor="{StaticResource Red}" />
+                            <mdc:MaterialEntry Type="Filled" LeadingIcon="password" Padding="0"
+                                               Placeholder="{Static lang:LanguageResource.settingConfirmPassword}"
+                                               IsPassword="True" MaxLength="20" Text="{Binding ConfirmPassword}"
+                                               AssistiveText="{Binding ErrorConfirmPassword}" 
+                                               AnimateError="True" TabIndex="1"
+                                               LabelMargin="0,0,10,5" FontSize="{OnPlatform Android=15, iOS=13}"
+                                               LabelTextColor="{AppThemeBinding Dark={StaticResource AppColor}, Light={StaticResource AppColor}}"
+                                               TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black}}"
+                                               PlaceholderColor="{AppThemeBinding Dark={StaticResource GrayLight}, Light={StaticResource GrayLight}}"
+                                               BackgroundColor="{AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}"
+                                               BorderColor="{AppThemeBinding Dark={StaticResource GrayLight}, Light={StaticResource GrayLight}}" 
+                                               AssistiveTextColor="{StaticResource Red}" />
+                        </StackLayout>
+
+                        <Grid BackgroundColor="{AppThemeBinding Dark={StaticResource BlackSmoke}, Light={StaticResource WhiteSmoke}}"
+                              Padding="0,10" HorizontalOptions="Fill">
+                            <mdc:MaterialButton BackgroundColor="{AppThemeBinding Dark={StaticResource AppColor}, Light={StaticResource AppColor}}"
+                                                TextColor="{AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}"
+                                                WidthRequest="100" Text="{Static lang:LanguageResource.settingSubmitBtn}"
+                                                FontSize="{OnPlatform Android=18, iOS=16}"
+                                                HorizontalOptions="Center" Command="{Binding ChangePasswordCommand}"/>
+                        </Grid>
+                    </StackLayout>
+                </Grid>
+            </Frame>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -10,6 +10,9 @@ using System_aks_vn.Controls;
 using System_aks_vn.Domain;
 using System_aks_vn.Models.Response;
 using System_aks_vn.Services.Temp;
+using System_aks_vn.ViewModels.Version;
+using System_aks_vn.Views;
+using System_aks_vn.Views.Version;
 using Xamarin.Forms;
 
 namespace System_aks_vn.ViewModels
@@ -30,9 +33,11 @@ namespace System_aks_vn.ViewModels
         {
             Init();
         });
-        public ICommand DetailDeviceCommand => new Command<DeviceModel>(device =>
+        public ICommand DetailDeviceCommand => new Command<DeviceModel>(async (device) =>
         {
             var x = device;
+            await Shell.Current.GoToAsync($"{nameof(DeviceV30Page)}" +
+                $"?{nameof(DeviceV30ViewModel.ParameterDeviceId)}={device.Id}");
         });
         public ICommand LoadDeviceCommand { get; set; }
         #endregion
