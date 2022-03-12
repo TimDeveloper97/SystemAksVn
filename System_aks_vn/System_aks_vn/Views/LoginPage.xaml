@@ -35,7 +35,7 @@
            
 
             <Frame BackgroundColor="{AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}"
-                   BorderColor="{AppThemeBinding Dark={StaticResource GrayLight}, Light={StaticResource WhiteGray}}"
+                   BorderColor="{AppThemeBinding Dark={StaticResource Gray}, Light={StaticResource WhiteGray}}"
                    HorizontalOptions="Center" VerticalOptions="Center" Margin="30,0"
                    HasShadow="True" IsClippedToBounds="True" CornerRadius="10" Padding="0">
                 <Grid>
@@ -92,7 +92,7 @@
                                                AssistiveTextColor="{StaticResource Red}" />
                         </StackLayout>
 
-                        <Grid BackgroundColor="{AppThemeBinding Dark={StaticResource BlackSmoke}, Light={StaticResource WhiteSmoke}}"
+                        <Grid BackgroundColor="{AppThemeBinding Dark={StaticResource Gray}, Light={StaticResource WhiteSmoke}}"
                               Padding="0,10" HorizontalOptions="Fill">
                             <mdc:MaterialButton BackgroundColor="{AppThemeBinding Dark={StaticResource AppColor}, Light={StaticResource AppColor}}"
                                                 TextColor="{AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}"

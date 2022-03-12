@@ -41,7 +41,7 @@
                             <StackLayout Margin="20,0">
                                 <!--#region ARM Mode -->
                                 <Frame BackgroundColor="{AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}"
-                                       BorderColor="{AppThemeBinding Dark={StaticResource GrayLight}, Light={StaticResource WhiteGray}}"
+                                       BorderColor="{AppThemeBinding Dark={StaticResource Gray}, Light={StaticResource WhiteGray}}"
                                        HorizontalOptions="Center" VerticalOptions="Center" Margin="5,5"
                                        HasShadow="True" IsClippedToBounds="True" CornerRadius="5" Padding="0">
                                     <Grid ColumnDefinitions="auto, *" HorizontalOptions="FillAndExpand"
@@ -103,9 +103,9 @@
 
                                 <!--#region Alarm -->
                                 <Frame BackgroundColor="{AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}"
-                                   BorderColor="{AppThemeBinding Dark={StaticResource GrayLight}, Light={StaticResource WhiteGray}}"
-                                   HorizontalOptions="Center" VerticalOptions="Center" Margin="5,5"
-                                   HasShadow="True" IsClippedToBounds="True" CornerRadius="5" Padding="0">
+                                       BorderColor="{AppThemeBinding Dark={StaticResource Gray}, Light={StaticResource WhiteGray}}"
+                                       HorizontalOptions="Center" VerticalOptions="Center" Margin="5,5"
+                                       HasShadow="True" IsClippedToBounds="True" CornerRadius="5" Padding="0">
                                     <Grid ColumnDefinitions="auto, *" HorizontalOptions="FillAndExpand"
                                       VerticalOptions="FillAndExpand">
                                         <BoxView BackgroundColor="{AppThemeBinding Dark={StaticResource Yellow}, Light={StaticResource Yellow}}"
@@ -197,8 +197,8 @@
                                 <!--#endregion-->
                             </StackLayout>
 
-                            <Grid BackgroundColor="{AppThemeBinding Dark={StaticResource BlackSmoke}, Light={StaticResource WhiteSmoke}}"
-                              Padding="0,10" HorizontalOptions="Fill">
+                            <Grid BackgroundColor="{AppThemeBinding Dark={StaticResource Gray}, Light={StaticResource WhiteSmoke}}"
+                                  Padding="0,10" HorizontalOptions="Fill">
                                 <mdc:MaterialButton Margin="25,0" Text="CLEAR ALARM" FontSize="{OnPlatform Android=20, iOS=18}"
                                                 TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black}}"
                                                 BorderColor="{AppThemeBinding Dark={StaticResource BlackSmoke}, Light={StaticResource WhiteSmoke}}"

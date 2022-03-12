@@ -74,11 +74,10 @@
                 <!--#endregion-->
 
                 <!--#region Title -->
-                <Label Grid.Row="1"
-                       VerticalTextAlignment="Center"
+                <Label Grid.Row="1" VerticalTextAlignment="Center"
                        FontSize="{OnPlatform Android=22, iOS=20}" Text="{Static lang:LanguageResource.homeDevice}"
                        TextColor="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource Black}}"
-                       Margin="20,15,0,0" />
+                       Margin="20,20,0,0" />
                 <!--#endregion-->
 
                 <!--#region Classroom -->
@@ -95,7 +94,8 @@
                             <BindableLayout.ItemTemplate>
                                 <DataTemplate>
                                     <Frame CornerRadius="10" Padding="0,20,20,20"
-                                           BorderColor="{AppThemeBinding Dark={StaticResource BlackSmoke} ,Light={StaticResource White}}"
+                                           BorderColor="{AppThemeBinding Dark={StaticResource Black} ,Light={StaticResource White}}"
+                                           BackgroundColor="{AppThemeBinding Dark={StaticResource Black} ,Light={StaticResource White}}"
                                            HasShadow="True" 
                                            WidthRequest="{Binding Path=BindingContext.WidthCard, Source={x:Reference Name=gView}}"
                                            HorizontalOptions="Fill" VerticalOptions="Fill">
