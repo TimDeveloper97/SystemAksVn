@@ -14,6 +14,7 @@ using System_aks_vn.ViewModels.Version;
 using System_aks_vn.Views;
 using System_aks_vn.Views.Version;
 using Xamarin.Forms;
+using XF.Material.Forms.UI.Dialogs;
 
 namespace System_aks_vn.ViewModels
 {
@@ -71,8 +72,11 @@ namespace System_aks_vn.ViewModels
 
                 Mqtt.MessageReceived += async (s, e) =>
                 {
-                    var mqtt = (s as Mqtt);
-                    var ldevice = JsonConvert.DeserializeObject<List<DeviceModel>>(mqtt.Response.Value.ToString());
+                    var res = (s as Mqtt).Response;
+                    if (res.Code == 100)
+                        await TimeoutSession(res.Message);
+
+                    var ldevice = JsonConvert.DeserializeObject<List<DeviceModel>>(res.Value.ToString());
 
                     await Device.InvokeOnMainThreadAsync(() =>
                     {

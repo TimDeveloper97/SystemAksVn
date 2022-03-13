@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Threading.Tasks;
+using Xamarin.Forms;
+using XF.Material.Forms.UI.Dialogs;
 
 namespace System_aks_vn.Domain
 {
@@ -40,6 +43,16 @@ namespace System_aks_vn.Domain
         protected static string Topic { get; set; }
         protected static string Token { get; set; }
         protected Api Api { get; set; }
+        protected async Task TimeoutSession(string message)
+        {
+            Mqtt.Disconnect();
+            Topic = null;
+            Token = null;
+
+            await MaterialDialog.Instance.SnackbarAsync(message: message,
+                              msDuration: MaterialSnackbar.DurationLong);
+            await Shell.Current.GoToAsync("//LoginPage");
+        }
         #endregion
     }
 }

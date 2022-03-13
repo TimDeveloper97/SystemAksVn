@@ -93,7 +93,7 @@
                         </StackLayout>
 
                         <Grid BackgroundColor="{AppThemeBinding Dark={StaticResource Gray}, Light={StaticResource WhiteSmoke}}"
-                              Padding="0,10" HorizontalOptions="Fill">
+                              Padding="0,10" HorizontalOptions="Fill" Margin="0,10,0,0">
                             <mdc:MaterialButton BackgroundColor="{AppThemeBinding Dark={StaticResource AppColor}, Light={StaticResource AppColor}}"
                                                 TextColor="{AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}"
                                                 WidthRequest="100" Text="{Static lang:LanguageResource.loginSubmitBtn}"

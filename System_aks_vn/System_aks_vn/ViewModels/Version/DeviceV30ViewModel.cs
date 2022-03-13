@@ -12,6 +12,7 @@ using System_aks_vn.Controls;
 using System_aks_vn.Domain;
 using System_aks_vn.Models.View;
 using Xamarin.Forms;
+using XF.Material.Forms.UI.Dialogs;
 
 namespace System_aks_vn.ViewModels.Version
 {
@@ -48,7 +49,15 @@ namespace System_aks_vn.ViewModels.Version
         {
         });
 
-        public ICommand SettingCommand => new Command(async () =>
+        public ICommand SmsConfigCommand => new Command<string>(async (deviceId) =>
+        {
+        });
+
+        public ICommand CallConfigCommand => new Command<string>(async (deviceId) =>
+        {
+        });
+
+        public ICommand ScheduleConfigCommand => new Command<string>(async (deviceId) =>
         {
         });
 
@@ -84,14 +93,17 @@ namespace System_aks_vn.ViewModels.Version
                         Url = Api.DeviceStatus,
                     });
 
-                    Mqtt.MessageReceived += (s, e) =>
+                    Mqtt.MessageReceived += async (s, e) =>
                     {
                         var res = (s as Mqtt).Response;
+                        if (res.Code == 100)
+                            await TimeoutSession(res.Message);
+
                         if (res.Value == null) return;
 
                         var status = JObject.Parse(res.Value.ToString());
-
                         var tmp = new DeviceStatusModel();
+
                         foreach (var tag in DeviceStatusModel.Tags)
                         {
                             var value = status[tag]?.ToString();
