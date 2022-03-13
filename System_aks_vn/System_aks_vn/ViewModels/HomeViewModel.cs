@@ -35,9 +35,11 @@ namespace System_aks_vn.ViewModels
         });
         public ICommand DetailDeviceCommand => new Command<DeviceModel>(async (device) =>
         {
-            var x = device;
-            await Shell.Current.GoToAsync($"{nameof(DeviceV30Page)}" +
+            if (device.Version == "V30")
+            {
+                await Shell.Current.GoToAsync($"{nameof(DeviceV30Page)}" +
                 $"?{nameof(DeviceV30ViewModel.ParameterDeviceId)}={device.Id}");
+            }
         });
         public ICommand LoadDeviceCommand { get; set; }
         #endregion

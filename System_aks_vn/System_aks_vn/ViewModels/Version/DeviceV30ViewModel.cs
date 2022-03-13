@@ -44,7 +44,15 @@ namespace System_aks_vn.ViewModels.Version
             await ExecuteLoadDeviceStatusCommand();
         });
 
-        public ICommand StatusCommand => new Command(async (tag) =>
+        public ICommand StatusCommand => new Command<string>(async (tag) =>
+        {
+        });
+
+        public ICommand SettingCommand => new Command(async () =>
+        {
+        });
+
+        public ICommand HistoryCommand => new Command(async () =>
         {
         });
         #endregion
@@ -79,6 +87,8 @@ namespace System_aks_vn.ViewModels.Version
                     Mqtt.MessageReceived += (s, e) =>
                     {
                         var res = (s as Mqtt).Response;
+                        if (res.Value == null) return;
+
                         var status = JObject.Parse(res.Value.ToString());
 
                         var tmp = new DeviceStatusModel();
