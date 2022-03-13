@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System_aks_vn.Controls;
 using System_aks_vn.Domain;
 using System_aks_vn.Models.View;
+using System_aks_vn.ViewModels.Devices;
+using System_aks_vn.Views.Devices;
 using Xamarin.Forms;
 using XF.Material.Forms.UI.Dialogs;
 
@@ -65,20 +67,16 @@ namespace System_aks_vn.ViewModels.Version
             };
         });
 
-        public ICommand SmsConfigCommand => new Command<string>(async (deviceId) =>
+        public ICommand DeviceSettingCommand => new Command<string>(async (deviceId) =>
         {
+            await Shell.Current.GoToAsync($"{nameof(DeviceSettingPage)}" +
+                $"?{nameof(DeviceSettingViewModel.ParameterDeviceId)}={deviceId}");
         });
 
-        public ICommand CallConfigCommand => new Command<string>(async (deviceId) =>
+        public ICommand DeviceHistoryCommand => new Command<string>(async (deviceId) =>
         {
-        });
-
-        public ICommand ScheduleConfigCommand => new Command<string>(async (deviceId) =>
-        {
-        });
-
-        public ICommand HistoryCommand => new Command(async () =>
-        {
+            await Shell.Current.GoToAsync($"{nameof(DeviceHistoryPage)}" +
+                $"?{nameof(DeviceHistoryViewModel.ParameterDeviceId)}={deviceId}");
         });
         #endregion
 

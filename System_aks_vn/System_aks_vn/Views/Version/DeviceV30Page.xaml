@@ -259,7 +259,7 @@
                                                FontSize="{OnPlatform Android=16, iOS=12}" VerticalTextAlignment="Center"/>
                                         <StackLayout.GestureRecognizers>
                                             <TapGestureRecognizer NumberOfTapsRequired="1" CommandParameter="{Binding Title}"
-                                                                  Command="{Binding Path=BindingContext.SettingCommand, Source={x:Reference Name=devicev30page}}"/>
+                                                                  Command="{Binding Path=BindingContext.DeviceSettingCommand, Source={x:Reference Name=devicev30page}}"/>
                                         </StackLayout.GestureRecognizers>
                                     </StackLayout>
 
@@ -272,7 +272,7 @@
                                                FontSize="{OnPlatform Android=16, iOS=12}" VerticalTextAlignment="Center"/>
                                         <StackLayout.GestureRecognizers>
                                             <TapGestureRecognizer NumberOfTapsRequired="1" CommandParameter="{Binding Title}"
-                                                                  Command="{Binding Path=BindingContext.HistoryCommand, Source={x:Reference Name=devicev30page}}"/>
+                                                                  Command="{Binding Path=BindingContext.DeviceHistoryCommand, Source={x:Reference Name=devicev30page}}"/>
                                         </StackLayout.GestureRecognizers>
                                     </StackLayout>
 
