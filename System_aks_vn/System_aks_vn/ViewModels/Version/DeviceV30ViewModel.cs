@@ -47,6 +47,22 @@ namespace System_aks_vn.ViewModels.Version
 
         public ICommand StatusCommand => new Command<string>(async (tag) =>
         {
+            Mqtt.ClearEvent();
+            Mqtt.Publish(Topic, new DeviceDetailModel
+            {
+                DeviceId = ParameterDeviceId,
+                Url = Api.Control,
+                Token = Token,
+                Value = tag,
+            });
+
+            Mqtt.MessageReceived += async (s, e) =>
+            {
+                var res = (s as Mqtt).Response;
+                if (res.Code != 0)
+                    await MaterialDialog.Instance.SnackbarAsync(message: res.Message,
+                              msDuration: MaterialSnackbar.DurationLong);
+            };
         });
 
         public ICommand SmsConfigCommand => new Command<string>(async (deviceId) =>
@@ -107,7 +123,7 @@ namespace System_aks_vn.ViewModels.Version
                         foreach (var tag in DeviceStatusModel.Tags)
                         {
                             var value = status[tag]?.ToString();
-                            if(!string.IsNullOrEmpty(value))
+                            if (!string.IsNullOrEmpty(value))
                             {
                                 Type myType = tmp.GetType();
                                 var props = new List<PropertyInfo>(myType.GetProperties());
@@ -116,10 +132,10 @@ namespace System_aks_vn.ViewModels.Version
                                 {
                                     var propTag = prop.GetCustomAttribute<DescriptionAttribute>()?.Description;
                                     var propValue = bool.Parse(prop.GetValue(tmp).ToString());
-                                    if(propTag != null && propTag == tag)
+                                    if (propTag != null && propTag == tag)
                                     {
                                         // neu 2 trang thai khac nhau
-                                        if(propValue == false)
+                                        if (propValue == false)
                                             prop.SetValue(tmp, true);
                                     }
                                 }

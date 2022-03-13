@@ -30,7 +30,7 @@
                     HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
                     FontFamily="MuliBold"/>
             <StackLayout Orientation="Horizontal" HorizontalOptions="End">
-                <Label  Text="{x:Static icon:FontIcons.History}" 
+                <!--<Label  Text="{x:Static icon:FontIcons.History}" 
                         TextColor="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource White}}"
                         FontSize="Title" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Margin="0,0,10,0"
                         VerticalOptions="CenterAndExpand" FontFamily="MaterialIcons" IsVisible="{Binding IsHostUser}">
@@ -38,7 +38,7 @@
                         <TapGestureRecognizer NumberOfTapsRequired="1" CommandParameter="{Binding .}"
                                               Command="{Binding Path=BindingContext.HistoryCommand, Source={x:Reference Name=devicev30page}}"/>
                     </Label.GestureRecognizers>
-                </Label>
+                </Label>-->
             </StackLayout>
 
         </Grid>
@@ -72,7 +72,7 @@
                                         <BoxView BackgroundColor="{AppThemeBinding Dark={StaticResource Violet}, Light={StaticResource Violet}}"
                                              WidthRequest="3"/>
 
-                                        <StackLayout Grid.Column="1" Margin="15,0" Orientation="Vertical"
+                                        <StackLayout Grid.Column="1" Margin="15,1,1,0" Orientation="Vertical"
                                                  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
                                             <Label Text="ARM Mode" 
                                                    HeightRequest="50" VerticalOptions="Center" VerticalTextAlignment="Center"
@@ -81,7 +81,7 @@
                                                    FontSize="{OnPlatform Android=20, iOS=18}" FontAttributes="Bold" FontFamily="MuliBold"/>
 
                                             <BoxView BackgroundColor="{AppThemeBinding Dark={StaticResource BlackSmoke}, Light={StaticResource WhiteSmoke}}"
-                                                 HeightRequest="2" Margin="-15,0"/>
+                                                    HeightRequest="2" Margin="-15,0,0,0"/>
 
                                             <!--#region Status -->
                                             <StackLayout Margin="0,0,0,10">
@@ -155,7 +155,7 @@
                                         <BoxView BackgroundColor="{AppThemeBinding Dark={StaticResource Yellow}, Light={StaticResource Yellow}}"
                                              WidthRequest="3"/>
 
-                                        <StackLayout Grid.Column="1" Margin="15,0" Orientation="Vertical"
+                                        <StackLayout Grid.Column="1" Margin="15,1,1,0" Orientation="Vertical"
                                                  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
                                             <Label Text="Alarm" 
                                                    HeightRequest="50" VerticalOptions="Center" VerticalTextAlignment="Center"
@@ -164,7 +164,7 @@
                                                    FontSize="{OnPlatform Android=20, iOS=18}" FontAttributes="Bold" FontFamily="MuliBold"/>
 
                                             <BoxView BackgroundColor="{AppThemeBinding Dark={StaticResource BlackSmoke}, Light={StaticResource WhiteSmoke}}"
-                                                 HeightRequest="2" Margin="-15,0"/>
+                                                 HeightRequest="2" Margin="-15,0,0,0"/>
 
                                             <!--#region Outputs -->
                                             <StackLayout IsEnabled="False">
@@ -251,32 +251,32 @@
                                   Padding="0,10" HorizontalOptions="Fill">
                                 <StackLayout HorizontalOptions="Center" Margin="10,5" Orientation="Horizontal">
                                     <StackLayout Orientation="Horizontal">
-                                        <Label  FontFamily="MaterialIcons" Text="{Static icon:FontIcons.Message}" FontSize="20"
+                                        <Label  FontFamily="MaterialIcons" Text="{Static icon:FontIcons.Toolbox}" FontSize="20"
                                                 VerticalTextAlignment="Center" HorizontalOptions="End" Margin="0,0,-5,0"
                                                 TextColor="{AppThemeBinding Dark={StaticResource Green}, Light={StaticResource Green}}"/>
-                                        <Label Text="{Static lang:LanguageResource.settingSms}"
+                                        <Label Text="{Static lang:LanguageResource.deviceSetting}"
                                                TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black}}"
                                                FontSize="{OnPlatform Android=16, iOS=12}" VerticalTextAlignment="Center"/>
                                         <StackLayout.GestureRecognizers>
                                             <TapGestureRecognizer NumberOfTapsRequired="1" CommandParameter="{Binding Title}"
-                                                                  Command="{Binding Path=BindingContext.SmsConfigCommand, Source={x:Reference Name=devicev30page}}"/>
+                                                                  Command="{Binding Path=BindingContext.SettingCommand, Source={x:Reference Name=devicev30page}}"/>
                                         </StackLayout.GestureRecognizers>
                                     </StackLayout>
 
-                                    <StackLayout Orientation="Horizontal" Margin="10,0">
-                                        <Label  FontFamily="MaterialIcons" Text="{Static icon:FontIcons.Phone}" FontSize="20"
+                                    <StackLayout Orientation="Horizontal" Margin="15,0">
+                                        <Label  FontFamily="MaterialIcons" Text="{Static icon:FontIcons.History}" FontSize="20"
                                                 VerticalTextAlignment="Center" HorizontalOptions="End" Margin="0,0,-5,0"
                                                 TextColor="{AppThemeBinding Dark={StaticResource Violet}, Light={StaticResource Violet}}"/>
-                                        <Label Text="{Static lang:LanguageResource.settingCall}"
+                                        <Label Text="{Static lang:LanguageResource.deviceHistory}"
                                                TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black}}"
                                                FontSize="{OnPlatform Android=16, iOS=12}" VerticalTextAlignment="Center"/>
                                         <StackLayout.GestureRecognizers>
                                             <TapGestureRecognizer NumberOfTapsRequired="1" CommandParameter="{Binding Title}"
-                                                                  Command="{Binding Path=BindingContext.CallConfigCommand, Source={x:Reference Name=devicev30page}}"/>
+                                                                  Command="{Binding Path=BindingContext.HistoryCommand, Source={x:Reference Name=devicev30page}}"/>
                                         </StackLayout.GestureRecognizers>
                                     </StackLayout>
 
-                                    <StackLayout Orientation="Horizontal" >
+                                    <!--<StackLayout Orientation="Horizontal" >
                                         <Label  FontFamily="MaterialIcons" Text="{Static icon:FontIcons.Calendar}" FontSize="20"
                                                 VerticalTextAlignment="Center" HorizontalOptions="End" Margin="0,0,-5,0"
                                                 TextColor="{AppThemeBinding Dark={StaticResource Yellow}, Light={StaticResource Yellow}}"/>
@@ -287,7 +287,7 @@
                                             <TapGestureRecognizer NumberOfTapsRequired="1" CommandParameter="{Binding Title}"
                                                                   Command="{Binding Path=BindingContext.ScheduleConfigCommand, Source={x:Reference Name=devicev30page}}"/>
                                         </StackLayout.GestureRecognizers>
-                                    </StackLayout>
+                                    </StackLayout>-->
                                 </StackLayout>
                             </Grid>
                         </StackLayout>

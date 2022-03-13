@@ -61,6 +61,24 @@ namespace System_aks_vn.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to History.
+        /// </summary>
+        internal static string deviceHistory {
+            get {
+                return ResourceManager.GetString("deviceHistory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings.
+        /// </summary>
+        internal static string deviceSetting {
+            get {
+                return ResourceManager.GetString("deviceSetting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Your Device.
         /// </summary>
         internal static string homeDevice {
