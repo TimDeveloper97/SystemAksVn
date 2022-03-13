@@ -123,6 +123,18 @@
   <data name="deviceSetting" xml:space="preserve">
     <value>Cấu hình</value>
   </data>
+  <data name="deviceSettingCallTitle" xml:space="preserve">
+    <value>Cài đặt số điện thoại bảo mật</value>
+  </data>
+  <data name="deviceSettingSmsTitle" xml:space="preserve">
+    <value>Cài đặt số điện thoại bảo mật</value>
+  </data>
+  <data name="deviceSettingSubmitBtn" xml:space="preserve">
+    <value>Gửi</value>
+  </data>
+  <data name="deviceTitle" xml:space="preserve">
+    <value>Trạng thái thiết bị</value>
+  </data>
   <data name="homeDevice" xml:space="preserve">
     <value>Danh sách thiết bị</value>
   </data>

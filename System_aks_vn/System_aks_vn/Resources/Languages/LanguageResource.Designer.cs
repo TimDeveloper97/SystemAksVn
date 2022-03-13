@@ -79,6 +79,42 @@ namespace System_aks_vn.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Set the security phone numbers here.
+        /// </summary>
+        internal static string deviceSettingCallTitle {
+            get {
+                return ResourceManager.GetString("deviceSettingCallTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set the security phone numbers here.
+        /// </summary>
+        internal static string deviceSettingSmsTitle {
+            get {
+                return ResourceManager.GetString("deviceSettingSmsTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Submit.
+        /// </summary>
+        internal static string deviceSettingSubmitBtn {
+            get {
+                return ResourceManager.GetString("deviceSettingSubmitBtn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Device Status.
+        /// </summary>
+        internal static string deviceTitle {
+            get {
+                return ResourceManager.GetString("deviceTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Your Device.
         /// </summary>
         internal static string homeDevice {

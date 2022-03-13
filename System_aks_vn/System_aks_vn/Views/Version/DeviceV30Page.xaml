@@ -55,7 +55,7 @@
                         <StackLayout Orientation="Vertical" 
                                  VerticalOptions="FillAndExpand" HorizontalOptions="CenterAndExpand">
 
-                            <Label Text="Device Status" 
+                            <Label Text="{Static lang:LanguageResource.deviceTitle}" 
                                    HeightRequest="50" VerticalOptions="Center" Padding="20,0" VerticalTextAlignment="Center"
                                    TextColor="{AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}"
                                    BackgroundColor="{AppThemeBinding Dark={StaticResource AppColor}, Light={StaticResource AppColor}}"
@@ -72,7 +72,7 @@
                                         <BoxView BackgroundColor="{AppThemeBinding Dark={StaticResource Violet}, Light={StaticResource Violet}}"
                                              WidthRequest="3"/>
 
-                                        <StackLayout Grid.Column="1" Margin="15,1,1,0" Orientation="Vertical"
+                                        <StackLayout Grid.Column="1" Margin="15,1,5,0" Orientation="Vertical"
                                                  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
                                             <Label Text="ARM Mode" 
                                                    HeightRequest="50" VerticalOptions="Center" VerticalTextAlignment="Center"
@@ -155,7 +155,7 @@
                                         <BoxView BackgroundColor="{AppThemeBinding Dark={StaticResource Yellow}, Light={StaticResource Yellow}}"
                                              WidthRequest="3"/>
 
-                                        <StackLayout Grid.Column="1" Margin="15,1,1,0" Orientation="Vertical"
+                                        <StackLayout Grid.Column="1" Margin="15,1,5,0" Orientation="Vertical"
                                                  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
                                             <Label Text="Alarm" 
                                                    HeightRequest="50" VerticalOptions="Center" VerticalTextAlignment="Center"

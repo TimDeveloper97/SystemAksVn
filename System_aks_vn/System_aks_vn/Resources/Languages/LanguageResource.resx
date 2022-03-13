@@ -123,6 +123,18 @@
   <data name="deviceSetting" xml:space="preserve">
     <value>Settings</value>
   </data>
+  <data name="deviceSettingCallTitle" xml:space="preserve">
+    <value>Set the security phone numbers here</value>
+  </data>
+  <data name="deviceSettingSmsTitle" xml:space="preserve">
+    <value>Set the security phone numbers here</value>
+  </data>
+  <data name="deviceSettingSubmitBtn" xml:space="preserve">
+    <value>Submit</value>
+  </data>
+  <data name="deviceTitle" xml:space="preserve">
+    <value>Device Status</value>
+  </data>
   <data name="homeDevice" xml:space="preserve">
     <value>Your Device</value>
   </data>

@@ -123,6 +123,18 @@
   <data name="deviceSetting" xml:space="preserve">
     <value>設定</value>
   </data>
+  <data name="deviceSettingCallTitle" xml:space="preserve">
+    <value>ここでセキュリティ電話番号を設定します</value>
+  </data>
+  <data name="deviceSettingSmsTitle" xml:space="preserve">
+    <value>ここでセキュリティ電話番号を設定します</value>
+  </data>
+  <data name="deviceSettingSubmitBtn" xml:space="preserve">
+    <value>参加する</value>
+  </data>
+  <data name="deviceTitle" xml:space="preserve">
+    <value>デバイスのステータス</value>
+  </data>
   <data name="homeDevice" xml:space="preserve">
     <value>デバイスのリスト</value>
   </data>

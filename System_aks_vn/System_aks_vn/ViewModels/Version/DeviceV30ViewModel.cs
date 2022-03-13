@@ -50,7 +50,7 @@ namespace System_aks_vn.ViewModels.Version
         public ICommand StatusCommand => new Command<string>(async (tag) =>
         {
             Mqtt.ClearEvent();
-            Mqtt.Publish(Topic, new DeviceDetailModel
+            Mqtt.Publish(Topic, new DeviceContext
             {
                 DeviceId = ParameterDeviceId,
                 Url = Api.Control,
@@ -101,7 +101,7 @@ namespace System_aks_vn.ViewModels.Version
                 DependencyService.Get<ITimer>().StartTimer(TimeSpan.FromSeconds(3), () =>
                 {
                     Mqtt.ClearEvent();
-                    Mqtt.Publish(Topic, new DeviceDetailModel
+                    Mqtt.Publish(Topic, new DeviceContext
                     {
                         DeviceId = ParameterDeviceId,
                         Url = Api.DeviceStatus,
