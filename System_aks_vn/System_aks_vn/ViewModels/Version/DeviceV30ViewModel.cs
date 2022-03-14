@@ -47,7 +47,7 @@ namespace System_aks_vn.ViewModels.Version
             await ExecuteLoadDeviceStatusCommand();
         });
 
-        public ICommand StatusCommand => new Command<string>(async (tag) =>
+        public ICommand StatusCommand => new Command<string>((tag) =>
         {
             Mqtt.ClearEvent();
             Mqtt.Publish(Topic, new DeviceContext

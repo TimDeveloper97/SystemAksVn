@@ -28,7 +28,7 @@ namespace System_aks_vn.ViewModels.Devices.Settings
         #endregion
 
         #region Command 
-        public ICommand PageAppearingCommand => new Command(async () =>
+        public ICommand PageAppearingCommand => new Command(() =>
         {
             Init();
         });

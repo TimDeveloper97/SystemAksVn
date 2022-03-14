@@ -26,7 +26,7 @@ namespace System_aks_vn.Domain
         }
         public bool IsConnected => _mqttClient != null && _mqttClient.IsConnected;
 
-        const string _cid = "D34F4441";
+        //const string _cid = "D34F4441";
         const string _topic = "aks";
         //const string host = "localhost";
         const string host = "system.aks.vn";

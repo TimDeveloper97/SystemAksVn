@@ -7,7 +7,7 @@ namespace System_aks_vn.Models
 {
     public class MyBoxView : BoxView
     {
-        public int X { get; set; }
-        public int Y { get; set; }
+        public new int X { get; set; }
+        public new int Y { get; set; }
     }
 }

@@ -15,7 +15,7 @@ namespace System_aks_vn.Controls
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DeviceScheduleView : ContentView
     {
-        private string colorBoxEnable = "#1fb141";
+        private readonly string colorBoxEnable = "#1fb141";
         public static List<string> _tmpSource = null;
 
         public static readonly BindableProperty ItemSourceProperty = BindableProperty.Create(
@@ -84,9 +84,11 @@ namespace System_aks_vn.Controls
 
         Grid DrawTitleView()
         {
-            var gTitleView = new Grid();
-            gTitleView.RowDefinitions = new RowDefinitionCollection();
-            gTitleView.ColumnDefinitions = new ColumnDefinitionCollection();
+            var gTitleView = new Grid
+            {
+                RowDefinitions = new RowDefinitionCollection(),
+                ColumnDefinitions = new ColumnDefinitionCollection()
+            };
 
             gTitleView.RowDefinitions.Add(new RowDefinition { Height = new GridLength(20) });
 
@@ -115,9 +117,11 @@ namespace System_aks_vn.Controls
 
         Grid DrawListBoxView()
         {
-            var gBoxView = new Grid();
-            gBoxView.RowDefinitions = new RowDefinitionCollection();
-            gBoxView.ColumnDefinitions = new ColumnDefinitionCollection();
+            var gBoxView = new Grid
+            {
+                RowDefinitions = new RowDefinitionCollection(),
+                ColumnDefinitions = new ColumnDefinitionCollection()
+            };
             for (int i = 0; i < 48; i++)
             {
                 gBoxView.RowDefinitions.Add(new RowDefinition { Height = new GridLength(20) });

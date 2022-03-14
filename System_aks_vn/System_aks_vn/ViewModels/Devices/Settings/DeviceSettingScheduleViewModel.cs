@@ -37,7 +37,7 @@ namespace System_aks_vn.ViewModels.Devices.Settings
             Init();
         });
 
-        public ICommand SubmitScheduleCommand => new Command(async () =>
+        public ICommand SubmitScheduleCommand => new Command(() =>
         {
             var day = Day;
             var x = HexStatus;
