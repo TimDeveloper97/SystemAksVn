@@ -86,7 +86,7 @@
                                             <!--#region Status -->
                                             <StackLayout Margin="0,0,0,10">
                                                 <Frame BackgroundColor="{AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}"
-                                                       BorderColor="{AppThemeBinding Dark={StaticResource BlackSmoke}, Light={StaticResource WhiteGray}}"
+                                                       BorderColor="{AppThemeBinding Dark={StaticResource BlackSmoke}, Light={StaticResource WhiteSmoke}}"
                                                        HorizontalOptions="Center" VerticalOptions="Center"
                                                        HasShadow="True" IsClippedToBounds="True" CornerRadius="5" Padding="0">
                                                     
@@ -99,7 +99,7 @@
                                                         <mdc:MaterialButton Grid.Column="1" Margin="0" Text="ARM AWAY" FontSize="{OnPlatform Android=20, iOS=18}"
                                                                             TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black}}"
                                                                             BackgroundColor="{AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}"
-                                                                            BorderColor="{AppThemeBinding Dark={StaticResource Black}, Light={StaticResource BlackSmoke}}"
+                                                                            BorderColor="{AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}"
                                                                             Command="{Binding StatusCommand}" CommandParameter="ARM0"/>
                                                     </Grid>
                                                 </Frame>

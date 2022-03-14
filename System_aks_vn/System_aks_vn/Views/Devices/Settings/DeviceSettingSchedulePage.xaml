@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             
+             Shell.NavBarIsVisible="true"
+             xmlns:mdc="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+             xmlns:xf="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:icon="clr-namespace:System_aks_vn.Resources"
+             xmlns:lang="clr-namespace:System_aks_vn.Resources.Languages"
+             xmlns:vm="clr-namespace:System_aks_vn.ViewModels.Devices.Settings"
+             xmlns:control="clr-namespace:System_aks_vn.Controls"
+             x:Name="devicesettingschedulepage" Title="{Static lang:LanguageResource.settingSchedule}"
+             
+             x:Class="System_aks_vn.Views.Devices.Settings.DeviceSettingSchedulePage">
+    <ContentPage.BindingContext>
+        <vm:DeviceSettingScheduleViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Behaviors>
+        <xct:EventToCommandBehavior
+                EventName="Appearing"
+                Command="{Binding PageAppearingCommand}" />
+    </ContentPage.Behaviors>
+    <ContentPage.Content>
+        <Grid BackgroundColor="{AppThemeBinding Dark={StaticResource BlackSmoke}, Light={StaticResource WhiteGray}}">
+            <StackLayout>
+                <xct:TabView TabStripBackgroundColor="{AppThemeBinding Dark={StaticResource BlackSmoke} ,Light={StaticResource WhiteSmoke}}"
+                             TabStripHeight="20" SelectedIndex="{Binding Day}" Margin="0,0,0,10"
+                             TabIndicatorColor="{AppThemeBinding Dark={StaticResource AppColor} ,Light={StaticResource AppColor}}"
+                             TabContentBackgroundColor="{AppThemeBinding Dark={StaticResource BlackSmoke} ,Light={StaticResource WhiteSmoke}}">
+                    <xct:TabViewItem Text="MON" FontFamily="MuliBlack" 
+                                    TextColor="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource Black}}"/>
+                    <xct:TabViewItem Text="TUE" FontFamily="MuliBlack" 
+                                 TextColor="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource Black}}"/>
+                    <xct:TabViewItem Text="WED" FontFamily="MuliBlack" 
+                                 TextColor="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource Black}}"/>
+                    <xct:TabViewItem Text="THU" FontFamily="MuliBlack" 
+                                 TextColor="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource Black}}"/>
+                    <xct:TabViewItem Text="FRI" FontFamily="MuliBlack" 
+                                 TextColor="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource Black}}"/>
+                    <xct:TabViewItem Text="SAT" FontFamily="MuliBlack" 
+                                 TextColor="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource Black}}"/>
+                    <xct:TabViewItem Text="SUN" FontFamily="MuliBlack" 
+                                 TextColor="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource Black}}"/>
+                    <xct:TabViewItem Text="ALL" FontFamily="MuliBlack" 
+                                     TextColor="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource Black}}"/>
+                </xct:TabView>
+                <control:DeviceScheduleView ItemSource="{Binding HexStatus, Mode=TwoWay}"/>
+                
+                <mdc:MaterialButton BackgroundColor="{AppThemeBinding Dark={StaticResource AppColor}, Light={StaticResource AppColor}}"
+                                    TextColor="{AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}"
+                                    WidthRequest="100" Text="{Static lang:LanguageResource.deviceSettingSubmitBtn}"
+                                    FontSize="{OnPlatform Android=18, iOS=16}" Margin="0,0,0,10"
+                                    HorizontalOptions="Center" Command="{Binding SubmitScheduleCommand}"/>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

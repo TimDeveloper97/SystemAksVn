@@ -132,6 +132,9 @@
   <data name="deviceSettingSubmitBtn" xml:space="preserve">
     <value>Gửi</value>
   </data>
+  <data name="devicesettingTitle" xml:space="preserve">
+    <value>Cấu hình thiết bị</value>
+  </data>
   <data name="deviceTitle" xml:space="preserve">
     <value>Trạng thái thiết bị</value>
   </data>

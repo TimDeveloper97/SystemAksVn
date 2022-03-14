@@ -106,6 +106,15 @@ namespace System_aks_vn.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Device control.
+        /// </summary>
+        internal static string devicesettingTitle {
+            get {
+                return ResourceManager.GetString("devicesettingTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Device Status.
         /// </summary>
         internal static string deviceTitle {

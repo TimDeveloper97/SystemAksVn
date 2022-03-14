@@ -3,13 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              
              Shell.NavBarIsVisible="true"
+             Shell.NavBarHasShadow="False"
              xmlns:mdc="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
              xmlns:xf="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              xmlns:icon="clr-namespace:System_aks_vn.Resources"
              xmlns:lang="clr-namespace:System_aks_vn.Resources.Languages"
              xmlns:vm="clr-namespace:System_aks_vn.ViewModels.Devices"
-             x:Name="devicesettingpage" Title="{Binding Title}"
+             x:Name="devicesettingpage" Title="{Static lang:LanguageResource.devicesettingTitle}"
              
              x:Class="System_aks_vn.Views.Devices.DeviceSettingPage">
     <ContentPage.BindingContext>
@@ -22,148 +23,137 @@
     </ContentPage.Behaviors>
     
     <ContentPage.Content>
-        <StackLayout>
-            <xct:TabView TabStripBackgroundColor="{AppThemeBinding Dark={StaticResource BlackSmoke} ,Light={StaticResource WhiteSmoke}}"
-                         TabStripHeight="50" SelectedIndex="{Binding CurrentTabItem}"
-                         TabIndicatorColor="{AppThemeBinding Dark={StaticResource AppColor} ,Light={StaticResource AppColor}}"
-                         TabContentBackgroundColor="{AppThemeBinding Dark={StaticResource BlackSmoke} ,Light={StaticResource WhiteSmoke}}">
-                <xct:TabViewItem Text="{Static lang:LanguageResource.settingSms}" FontFamily="MuliBold" FontSize="{OnPlatform Android=16, iOS=14}"
-                                 TextColor="{AppThemeBinding Dark={StaticResource GrayLight} ,Light={StaticResource BlackSmoke}}"
-                                 TextColorSelected="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource Black}}"
-                                 FontSizeSelected="{OnPlatform Android=16, iOS=14}">
-                    <StackLayout Margin="30,20,30,5">
-                        <mdc:MaterialEntry Type="Filled" LeadingIcon="sms" Padding="0"
-                                           LabelText="{Static lang:LanguageResource.deviceSettingSmsTitle}" 
-                                           Placeholder="#1"
-                                           MaxLength="15" Text="{Binding Sms.Number1}"
-                                           AnimateError="True" TabIndex="0" ClearIcon="clear" Keyboard="Telephone"
-                                           LabelMargin="0,0,10,5" FontSize="{OnPlatform Android=15, iOS=13}"
-                                           LabelTextColor="{AppThemeBinding Dark={StaticResource AppColor}, Light={StaticResource AppColor}}"
-                                           TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black}}"
-                                           PlaceholderColor="{AppThemeBinding Dark={StaticResource GrayLight}, Light={StaticResource GrayLight}}"
-                                           BackgroundColor="{AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}"
-                                           BorderColor="{AppThemeBinding Dark={StaticResource GrayLight}, Light={StaticResource GrayLight}}"/>
-                        <mdc:MaterialEntry Type="Filled" LeadingIcon="sms" Padding="0"
-                                           Placeholder="#2" IsPassword="True"
-                                           MaxLength="15" Text="{Binding Sms.Number2}"
-                                           AnimateError="True" TabIndex="1" ClearIcon="clear" Keyboard="Telephone"
-                                           LabelMargin="0,0,10,5" FontSize="{OnPlatform Android=15, iOS=13}"
-                                           LabelTextColor="{AppThemeBinding Dark={StaticResource AppColor}, Light={StaticResource AppColor}}"
-                                           TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black}}"
-                                           PlaceholderColor="{AppThemeBinding Dark={StaticResource GrayLight}, Light={StaticResource GrayLight}}"
-                                           BackgroundColor="{AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}"
-                                           BorderColor="{AppThemeBinding Dark={StaticResource GrayLight}, Light={StaticResource GrayLight}}"/>
-                        <mdc:MaterialEntry Type="Filled" LeadingIcon="sms" Padding="0"
-                                           Placeholder="#3" IsPassword="True"
-                                           MaxLength="15" Text="{Binding Sms.Number3}"
-                                           AnimateError="True" TabIndex="1" ClearIcon="clear" Keyboard="Telephone"
-                                           LabelMargin="0,0,10,5" FontSize="{OnPlatform Android=15, iOS=13}"
-                                           LabelTextColor="{AppThemeBinding Dark={StaticResource AppColor}, Light={StaticResource AppColor}}"
-                                           TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black}}"
-                                           PlaceholderColor="{AppThemeBinding Dark={StaticResource GrayLight}, Light={StaticResource GrayLight}}"
-                                           BackgroundColor="{AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}"
-                                           BorderColor="{AppThemeBinding Dark={StaticResource GrayLight}, Light={StaticResource GrayLight}}"/>
-                        <mdc:MaterialEntry Type="Filled" LeadingIcon="sms" Padding="0"
-                                           Placeholder="#4" IsPassword="True"
-                                           MaxLength="15" Text="{Binding Sms.Number4}"
-                                           AnimateError="True" TabIndex="1" ClearIcon="clear" Keyboard="Telephone"
-                                           LabelMargin="0,0,10,5" FontSize="{OnPlatform Android=15, iOS=13}"
-                                           LabelTextColor="{AppThemeBinding Dark={StaticResource AppColor}, Light={StaticResource AppColor}}"
-                                           TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black}}"
-                                           PlaceholderColor="{AppThemeBinding Dark={StaticResource GrayLight}, Light={StaticResource GrayLight}}"
-                                           BackgroundColor="{AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}"
-                                           BorderColor="{AppThemeBinding Dark={StaticResource GrayLight}, Light={StaticResource GrayLight}}"/>
-                        <mdc:MaterialEntry Type="Filled" LeadingIcon="sms" Padding="0"
-                                           Placeholder="#5" IsPassword="True"
-                                           MaxLength="15" Text="{Binding Sms.Number5}"
-                                           AnimateError="True" TabIndex="1" ClearIcon="clear" Keyboard="Telephone"
-                                           LabelMargin="0,0,10,5" FontSize="{OnPlatform Android=15, iOS=13}"
-                                           LabelTextColor="{AppThemeBinding Dark={StaticResource AppColor}, Light={StaticResource AppColor}}"
-                                           TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black}}"
-                                           PlaceholderColor="{AppThemeBinding Dark={StaticResource GrayLight}, Light={StaticResource GrayLight}}"
-                                           BackgroundColor="{AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}"
-                                           BorderColor="{AppThemeBinding Dark={StaticResource GrayLight}, Light={StaticResource GrayLight}}"/>
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="Fill"
+              RowSpacing="0" 
+              BackgroundColor="{AppThemeBinding Dark={StaticResource BlackSmoke} ,Light={StaticResource WhiteSmoke}}"
+              Margin="0,-10,0,0">
 
-                        <mdc:MaterialButton BackgroundColor="{AppThemeBinding Dark={StaticResource AppColor}, Light={StaticResource AppColor}}"
-                                            TextColor="{AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}"
-                                            WidthRequest="100" Text="{Static lang:LanguageResource.deviceSettingSubmitBtn}"
-                                            FontSize="{OnPlatform Android=18, iOS=16}" Margin="0,10"
-                                            HorizontalOptions="Center" Command="{Binding SubmitSmsCommand}"/>
-                    </StackLayout>
-                </xct:TabViewItem>
-                <xct:TabViewItem Text="{Static lang:LanguageResource.settingCall}" FontFamily="MuliBold" FontSize="{OnPlatform Android=16, iOS=14}"
-                                 TextColor="{AppThemeBinding Dark={StaticResource GrayLight} ,Light={StaticResource BlackSmoke}}"
-                                 TextColorSelected="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource Black}}"
-                                 FontSizeSelected="{OnPlatform Android=16, iOS=14}">
-                    <StackLayout Margin="30,20,30,5">
-                        <mdc:MaterialEntry Type="Filled" LeadingIcon="call" Padding="0"
-                                           LabelText="{Static lang:LanguageResource.deviceSettingCallTitle}" 
-                                           Placeholder="#1"
-                                           MaxLength="15" Text="{Binding Call.Number1}"
-                                           AnimateError="True" TabIndex="0" ClearIcon="clear" Keyboard="Telephone"
-                                           LabelMargin="0,0,10,5" FontSize="{OnPlatform Android=15, iOS=13}"
-                                           LabelTextColor="{AppThemeBinding Dark={StaticResource AppColor}, Light={StaticResource AppColor}}"
-                                           TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black}}"
-                                           PlaceholderColor="{AppThemeBinding Dark={StaticResource GrayLight}, Light={StaticResource GrayLight}}"
-                                           BackgroundColor="{AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}"
-                                           BorderColor="{AppThemeBinding Dark={StaticResource GrayLight}, Light={StaticResource GrayLight}}"/>
-                        <mdc:MaterialEntry Type="Filled" LeadingIcon="call" Padding="0"
-                                           Placeholder="#2" IsPassword="True"
-                                           MaxLength="15" Text="{Binding Call.Number2}"
-                                           AnimateError="True" TabIndex="1" ClearIcon="clear" Keyboard="Telephone"
-                                           LabelMargin="0,0,10,5" FontSize="{OnPlatform Android=15, iOS=13}"
-                                           LabelTextColor="{AppThemeBinding Dark={StaticResource AppColor}, Light={StaticResource AppColor}}"
-                                           TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black}}"
-                                           PlaceholderColor="{AppThemeBinding Dark={StaticResource GrayLight}, Light={StaticResource GrayLight}}"
-                                           BackgroundColor="{AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}"
-                                           BorderColor="{AppThemeBinding Dark={StaticResource GrayLight}, Light={StaticResource GrayLight}}"/>
-                        <mdc:MaterialEntry Type="Filled" LeadingIcon="call" Padding="0"
-                                           Placeholder="#3" IsPassword="True"
-                                           MaxLength="15" Text="{Binding Call.Number3}"
-                                           AnimateError="True" TabIndex="1" ClearIcon="clear" Keyboard="Telephone"
-                                           LabelMargin="0,0,10,5" FontSize="{OnPlatform Android=15, iOS=13}"
-                                           LabelTextColor="{AppThemeBinding Dark={StaticResource AppColor}, Light={StaticResource AppColor}}"
-                                           TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black}}"
-                                           PlaceholderColor="{AppThemeBinding Dark={StaticResource GrayLight}, Light={StaticResource GrayLight}}"
-                                           BackgroundColor="{AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}"
-                                           BorderColor="{AppThemeBinding Dark={StaticResource GrayLight}, Light={StaticResource GrayLight}}"/>
-                        <mdc:MaterialEntry Type="Filled" LeadingIcon="call" Padding="0"
-                                           Placeholder="#4" IsPassword="True"
-                                           MaxLength="15" Text="{Binding Call.Number4}"
-                                           AnimateError="True" TabIndex="1" ClearIcon="clear" Keyboard="Telephone"
-                                           LabelMargin="0,0,10,5" FontSize="{OnPlatform Android=15, iOS=13}"
-                                           LabelTextColor="{AppThemeBinding Dark={StaticResource AppColor}, Light={StaticResource AppColor}}"
-                                           TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black}}"
-                                           PlaceholderColor="{AppThemeBinding Dark={StaticResource GrayLight}, Light={StaticResource GrayLight}}"
-                                           BackgroundColor="{AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}"
-                                           BorderColor="{AppThemeBinding Dark={StaticResource GrayLight}, Light={StaticResource GrayLight}}"/>
-                        <mdc:MaterialEntry Type="Filled" LeadingIcon="call" Padding="0"
-                                           Placeholder="#5" IsPassword="True"
-                                           MaxLength="15" Text="{Binding Call.Number5}"
-                                           AnimateError="True" TabIndex="1" ClearIcon="clear" Keyboard="Telephone"
-                                           LabelMargin="0,0,10,5" FontSize="{OnPlatform Android=15, iOS=13}"
-                                           LabelTextColor="{AppThemeBinding Dark={StaticResource AppColor}, Light={StaticResource AppColor}}"
-                                           TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black}}"
-                                           PlaceholderColor="{AppThemeBinding Dark={StaticResource GrayLight}, Light={StaticResource GrayLight}}"
-                                           BackgroundColor="{AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}"
-                                           BorderColor="{AppThemeBinding Dark={StaticResource GrayLight}, Light={StaticResource GrayLight}}"/>
+            <!--#region Layout -->
+            <Frame Padding="0" CornerRadius="20"
+                   HasShadow="False" IsClippedToBounds="True" 
+                   VerticalOptions="Start" HeightRequest="60"
+                   BackgroundColor="{AppThemeBinding Dark={StaticResource AppColor} ,Light={StaticResource AppColor}}"/>
 
-                        <mdc:MaterialButton BackgroundColor="{AppThemeBinding Dark={StaticResource AppColor}, Light={StaticResource AppColor}}"
-                                            TextColor="{AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}"
-                                            WidthRequest="100" Text="{Static lang:LanguageResource.deviceSettingSubmitBtn}"
-                                            FontSize="{OnPlatform Android=18, iOS=16}" Margin="0,10"
-                                            HorizontalOptions="Center" Command="{Binding SubmitCallCommand}"/>
-                    </StackLayout>
-                </xct:TabViewItem>
-                <xct:TabViewItem Text="{Static lang:LanguageResource.settingSchedule}" FontFamily="MuliBold" FontSize="{OnPlatform Android=16, iOS=14}"
-                                 FontSizeSelected="{OnPlatform Android=16, iOS=14}"
-                                 TextColor="{AppThemeBinding Dark={StaticResource GrayLight} ,Light={StaticResource BlackSmoke}}"
-                                 TextColorSelected="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource Black}}">
-                    <StackLayout Margin="30,20,30,5">
+            <Frame Padding="0"
+                   HasShadow="False" IsClippedToBounds="True" 
+                   VerticalOptions="Start" HeightRequest="40"
+                   BackgroundColor="{AppThemeBinding Dark={StaticResource AppColor} ,Light={StaticResource AppColor}}"/>
+            <!--#endregion-->
 
-                    </StackLayout>
-                </xct:TabViewItem>
-            </xct:TabView>
-        </StackLayout>
+            <Grid x:Name="gMain" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+                  RowDefinitions="60, *">
+
+                <!--#region Header -->
+                <Label FontAttributes="Bold"
+                       FontSize="{OnPlatform Android=24, iOS=22}"
+                       Text="{Binding Title}" HorizontalOptions="Center" VerticalOptions="Center"
+                       TextColor="{AppThemeBinding Dark={StaticResource Black} ,Light={StaticResource White}}"/>
+                <!--#endregion-->
+
+                <StackLayout Padding="0" Grid.Row="1">
+                    <!--#region Title -->
+                    <Label Grid.Row="2" FontFamily="MuliBold" VerticalTextAlignment="Center"
+                           FontSize="Title" Text="{Static lang:LanguageResource.shellSetting}" 
+                           TextColor="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource Black}}"
+                           Margin="30,25,0,0" 
+                           BackgroundColor="{AppThemeBinding Dark={StaticResource BlackSmoke} ,Light={StaticResource WhiteSmoke}}"/>
+                    <!--#endregion-->
+
+                    <ScrollView>
+                        <StackLayout Spacing="-1" Orientation="Vertical">
+                            <!--#region Item -->
+                            <Frame HasShadow="False" Padding="0"
+                                   BackgroundColor="{AppThemeBinding Dark={StaticResource BlackSmoke} ,Light={StaticResource WhiteSmoke}}"
+                                   BorderColor="{AppThemeBinding Dark={StaticResource BlackSmoke} ,Light={StaticResource WhiteSmoke}}">
+                                <Grid ColumnDefinitions="60, *, 60" Padding="5,10">
+                                    <Frame BackgroundColor="{AppThemeBinding Dark={StaticResource BlackSmoke} ,Light={StaticResource WhiteSmoke}}" 
+                                           CornerRadius="30"
+                                           BorderColor="{AppThemeBinding Dark={StaticResource Black} ,Light={StaticResource White}}"
+                                           HorizontalOptions="End" VerticalOptions="Center" HasShadow="False" IsClippedToBounds="False"
+                                           WidthRequest="30" HeightRequest="30" Padding="0">
+                                        <Label FontFamily="MaterialIcons" Text="{x:Static icon:FontIcons.Message}"
+                                               VerticalOptions="Center" FontSize="Subtitle" HorizontalOptions="Center" 
+                                               TextColor="{AppThemeBinding Dark={StaticResource Green} ,Light={StaticResource Green}}"/>
+                                    </Frame>
+                                    <Label Grid.Column="1" Text="{Static lang:LanguageResource.settingSms}" FontSize="Subtitle"
+                                           VerticalOptions="Center" 
+                                           TextColor="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource Black}}"/>
+
+                                    <Label Grid.Column="2" FontFamily="MaterialIcons" Text="{x:Static icon:FontIcons.ChevronRight}"
+                                           VerticalOptions="Center" HorizontalOptions="Center"
+                                           TextColor="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource Black}}"
+                                           FontSize="Title"/>
+                                </Grid>
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" CommandParameter="{Binding .}"
+                                                          Command="{Binding Path=BindingContext.SmsConfigCommand, Source={x:Reference Name=devicesettingpage}}"/>
+                                </Frame.GestureRecognizers>
+                            </Frame>
+                            <!--#endregion-->
+
+                            <!--#region Item -->
+                            <Frame HasShadow="False" Padding="0"
+                                   BackgroundColor="{AppThemeBinding Dark={StaticResource BlackSmoke} ,Light={StaticResource WhiteSmoke}}"
+                                   BorderColor="{AppThemeBinding Dark={StaticResource BlackSmoke} ,Light={StaticResource WhiteSmoke}}">
+                                <Grid ColumnDefinitions="60, *, 60" Padding="5,10">
+                                    <Frame BackgroundColor="{AppThemeBinding Dark={StaticResource BlackSmoke} ,Light={StaticResource WhiteSmoke}}"
+                                           CornerRadius="30"
+                                           BorderColor="{AppThemeBinding Dark={StaticResource Black} ,Light={StaticResource White}}"
+                                           HorizontalOptions="End" VerticalOptions="Center" HasShadow="False" IsClippedToBounds="False"
+                                           WidthRequest="30" HeightRequest="30" Padding="0">
+                                        <Label FontFamily="MaterialIcons" Text="{x:Static icon:FontIcons.Phone}"
+                                               VerticalOptions="Center" FontSize="Subtitle" HorizontalOptions="Center" 
+                                               TextColor="{AppThemeBinding Dark={StaticResource Yellow} ,Light={StaticResource Yellow}}"/>
+                                    </Frame>
+                                    <Label Grid.Column="1" Text="{Static lang:LanguageResource.settingCall}" FontSize="Subtitle"
+                                           VerticalOptions="Center" 
+                                           TextColor="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource Black}}"/>
+
+                                    <Label Grid.Column="2" FontFamily="MaterialIcons" Text="{x:Static icon:FontIcons.ChevronRight}"
+                                           VerticalOptions="Center" HorizontalOptions="Center"
+                                           TextColor="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource Black}}"
+                                           FontSize="Title"/>
+                                </Grid>
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" CommandParameter="{Binding .}"
+                                                          Command="{Binding Path=BindingContext.CallConfigCommand, Source={x:Reference Name=devicesettingpage}}"/>
+                                </Frame.GestureRecognizers>
+                            </Frame>
+                            <!--#endregion-->
+
+                            <!--#region Item -->
+                            <Frame HasShadow="False" Padding="0"
+                                   BackgroundColor="{AppThemeBinding Dark={StaticResource BlackSmoke} ,Light={StaticResource WhiteSmoke}}"
+                                   BorderColor="{AppThemeBinding Dark={StaticResource BlackSmoke} ,Light={StaticResource WhiteSmoke}}">
+                                <Grid ColumnDefinitions="60, *, 60" Padding="5,10">
+                                    <Frame BackgroundColor="{AppThemeBinding Dark={StaticResource BlackSmoke} ,Light={StaticResource WhiteSmoke}}"
+                                           CornerRadius="30"
+                                           BorderColor="{AppThemeBinding Dark={StaticResource Black} ,Light={StaticResource White}}"
+                                           HorizontalOptions="End" VerticalOptions="Center" HasShadow="False" IsClippedToBounds="False"
+                                           WidthRequest="30" HeightRequest="30" Padding="0">
+                                        <Label FontFamily="MaterialIcons" Text="{x:Static icon:FontIcons.Calendar}"
+                                               VerticalOptions="Center" FontSize="Subtitle" HorizontalOptions="Center" 
+                                               TextColor="{AppThemeBinding Dark={StaticResource Violet} ,Light={StaticResource Violet}}"/>
+                                    </Frame>
+                                    <Label Grid.Column="1" Text="{Static lang:LanguageResource.settingSchedule}" FontSize="Subtitle"
+                                           VerticalOptions="Center" 
+                                           TextColor="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource Black}}"/>
+
+                                    <Label Grid.Column="2" FontFamily="MaterialIcons" Text="{x:Static icon:FontIcons.ChevronRight}"
+                                           VerticalOptions="Center" HorizontalOptions="Center"
+                                           TextColor="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource Black}}"
+                                           FontSize="Title"/>
+                                </Grid>
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" CommandParameter="{Binding .}"
+                                                          Command="{Binding Path=BindingContext.ScheduleConfigCommand, Source={x:Reference Name=devicesettingpage}}"/>
+                                </Frame.GestureRecognizers>
+                            </Frame>
+                            <!--#endregion-->
+                        </StackLayout>
+                    </ScrollView>
+                </StackLayout>
+            </Grid>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
