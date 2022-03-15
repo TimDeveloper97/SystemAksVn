@@ -62,8 +62,8 @@ namespace System_aks_vn.ViewModels.Devices.Settings
 
             for (int i = 0; i < 48; i++)
             {
-                HexStatus.Add("0");
-                DeviceScheduleView._tmpSource.Add("0");
+                HexStatus.Add("-1");
+                DeviceScheduleView._tmpSource.Add("-1");
             }
         }
 
