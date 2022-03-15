@@ -15,7 +15,7 @@ namespace System_aks_vn.Controls
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DeviceScheduleView : ContentView
     {
-        private readonly string colorBoxEnable = "#1fb141";
+        private static readonly string colorBoxEnable = "#1fb141";
         public static List<string> _tmpSource = null;
 
         public static readonly BindableProperty ItemSourceProperty = BindableProperty.Create(
@@ -37,7 +37,7 @@ namespace System_aks_vn.Controls
             ((DeviceScheduleView)bindable).ItemSource = (IList)newValue;
         }
 
-        public List<MyBoxView> MyBoxViews { get; set; }
+        public static List<MyBoxView> MyBoxViews { get; set; }
 
         public DeviceScheduleView()
         {
@@ -50,7 +50,7 @@ namespace System_aks_vn.Controls
         {
             //BindingContext = new DeviceSettingScheduleViewModel()
             MyBoxViews = new List<MyBoxView>();
-            if(ItemSource == null)
+            if (ItemSource == null)
                 ItemSource = new ObservableCollection<string>();
 
             if (_tmpSource == null)
@@ -66,8 +66,30 @@ namespace System_aks_vn.Controls
                 {
                     ItemSource.Add(item);
                 }
-            } 
-                
+            }
+
+        }
+
+        public static void UpdateViewWhenChangeDay(List<string> sources)
+        {
+            int row = 0;
+            foreach (var code in sources)
+            {
+                if (code == "-1")
+                {
+                    var lboxview = MyBoxViews.FindAll(x => x.X == row);
+                    foreach (var bv in lboxview)
+                    {
+                        bv.BackgroundColor = GetColorBoxView();
+                    }
+                }
+                else
+                {
+                    var boxview = MyBoxViews.Find(x => x.X == row && x.Y == (int.Parse(code) + 1));
+                    boxview.BackgroundColor = ConvertHexToColor(colorBoxEnable);
+                }
+                row++;
+            }
         }
 
         void DrawFrameView()
@@ -132,8 +154,6 @@ namespace System_aks_vn.Controls
                 gBoxView.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(5, GridUnitType.Star) });
             }
 
-            
-
             //time 
             bool half = false;
             int hour = 0;
@@ -156,6 +176,7 @@ namespace System_aks_vn.Controls
                 half = !half;
             }
 
+            MyBoxViews?.Clear();
             //list myboxview
             for (int i = 0; i < 48; i++)
             {
@@ -206,13 +227,13 @@ namespace System_aks_vn.Controls
             return currentTheme == OSAppTheme.Dark ? Color.White : Color.Black;
         }
 
-        Color GetColorBoxView()
+        static Color GetColorBoxView()
         {
             OSAppTheme currentTheme = Application.Current.RequestedTheme;
             return currentTheme == OSAppTheme.Dark ? ConvertHexToColor("#4a4b4d") : ConvertHexToColor("#97989b");
         }
 
-        Color ConvertHexToColor(string hexColor)
+        static Color ConvertHexToColor(string hexColor)
         {
             return Xamarin.Forms.Color.FromHex(hexColor);
         }

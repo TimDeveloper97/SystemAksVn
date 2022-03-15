@@ -50,7 +50,7 @@
                 <mdc:MaterialButton BackgroundColor="{AppThemeBinding Dark={StaticResource AppColor}, Light={StaticResource AppColor}}"
                                     TextColor="{AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}"
                                     WidthRequest="100" Text="{Static lang:LanguageResource.deviceSettingSubmitBtn}"
-                                    FontSize="{OnPlatform Android=18, iOS=16}" Margin="0,0,0,10"
+                                    FontSize="{OnPlatform Android=18, iOS=16}" Margin="0,0,0,10" IsBusy="{Binding IsBusy}"
                                     HorizontalOptions="Center" Command="{Binding SubmitScheduleCommand}"/>
             </StackLayout>
         </Grid>

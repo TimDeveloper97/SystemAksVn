@@ -63,7 +63,7 @@ namespace System_aks_vn.ViewModels.Devices
         {
             //var loadingDialog = await XF.Material.Forms.UI.Dialogs.MaterialDialog.Instance
             //        .LoadingDialogAsync(message: $"Loading");
-
+            IsBusy = true;
             try
             {
                 Historys?.Clear();

@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 using System.Windows.Input;
 using System_aks_vn.Controls;
@@ -9,10 +11,12 @@ using Xamarin.Forms;
 
 namespace System_aks_vn.ViewModels.Devices.Settings
 {
+    [QueryProperty(nameof(ParameterDeviceId), nameof(ParameterDeviceId))]
+    [QueryProperty(nameof(ParameterSms), nameof(ParameterSms))]
     public class DeviceSettingSmsViewModel : BaseViewModel
     {
         #region Property
-        private string parameterDeviceId;
+        private string parameterDeviceId, parameterSms;
         private DeviceSettingNumberModel sms;
 
         public string ParameterDeviceId
@@ -24,6 +28,15 @@ namespace System_aks_vn.ViewModels.Devices.Settings
                 SetProperty(ref parameterDeviceId, value);
             }
         }
+        public string ParameterSms
+        {
+            get => parameterSms; set
+            {
+                parameterSms = Uri.UnescapeDataString(value ?? string.Empty);
+                SetProperty(ref parameterSms, value);
+            }
+        }
+
         public DeviceSettingNumberModel Sms { get => sms; set => SetProperty(ref sms, value); }
 
         #endregion
@@ -32,19 +45,34 @@ namespace System_aks_vn.ViewModels.Devices.Settings
         public ICommand PageAppearingCommand => new Command(() =>
         {
             Init();
+            GetData();
         });
         public ICommand SubmitSmsCommand => new Command(() =>
         {
-            Mqtt.ClearEvent();
-            Mqtt.Publish(Topic, new DeviceContext
+            IsBusy = true;
+
+            try
             {
-                Args = new List<string>(5) { Sms.Number1, Sms.Number2, Sms.Number3, Sms.Number4, Sms.Number5 },
-                DeviceId = ParameterDeviceId,
-                Token = Token,
-                Func = "SMS",
-                Url = Api.SettingSms
-            });
+                Mqtt.ClearEvent();
+                Mqtt.Publish(Topic, new DeviceContext
+                {
+                    Args = new List<string>(5) { Sms.Number1, Sms.Number2, Sms.Number3, Sms.Number4, Sms.Number5 },
+                    DeviceId = ParameterDeviceId,
+                    Token = Token,
+                    Func = "SMS",
+                    Url = Api.SettingSms
+                });
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+            finally
+            {
+                IsBusy = false;
+            }
         });
+
 
         #endregion
 
@@ -58,6 +86,21 @@ namespace System_aks_vn.ViewModels.Devices.Settings
             DependencyService.Get<IStatusBar>().SetColoredStatusBar("#007bff");
             Sms = new DeviceSettingNumberModel();
             IsBusy = true;
+        }
+
+        void GetData()
+        {
+            if (parameterSms != string.Empty)
+            {
+                var lsms = JsonConvert.DeserializeObject<List<string>>(ParameterSms);
+                if (lsms == null && lsms.Count == 0) return;
+
+                Sms.Number1 = lsms[0];
+                Sms.Number2 = lsms[1];
+                Sms.Number3 = lsms[2];
+                Sms.Number4 = lsms[3];
+                Sms.Number5 = lsms[4];
+            }
         }
         #endregion
     }
