@@ -16,7 +16,7 @@ namespace System_aks_vn.Controls
     public partial class DeviceScheduleView : ContentView
     {
         private static readonly string colorBoxEnable = "#1fb141";
-        public static List<string> _tmpSource = null;
+        //public static List<string> _tmpSource = null;
 
         public static readonly BindableProperty ItemSourceProperty = BindableProperty.Create(
             "ItemSource",        // the name of the bindable property
@@ -51,23 +51,14 @@ namespace System_aks_vn.Controls
             //BindingContext = new DeviceSettingScheduleViewModel()
             MyBoxViews = new List<MyBoxView>();
             if (ItemSource == null)
+            {
                 ItemSource = new ObservableCollection<string>();
 
-            if (_tmpSource == null)
-            {
                 for (int i = 0; i < 48; i++)
                 {
                     ItemSource.Add("-1");
                 }
             }
-            else
-            {
-                foreach (var item in _tmpSource)
-                {
-                    ItemSource.Add(item);
-                }
-            }
-
         }
 
         public static void UpdateViewWhenChangeDay(List<string> sources)
@@ -85,8 +76,14 @@ namespace System_aks_vn.Controls
                 }
                 else
                 {
-                    var boxview = MyBoxViews.Find(x => x.X == row && x.Y == (int.Parse(code) + 1));
-                    boxview.BackgroundColor = ConvertHexToColor(colorBoxEnable);
+                    var lboxview = MyBoxViews.FindAll(x => x.X == row);
+                    foreach (var box in lboxview)
+                    {
+                        if (box.Y == int.Parse(code) + 1)
+                            box.BackgroundColor = ConvertHexToColor(colorBoxEnable);
+                        else
+                            box.BackgroundColor = GetColorBoxView();
+                    }
                 }
                 row++;
             }

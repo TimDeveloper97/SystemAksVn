@@ -85,7 +85,6 @@ namespace System_aks_vn.ViewModels.Devices.Settings
         {
             DependencyService.Get<IStatusBar>().SetColoredStatusBar("#007bff");
             Sms = new DeviceSettingNumberModel();
-            IsBusy = true;
         }
 
         void GetData()

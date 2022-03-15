@@ -46,7 +46,8 @@ namespace System_aks_vn.ViewModels.Devices.Settings
             get => day; set
             {
                 SetProperty(ref day, value);
-                DeviceScheduleView.UpdateViewWhenChangeDay(_mapHexStatus[day]);
+                if(_mapHexStatus.Count != 0)
+                    DeviceScheduleView.UpdateViewWhenChangeDay(_mapHexStatus[day]);
             }
         }
 
@@ -56,6 +57,8 @@ namespace System_aks_vn.ViewModels.Devices.Settings
         public ICommand PageAppearingCommand => new Command(() =>
         {
             InitView();
+            GetData();
+            InitDrawData();
         });
 
         public ICommand SubmitScheduleCommand => new Command(() =>
@@ -95,15 +98,12 @@ namespace System_aks_vn.ViewModels.Devices.Settings
         public DeviceSettingScheduleViewModel()
         {
             Init();
-            GetData();
-            InitDrawData();
         }
 
         #region Method
         void InitView()
         {
             DependencyService.Get<IStatusBar>().SetColoredStatusBar("#007bff");
-            IsBusy = true;
         }
 
         string ObservableToString(ObservableCollection<string> l)
@@ -120,7 +120,6 @@ namespace System_aks_vn.ViewModels.Devices.Settings
         {
             HexStatus = new ObservableCollection<string>();
             _mapHexStatus = new Dictionary<int, List<string>>();
-            DeviceScheduleView._tmpSource = new List<string>();
         }
 
         void GetData()
@@ -132,7 +131,7 @@ namespace System_aks_vn.ViewModels.Devices.Settings
             foreach (var kv in lplan)
             {
                 if (kv.Key == "7")
-                    all = kv.Value;
+                    all = kv.Key;
 
                 // set cac ngay trong tuan + ca ngay all
                 dayinweek += kv.Key; // ngay da set
@@ -151,7 +150,7 @@ namespace System_aks_vn.ViewModels.Devices.Settings
 
                 if (!dayinweek.Contains(day) && all != null)
                     _mapHexStatus.Add(i, _mapHexStatus[int.Parse(all)]);
-                else
+                else if(!dayinweek.Contains(day))
                 {
                     var lhex = new List<string>();
                     for (int j = 0; j < 48; j++)
@@ -169,8 +168,8 @@ namespace System_aks_vn.ViewModels.Devices.Settings
             foreach (var code in hex)
             {
                 HexStatus.Add(code);
-                DeviceScheduleView._tmpSource.Add(code);
             }
+            DeviceScheduleView.UpdateViewWhenChangeDay(_mapHexStatus[0]);
         }
         #endregion
     }
