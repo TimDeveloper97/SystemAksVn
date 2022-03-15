@@ -10,6 +10,7 @@ namespace System_aks_vn.Models
     {
         public string Name { get; set; }
         public int Count { get; set; }
+        public int? ExpanderHeight { get; set; }
         public DateTime Time { get; set; }
         public ObservableCollection<Details> Details { get; set; }
     }

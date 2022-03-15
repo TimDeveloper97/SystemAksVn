@@ -38,7 +38,7 @@ namespace System_aks_vn.ViewModels.Devices
         #endregion
 
         #region Command 
-        public ICommand PageAppearingCommand => new Command(async () =>
+        public ICommand PageAppearingCommand => new Command(() =>
         {
             DependencyService.Get<IStatusBar>().SetColoredStatusBar("#007bff");
             IsBusy = true;
@@ -61,9 +61,8 @@ namespace System_aks_vn.ViewModels.Devices
 
         async Task ExecuteLoadHistoryCommand()
         {
-            var loadingDialog = await XF.Material.Forms.UI.Dialogs.MaterialDialog.Instance
-                    .LoadingDialogAsync(message: $"Loading");
-            IsBusy = true;
+            //var loadingDialog = await XF.Material.Forms.UI.Dialogs.MaterialDialog.Instance
+            //        .LoadingDialogAsync(message: $"Loading");
 
             try
             {
@@ -110,6 +109,7 @@ namespace System_aks_vn.ViewModels.Devices
                         Count = y.Count(),
                         Time = y.Key,
                         Details = new ObservableCollection<Details>(y.ToList()),
+                        ExpanderHeight = y.Count() > 7 ? 150 : -1,
                     });
 
                     await Device.InvokeOnMainThreadAsync(() =>
@@ -127,7 +127,7 @@ namespace System_aks_vn.ViewModels.Devices
             }
             finally
             {
-                await loadingDialog.DismissAsync();
+                //await loadingDialog.DismissAsync();
                 IsBusy = false;
             }
         }

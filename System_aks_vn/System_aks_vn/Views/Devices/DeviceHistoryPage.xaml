@@ -49,7 +49,9 @@
                        Text="{Binding Title}" HorizontalOptions="Center" VerticalOptions="Center"
                        TextColor="{AppThemeBinding Dark={StaticResource Black} ,Light={StaticResource White}}"/>
                 <!--#endregion-->
-
+                <xf:MaterialCircularLoadingView IsPlaying="{Binding IsBusy}" Grid.Row="1"
+                                                TintColor="{StaticResource AppColor}" IsVisible="false"
+                                                HorizontalOptions="Center" VerticalOptions="Center"/>
                 <ScrollView Grid.Row="1">
                     <RefreshView RefreshColor="{StaticResource AppColor}"
                                  Command="{Binding LoadHistoryDeviceCommand}" Margin="25,10,25,5" 
@@ -116,41 +118,43 @@
                                                         </StackLayout>
                                                     </Grid>
                                                 </xct:Expander.Header>
-                                                <Grid HorizontalOptions="FillAndExpand">
+                                                <Grid HorizontalOptions="FillAndExpand" HeightRequest="{Binding ExpanderHeight}">
                                                     <Grid.ColumnDefinitions>
                                                         <ColumnDefinition Width="*"/>
                                                         <ColumnDefinition Width="Auto"/>
                                                         <ColumnDefinition Width="3.5*"/>
                                                     </Grid.ColumnDefinitions>
                                                     <BoxView Grid.Column="1" 
-                                                     BackgroundColor="{AppThemeBinding Dark={StaticResource BlackSmoke} ,Light={StaticResource WhiteSmoke}}"
-                                                     WidthRequest="1" HorizontalOptions="Start" 
-                                                     VerticalOptions="FillAndExpand"/>
+                                                             BackgroundColor="{AppThemeBinding Dark={StaticResource BlackSmoke} ,Light={StaticResource WhiteSmoke}}"
+                                                             WidthRequest="1" HorizontalOptions="Start" 
+                                                             VerticalOptions="FillAndExpand"/>
                                                     <StackLayout Grid.Column="2" Spacing="10">
                                                         <Label Text="DETAILS" Opacity="1" FontSize="{OnPlatform Android=12, iOS=10}"
                                                            TextColor="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource Black}}"
                                                            Margin="20,0,0,-5"/>
 
-                                                        <StackLayout BindableLayout.ItemsSource="{Binding Details}" 
-                                                                 HorizontalOptions="Start" VerticalOptions="Center"
-                                                                 Margin="20,0,10,0">
-                                                            <BindableLayout.ItemTemplate>
-                                                                <DataTemplate>
-                                                                    <Label TextColor="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource Black}}"
+                                                        <ScrollView>
+                                                            <StackLayout BindableLayout.ItemsSource="{Binding Details}" 
+                                                                     HorizontalOptions="Start" VerticalOptions="Center"
+                                                                     Margin="20,0,10,0">
+                                                                <BindableLayout.ItemTemplate>
+                                                                    <DataTemplate>
+                                                                        <Label TextColor="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource Black}}"
                                                                        FontSize="{OnPlatform Android=12, iOS=10}">
-                                                                        <Label.FormattedText>
-                                                                            <FormattedString>
-                                                                                <FormattedString.Spans>
-                                                                                    <Span Text="{Binding Time, StringFormat='{0:hh:mm:ss}'}"/>
-                                                                                    <Span Text=" - "/>
-                                                                                    <Span Text="{Binding Name}" FontAttributes="Bold"/>
-                                                                                </FormattedString.Spans>
-                                                                            </FormattedString>
-                                                                        </Label.FormattedText>
-                                                                    </Label>
-                                                                </DataTemplate>
-                                                            </BindableLayout.ItemTemplate>
-                                                        </StackLayout>
+                                                                            <Label.FormattedText>
+                                                                                <FormattedString>
+                                                                                    <FormattedString.Spans>
+                                                                                        <Span Text="{Binding Time, StringFormat='{0:hh:mm:ss}'}"/>
+                                                                                        <Span Text=" - "/>
+                                                                                        <Span Text="{Binding Name}" FontAttributes="Bold"/>
+                                                                                    </FormattedString.Spans>
+                                                                                </FormattedString>
+                                                                            </Label.FormattedText>
+                                                                        </Label>
+                                                                    </DataTemplate>
+                                                                </BindableLayout.ItemTemplate>
+                                                            </StackLayout>
+                                                        </ScrollView>
                                                     </StackLayout>
                                                 </Grid>
                                             </xct:Expander>
