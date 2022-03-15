@@ -96,11 +96,11 @@
                                                              VerticalOptions="FillAndExpand"/>
                                                         <StackLayout Grid.Column="2" HorizontalOptions="Start" VerticalOptions="Center" Margin="20">
                                                             <Label Text="{Binding Name}" MaxLines="1"
-                                                               LineBreakMode="HeadTruncation"
-                                                               TextColor="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource Black}}"
-                                                               FontSize="{OnPlatform Android=16, iOS=14}" FontAttributes="Bold"/>
-                                                            <Label TextColor="{AppThemeBinding Dark={StaticResource WhiteSmoke} ,Light={StaticResource BlackSmoke}}"
-                                                           FontSize="12" Margin="0,-5,0,0">
+                                                                   LineBreakMode="HeadTruncation"
+                                                                   TextColor="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource Black}}"
+                                                                   FontSize="{OnPlatform Android=18, iOS=16}" FontAttributes="Bold"/>
+                                                            <!--<Label TextColor="{AppThemeBinding Dark={StaticResource WhiteSmoke} ,Light={StaticResource BlackSmoke}}"
+                                                                   FontSize="12" Margin="0,-5,0,0">
                                                                 <Label.FormattedText>
                                                                     <FormattedString>
                                                                         <Span
@@ -114,7 +114,7 @@
                                                                         TextColor="{StaticResource Yellow}"/>
                                                                     </FormattedString>
                                                                 </Label.FormattedText>
-                                                            </Label>
+                                                            </Label>-->
                                                         </StackLayout>
                                                     </Grid>
                                                 </xct:Expander.Header>
