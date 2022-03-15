@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using System_aks_vn.Controls;
 using System_aks_vn.Domain;
+using System_aks_vn.Models.View;
 using System_aks_vn.Views;
 using Xamarin.Forms;
+using XF.Material.Forms.UI.Dialogs;
 
 namespace System_aks_vn.ViewModels
 {
@@ -95,12 +97,37 @@ namespace System_aks_vn.ViewModels
 
         async Task ExecuteLoadChangePasswordCommand()
         {
-            var loadingDialog = await XF.Material.Forms.UI.Dialogs.MaterialDialog.Instance
-                    .LoadingDialogAsync(message: $"Waiting to change password");
             IsBusy = true;
 
             try
             {
+                Mqtt.ClearEvent();
+                Mqtt.Publish(Topic, new AccountContext
+                {
+                    Token = Token,
+                    OldPass = OldPassword,
+                    NewPass = NewPassword,
+                    Confirm = ConfirmPassword,
+                });
+
+                Mqtt.MessageReceived += async (s, e) =>
+                {
+                    var res = (s as Mqtt).Response;
+                    if (res.Code == 100)
+                        await TimeoutSession(res.Message);
+
+                    if(res.Code != 0)
+                    {
+                        if(res.Code == -2)
+                            ErrorConfirmPassword = res.Message;
+                        else
+                            ErrorOldPassword = res.Message;
+
+                        await MaterialDialog.Instance.SnackbarAsync(message: res.Message,
+                              msDuration: MaterialSnackbar.DurationLong);
+                    }    
+                };
+                
             }
             catch (Exception e)
             {
@@ -108,7 +135,6 @@ namespace System_aks_vn.ViewModels
             }
             finally
             {
-                await loadingDialog.DismissAsync();
                 IsBusy = false;
             }
         }

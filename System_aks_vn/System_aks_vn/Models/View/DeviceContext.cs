@@ -10,4 +10,11 @@ namespace System_aks_vn.Models.View
         public string Func { get { return GetString("func"); } set => Push("func", value); }
         public object Args { get { return GetString("args"); } set => Push("args", value); }
     }
+
+    public class AccountContext : Vst.Context
+    {
+        public string OldPass { get { return GetString("Password"); } set => Push("Password", value); }
+        public string NewPass { get { return GetString("NewPass"); } set => Push("NewPass", value); }
+        public object Confirm { get { return GetString("Confirm"); } set => Push("Confirm", value); }
+    }
 }
