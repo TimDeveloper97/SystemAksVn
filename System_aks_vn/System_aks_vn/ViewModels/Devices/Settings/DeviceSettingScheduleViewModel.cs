@@ -48,8 +48,8 @@ namespace System_aks_vn.ViewModels.Devices.Settings
                 Args = new List<string>(2) { Day.ToString(), ObservableToString(HexStatus) },
                 DeviceId = ParameterDeviceId,
                 Token = Token,
-                Func = "CALL",
-                Url = Api.SettingCall
+                Func = "PLAN",
+                Url = Api.SettingPlan
             });
         });
 
