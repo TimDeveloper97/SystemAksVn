@@ -113,7 +113,12 @@ namespace System_aks_vn.ViewModels.Version
                         if (res.Code == 100)
                             await TimeoutSession(res.Message);
 
-                        if (res.Value == null) return;
+                        if (res.Value == null)
+                        {
+                            await MaterialDialog.Instance.SnackbarAsync(message: "Notthing response",
+                                  msDuration: MaterialSnackbar.DurationLong);
+                            return;
+                        }
 
                         var status = JObject.Parse(res.Value.ToString());
                         var tmp = new DeviceStatusModel();

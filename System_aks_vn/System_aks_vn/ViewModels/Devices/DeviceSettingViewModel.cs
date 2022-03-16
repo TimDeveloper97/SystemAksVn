@@ -12,6 +12,7 @@ using System_aks_vn.Models.View;
 using System_aks_vn.ViewModels.Devices.Settings;
 using System_aks_vn.Views.Devices.Settings;
 using Xamarin.Forms;
+using XF.Material.Forms.UI.Dialogs;
 
 namespace System_aks_vn.ViewModels.Devices
 {
@@ -35,11 +36,11 @@ namespace System_aks_vn.ViewModels.Devices
         #endregion
 
         #region Command 
-        public ICommand PageAppearingCommand => new Command(() =>
+        public ICommand PageAppearingCommand => new Command(async () =>
         {
             Init();
 
-            ExecuteLoadDeviceSetting();
+            await ExecuteLoadDeviceSetting();
         });
 
 
@@ -76,7 +77,7 @@ namespace System_aks_vn.ViewModels.Devices
             IsBusy = true;
         }
 
-        void ExecuteLoadDeviceSetting()
+        async Task ExecuteLoadDeviceSetting()
         {
             IsBusy = true;
 
@@ -91,7 +92,12 @@ namespace System_aks_vn.ViewModels.Devices
                     if (res.Code == 100)
                         await TimeoutSession(res.Message);
 
-                    if (res.Value == null) return;
+                    if (res.Value == null)
+                    {
+                        await MaterialDialog.Instance.SnackbarAsync(message: "Notthing response",
+                              msDuration: MaterialSnackbar.DurationLong);
+                        return;
+                    }
 
                     var ldevice = JsonConvert.DeserializeObject<List<DeviceModel>>(res.Value.ToString());
                     var device = ldevice.Find(x => x.Id == ParameterDeviceId);

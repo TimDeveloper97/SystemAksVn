@@ -75,6 +75,12 @@ namespace System_aks_vn.ViewModels
                     var res = (s as Mqtt).Response;
                     if (res.Code == 100)
                         await TimeoutSession(res.Message);
+                    if (res.Value == null)
+                    {
+                        await MaterialDialog.Instance.SnackbarAsync(message: "Notthing response",
+                              msDuration: MaterialSnackbar.DurationLong);
+                        return;
+                    }
 
                     var ldevice = JsonConvert.DeserializeObject<List<DeviceModel>>(res.Value.ToString());
 

@@ -13,6 +13,7 @@ using System_aks_vn.Domain;
 using System_aks_vn.Models;
 using System_aks_vn.Models.View;
 using Xamarin.Forms;
+using XF.Material.Forms.UI.Dialogs;
 
 namespace System_aks_vn.ViewModels.Devices
 {
@@ -80,6 +81,13 @@ namespace System_aks_vn.ViewModels.Devices
                     var res = (s as Mqtt).Response;
                     if (res.Code == 100)
                         await TimeoutSession(res.Message);
+
+                    if (res.Value == null)
+                    {
+                        await MaterialDialog.Instance.SnackbarAsync(message: "Notthing response",
+                              msDuration: MaterialSnackbar.DurationLong);
+                        return;
+                    }
 
                     var month = JObject.Parse(res.Value.ToString())[DateTime.Now.ToString("yyyyMM")].ToString();
                     if (month == null) return;
