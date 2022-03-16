@@ -120,6 +120,9 @@
   <data name="deviceHistory" xml:space="preserve">
     <value>歴史</value>
   </data>
+  <data name="devicehistorydetail" xml:space="preserve">
+    <value>詳細</value>
+  </data>
   <data name="deviceSetting" xml:space="preserve">
     <value>設定</value>
   </data>

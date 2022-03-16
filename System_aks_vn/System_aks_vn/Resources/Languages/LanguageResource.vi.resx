@@ -120,6 +120,9 @@
   <data name="deviceHistory" xml:space="preserve">
     <value>Lịch sử</value>
   </data>
+  <data name="devicehistorydetail" xml:space="preserve">
+    <value>Chi tiết </value>
+  </data>
   <data name="deviceSetting" xml:space="preserve">
     <value>Cấu hình</value>
   </data>

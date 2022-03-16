@@ -129,9 +129,10 @@
                                                              WidthRequest="1" HorizontalOptions="Start" 
                                                              VerticalOptions="FillAndExpand"/>
                                                     <StackLayout Grid.Column="2" Spacing="10">
-                                                        <Label Text="DETAILS" Opacity="1" FontSize="{OnPlatform Android=12, iOS=10}"
-                                                           TextColor="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource Black}}"
-                                                           Margin="20,0,0,-5"/>
+                                                        <Label Text="{Static lang:LanguageResource.devicehistorydetail}"
+                                                               Opacity="1" FontSize="{OnPlatform Android=12, iOS=10}"
+                                                               TextColor="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource Black}}"
+                                                               Margin="20,0,0,-5"/>
 
                                                         <ScrollView>
                                                             <StackLayout BindableLayout.ItemsSource="{Binding Details}" 
