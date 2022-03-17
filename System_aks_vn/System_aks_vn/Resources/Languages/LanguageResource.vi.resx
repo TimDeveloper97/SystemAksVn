@@ -148,7 +148,7 @@
     <value>Mật khẩu</value>
   </data>
   <data name="loginServer" xml:space="preserve">
-    <value>Nhập tên máy chủ chủ của bạn</value>
+    <value>Nhập tên máy chủ của bạn</value>
   </data>
   <data name="loginServerPlaceHold" xml:space="preserve">
     <value>Máy chủ</value>

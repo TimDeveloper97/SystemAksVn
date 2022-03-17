@@ -194,7 +194,7 @@
                                                         <Label Text="RELAY 1" Grid.Column="1"
                                                                HeightRequest="50" VerticalOptions="Center" VerticalTextAlignment="Center"
                                                                TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black}}"
-                                                               FontSize="{OnPlatform Android=18, iOS=16}"/>
+                                                               FontSize="{OnPlatform Android=16, iOS=14}"/>
                                                     </Grid>
 
                                                     <Grid ColumnDefinitions="30, *" Grid.Column="1">
@@ -210,7 +210,7 @@
                                                         <Label Text="RELAY 2" Grid.Column="1"
                                                                HeightRequest="50" VerticalOptions="Center" VerticalTextAlignment="Center"
                                                                TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black}}"
-                                                               FontSize="{OnPlatform Android=18, iOS=16}"/>
+                                                               FontSize="{OnPlatform Android=16, iOS=14}"/>
                                                     </Grid>
                                                 </Grid>
 
@@ -227,7 +227,7 @@
                                                         <Label Text="RELAY 3" Grid.Column="1"
                                                            HeightRequest="50" VerticalOptions="Center" VerticalTextAlignment="Center"
                                                            TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black}}"
-                                                           FontSize="{OnPlatform Android=18, iOS=16}"/>
+                                                           FontSize="{OnPlatform Android=16, iOS=14}"/>
                                                     </Grid>
 
                                                     <Grid ColumnDefinitions="30, *" Grid.Column="1">
@@ -242,7 +242,7 @@
                                                         <Label Text="RELAY 4" Grid.Column="1"
                                                                HeightRequest="50" VerticalOptions="Center" VerticalTextAlignment="Center"
                                                                TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black}}"
-                                                               FontSize="{OnPlatform Android=18, iOS=16}"/>
+                                                               FontSize="{OnPlatform Android=16, iOS=14}"/>
                                                     </Grid>
                                                 </Grid>
                                             </StackLayout>
