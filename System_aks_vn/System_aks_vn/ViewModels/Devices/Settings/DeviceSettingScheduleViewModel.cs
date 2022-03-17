@@ -92,7 +92,10 @@ namespace System_aks_vn.ViewModels.Devices.Settings
             }
         });
 
-
+        public ICommand OnSwiped => new Command<string>((type) =>
+        {
+            var x = type;
+        });
         #endregion
 
         public DeviceSettingScheduleViewModel()
@@ -124,33 +127,11 @@ namespace System_aks_vn.ViewModels.Devices.Settings
 
         void GetData()
         {
-            var lplan = JsonConvert.DeserializeObject<Dictionary<string, string>>(ParameterPlan);
-            string all = null;
-            string dayinweek = "";
+            _mapHexStatus?.Clear();
 
-            foreach (var kv in lplan)
+            if (ParameterPlan == string.Empty)
             {
-                if (kv.Key == "7")
-                    all = kv.Key;
-
-                // set cac ngay trong tuan + ca ngay all
-                dayinweek += kv.Key; // ngay da set
-                var lhex = new List<string>();
-
-                foreach (var c in kv.Value)
-                    lhex.Add(c.ToString());
-
-                _mapHexStatus.Add(int.Parse(kv.Key), lhex);
-            }
-
-            // set tat ca ngay con lai
-            for (int i = 0; i <= 7; i++)
-            {
-                var day = i.ToString();
-
-                if (!dayinweek.Contains(day) && all != null)
-                    _mapHexStatus.Add(i, _mapHexStatus[int.Parse(all)]);
-                else if(!dayinweek.Contains(day))
+                for (int i = 0; i <= 7; i++)
                 {
                     var lhex = new List<string>();
                     for (int j = 0; j < 48; j++)
@@ -159,11 +140,50 @@ namespace System_aks_vn.ViewModels.Devices.Settings
                     _mapHexStatus.Add(i, lhex);
                 }
             }
+            else
+            {
+                var lplan = JsonConvert.DeserializeObject<Dictionary<string, string>>(ParameterPlan);
+                string all = null;
+                string dayinweek = "";
+
+                foreach (var kv in lplan)
+                {
+                    if (kv.Key == "7")
+                        all = kv.Key;
+
+                    // set cac ngay trong tuan + ca ngay all
+                    dayinweek += kv.Key; // ngay da set
+                    var lhex = new List<string>();
+
+                    foreach (var c in kv.Value)
+                        lhex.Add(c.ToString());
+
+                    _mapHexStatus.Add(int.Parse(kv.Key), lhex);
+                }
+
+                // set tat ca ngay con lai
+                for (int i = 0; i <= 7; i++)
+                {
+                    var day = i.ToString();
+
+                    if (!dayinweek.Contains(day) && all != null)
+                        _mapHexStatus.Add(i, _mapHexStatus[int.Parse(all)]);
+                    else if (!dayinweek.Contains(day))
+                    {
+                        var lhex = new List<string>();
+                        for (int j = 0; j < 48; j++)
+                            lhex.Add("-1");
+
+                        _mapHexStatus.Add(i, lhex);
+                    }
+                }
+            } 
         }
 
         void InitDrawData()
         {
             var hex = _mapHexStatus[Day];
+            HexStatus?.Clear();
 
             foreach (var code in hex)
             {

@@ -4,7 +4,14 @@
              x:Class="System_aks_vn.Controls.DeviceScheduleView">
   <ContentView.Content>
         <Grid Margin="10,0,10,10">
-            <Grid x:Name="gContent"  BindingContext="{Binding .}"/>
+            <Grid x:Name="gContent"  BindingContext="{Binding .}" ColumnSpacing="0" RowSpacing="0">
+                <!--<Grid.GestureRecognizers>
+                    <SwipeGestureRecognizer Direction="Left" Command="{Binding OnSwiped}"
+                                            CommandParameter="Left"/>
+                    <SwipeGestureRecognizer Direction="Right" Command="{Binding OnSwiped}"
+                                            CommandParameter="Right"/>
+                </Grid.GestureRecognizers>-->
+            </Grid>
         </Grid>
   </ContentView.Content>
 </ContentView>

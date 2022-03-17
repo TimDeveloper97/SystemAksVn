@@ -24,7 +24,15 @@ namespace System_aks_vn.Controls
             typeof(DeviceScheduleView),   // the parent object type
             null,
             BindingMode.TwoWay,
-            propertyChanged: OnSourceChanged);      // the default value for the property
+            propertyChanged: OnItemSourceChanged);      // the default value for the property
+
+        public static readonly BindableProperty DayProperty = BindableProperty.Create(
+            "Day",        // the name of the bindable property
+            typeof(int),     // the bindable property type
+            typeof(DeviceScheduleView),   // the parent object type
+            null,
+            BindingMode.TwoWay,
+            propertyChanged: OnDayChanged);      // the default value for the property
 
         public IList ItemSource
         {
@@ -32,9 +40,20 @@ namespace System_aks_vn.Controls
             set => SetValue(DeviceScheduleView.ItemSourceProperty, value);
         }
 
-        private static void OnSourceChanged(BindableObject bindable, object oldValue, object newValue)
+        public int Day
+        {
+            get => (int)GetValue(DeviceScheduleView.DayProperty);
+            set => SetValue(DeviceScheduleView.DayProperty, value);
+        }
+
+        private static void OnItemSourceChanged(BindableObject bindable, object oldValue, object newValue)
         {
             ((DeviceScheduleView)bindable).ItemSource = (IList)newValue;
+        }
+
+        private static void OnDayChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            ((DeviceScheduleView)bindable).Day = (int)newValue;
         }
 
         public static List<MyBoxView> MyBoxViews { get; set; }
@@ -49,6 +68,7 @@ namespace System_aks_vn.Controls
         void Init()
         {
             //BindingContext = new DeviceSettingScheduleViewModel()
+            Day = 0;
             MyBoxViews = new List<MyBoxView>();
             if (ItemSource == null)
             {
@@ -92,12 +112,12 @@ namespace System_aks_vn.Controls
         void DrawFrameView()
         {
             var scrollview = new ScrollView { Content = DrawListBoxView() };
+
             var stackContent = new StackLayout
             {
                 Orientation = StackOrientation.Vertical,
                 Children = { DrawTitleView(), scrollview }
             };
-
             gContent.Children.Add(stackContent);
         }
 
@@ -106,7 +126,9 @@ namespace System_aks_vn.Controls
             var gTitleView = new Grid
             {
                 RowDefinitions = new RowDefinitionCollection(),
-                ColumnDefinitions = new ColumnDefinitionCollection()
+                ColumnDefinitions = new ColumnDefinitionCollection(),
+                ColumnSpacing = 0,
+                RowSpacing = 0,
             };
 
             gTitleView.RowDefinitions.Add(new RowDefinition { Height = new GridLength(20) });
@@ -120,15 +142,20 @@ namespace System_aks_vn.Controls
             var ltitle = new List<string> { "Timeline", "DISARM", "ARM0", "ARM1" };
             for (int j = 0; j < 4; j++)
             {
-                gTitleView.Children.Add(new Label
+                var frame = new Frame
                 {
-                    BackgroundColor = ConvertHexToColor("#FFA700"),
-                    TextColor = Color.White,
-                    HorizontalTextAlignment = TextAlignment.Center,
-                    VerticalTextAlignment = TextAlignment.Center,
-                    Text = ltitle[j],
-
-                }, j, 0);
+                    Content = new Label
+                    {
+                        BackgroundColor = ConvertHexToColor("#FFA700"),
+                        TextColor = Color.White,
+                        HorizontalTextAlignment = TextAlignment.Center,
+                        VerticalTextAlignment = TextAlignment.Center,
+                        Text = ltitle[j],
+                    },
+                    Padding = 2,
+                    BorderColor = GetBorderColorBoxView()
+                };
+                gTitleView.Children.Add(frame, j, 0);
             }
 
             return gTitleView;
@@ -139,7 +166,8 @@ namespace System_aks_vn.Controls
             var gBoxView = new Grid
             {
                 RowDefinitions = new RowDefinitionCollection(),
-                ColumnDefinitions = new ColumnDefinitionCollection()
+                ColumnDefinitions = new ColumnDefinitionCollection(),
+                ColumnSpacing = 0, RowSpacing = 0,
             };
             for (int i = 0; i < 48; i++)
             {
@@ -159,14 +187,21 @@ namespace System_aks_vn.Controls
                 var m = half == false ? "00" : "30";
                 var h = hour < 10 ? "0" + hour : hour.ToString();
 
-                gBoxView.Children.Add(new Label
+                var frame = new Frame
                 {
-                    TextColor = GetColorText(),
-                    HorizontalOptions = LayoutOptions.Center,
-                    VerticalOptions = LayoutOptions.Center,
-                    Text = $"{h}:{m}",
-                    FontSize = GetSizeText(),
-                }, 0, i);
+                    Content = new Label
+                    {
+                        TextColor = GetColorText(),
+                        HorizontalOptions = LayoutOptions.Center,
+                        VerticalOptions = LayoutOptions.Center,
+                        Text = $"{h}:{m}",
+                        FontSize = GetSizeText(),
+                    },
+                    Padding = 2,
+                    BorderColor = GetBorderColorBoxView()
+                };
+
+                gBoxView.Children.Add(frame, 0, i);
 
                 if (half)
                     hour++;
@@ -183,9 +218,10 @@ namespace System_aks_vn.Controls
                     var box = new MyBoxView
                     {
                         BackgroundColor = GetColorBoxView(),
-                        Margin = 0,
+                        Margin = 2,
                         X = i,
                         Y = j,
+                        Opacity = 0.5,
                     };
                     tap.Tapped += (sender, e) =>
                     {
@@ -215,6 +251,25 @@ namespace System_aks_vn.Controls
                     gBoxView.Children.Add(box, j, i);
                 }
             }
+            var leftSwipeGesture = new SwipeGestureRecognizer { Direction = SwipeDirection.Left };
+            var rightSwipeGesture = new SwipeGestureRecognizer { Direction = SwipeDirection.Right };
+            leftSwipeGesture.Swiped += (s, e) =>
+            {
+                if (Day == 7)
+                    Day = 0;
+                else
+                    Day++;
+            };
+
+            rightSwipeGesture.Swiped += (s, e) =>
+            {
+                if (Day == 0)
+                    Day = 7;
+                else Day--;
+            };
+
+            gBoxView.GestureRecognizers.Add(leftSwipeGesture);
+            gBoxView.GestureRecognizers.Add(rightSwipeGesture);
             return gBoxView;
         }
 
@@ -227,7 +282,13 @@ namespace System_aks_vn.Controls
         static Color GetColorBoxView()
         {
             OSAppTheme currentTheme = Application.Current.RequestedTheme;
-            return currentTheme == OSAppTheme.Dark ? ConvertHexToColor("#4a4b4d") : ConvertHexToColor("#97989b");
+            return currentTheme == OSAppTheme.Dark ? ConvertHexToColor("#0d0d0d") : ConvertHexToColor("#ffffff");
+        }
+
+        static Color GetBorderColorBoxView()
+        {
+            OSAppTheme currentTheme = Application.Current.RequestedTheme;
+            return currentTheme == OSAppTheme.Dark ? ConvertHexToColor("#212121") : ConvertHexToColor("#f2f2f2");
         }
 
         static Color ConvertHexToColor(string hexColor)

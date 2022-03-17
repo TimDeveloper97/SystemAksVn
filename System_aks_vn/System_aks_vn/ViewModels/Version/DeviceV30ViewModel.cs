@@ -113,10 +113,10 @@ namespace System_aks_vn.ViewModels.Version
                         if (res.Code == 100)
                             await TimeoutSession(res.Message);
 
-                        if (res.Value == null)
+                        if (res.Count == 2 || res.Value == null)
                         {
-                            await MaterialDialog.Instance.SnackbarAsync(message: "Notthing response",
-                                  msDuration: MaterialSnackbar.DurationLong);
+                            //await MaterialDialog.Instance.SnackbarAsync(message: "Notthing response",
+                            //      msDuration: MaterialSnackbar.DurationLong);
                             return;
                         }
 

@@ -63,7 +63,7 @@
                         <StackLayout Spacing="-1" Orientation="Vertical">
                             <!--#region Item -->
                             <Frame HasShadow="False" Padding="0"
-                                   BackgroundColor="{AppThemeBinding Dark={StaticResource BlackSmoke} ,Light={StaticResource WhiteSmoke}}"
+                                   BackgroundColor="{AppThemeBinding Dark={StaticResource Black} ,Light={StaticResource White}}"
                                    BorderColor="{AppThemeBinding Dark={StaticResource BlackSmoke} ,Light={StaticResource WhiteSmoke}}">
                                 <Grid ColumnDefinitions="60, *, 60" Padding="5,10">
                                     <Frame BackgroundColor="{AppThemeBinding Dark={StaticResource BlackSmoke} ,Light={StaticResource WhiteSmoke}}" 
@@ -93,7 +93,7 @@
 
                             <!--#region Item -->
                             <Frame HasShadow="False" Padding="0"
-                                   BackgroundColor="{AppThemeBinding Dark={StaticResource BlackSmoke} ,Light={StaticResource WhiteSmoke}}"
+                                   BackgroundColor="{AppThemeBinding Dark={StaticResource Black} ,Light={StaticResource White}}"
                                    BorderColor="{AppThemeBinding Dark={StaticResource BlackSmoke} ,Light={StaticResource WhiteSmoke}}">
                                 <Grid ColumnDefinitions="60, *, 60" Padding="5,10">
                                     <Frame BackgroundColor="{AppThemeBinding Dark={StaticResource BlackSmoke} ,Light={StaticResource WhiteSmoke}}"
@@ -123,7 +123,7 @@
 
                             <!--#region Item -->
                             <Frame HasShadow="False" Padding="0"
-                                   BackgroundColor="{AppThemeBinding Dark={StaticResource BlackSmoke} ,Light={StaticResource WhiteSmoke}}"
+                                   BackgroundColor="{AppThemeBinding Dark={StaticResource Black} ,Light={StaticResource White}}"
                                    BorderColor="{AppThemeBinding Dark={StaticResource BlackSmoke} ,Light={StaticResource WhiteSmoke}}">
                                 <Grid ColumnDefinitions="60, *, 60" Padding="5,10">
                                     <Frame BackgroundColor="{AppThemeBinding Dark={StaticResource BlackSmoke} ,Light={StaticResource WhiteSmoke}}"

@@ -56,7 +56,7 @@ namespace System_aks_vn.ViewModels
             Title = "Home";
             Devices = new ObservableCollection<DeviceModel>();
             DependencyService.Get<IStatusBar>().SetColoredStatusBar("#007bff");
-            WidthCard = Application.Current.MainPage.Width * 0.35;
+            WidthCard = Application.Current.MainPage.Width * 0.8;
             IsBusy = true;
         }
 
@@ -66,7 +66,9 @@ namespace System_aks_vn.ViewModels
 
             try
             {
-                Devices?.Clear();
+                if (Devices != null && Devices.Count != 0)
+                    return;
+
                 Mqtt.ClearEvent();
                 Mqtt.Publish(Topic, Api.DeviceList, new { token = Token });
 
@@ -75,7 +77,7 @@ namespace System_aks_vn.ViewModels
                     var res = (s as Mqtt).Response;
                     if (res.Code == 100)
                         await TimeoutSession(res.Message);
-                    if (res.Value == null)
+                    if (res.Count == 2 || res.Value == null)
                     {
                         await MaterialDialog.Instance.SnackbarAsync(message: "Notthing response",
                               msDuration: MaterialSnackbar.DurationLong);

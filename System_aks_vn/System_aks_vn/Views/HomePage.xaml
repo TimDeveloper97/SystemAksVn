@@ -87,7 +87,7 @@
                     <ScrollView>
                         <FlexLayout Direction="Row" Wrap="Wrap" AlignContent="Start" AlignItems="Start"
                                     HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
-                                    JustifyContent="SpaceBetween" BindableLayout.ItemsSource="{Binding Devices}">
+                                    JustifyContent="Center" BindableLayout.ItemsSource="{Binding Devices}">
                             <!--<FlexLayout.Behaviors>
                                 <behaviors:FlexLayoutItemTappedBehavior Command="{Binding DetailClassroomCommand}" Paramater="{Binding .}"/>
                             </FlexLayout.Behaviors>-->
@@ -96,7 +96,7 @@
                                     <Frame CornerRadius="10" Padding="0,20,20,20"
                                            BorderColor="{AppThemeBinding Dark={StaticResource Black} ,Light={StaticResource White}}"
                                            BackgroundColor="{AppThemeBinding Dark={StaticResource Black} ,Light={StaticResource White}}"
-                                           HasShadow="True" 
+                                           HasShadow="True" Margin="0,0,0,10"
                                            WidthRequest="{Binding Path=BindingContext.WidthCard, Source={x:Reference Name=gView}}"
                                            HorizontalOptions="Fill" VerticalOptions="Fill">
                                         <Grid ColumnDefinitions="auto, *"

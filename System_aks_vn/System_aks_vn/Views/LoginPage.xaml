@@ -97,7 +97,7 @@
                             <mdc:MaterialButton BackgroundColor="{AppThemeBinding Dark={StaticResource AppColor}, Light={StaticResource AppColor}}"
                                                 TextColor="{AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}"
                                                 WidthRequest="100" Text="{Static lang:LanguageResource.loginSubmitBtn}"
-                                                FontSize="{OnPlatform Android=18, iOS=16}"
+                                                FontSize="{OnPlatform Android=16, iOS=14}"
                                                 HorizontalOptions="Center" Command="{Binding LoginCommand}"/>
                         </Grid>
                     </StackLayout>

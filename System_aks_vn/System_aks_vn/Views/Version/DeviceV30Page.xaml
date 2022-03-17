@@ -72,8 +72,8 @@
                                         <BoxView BackgroundColor="{AppThemeBinding Dark={StaticResource Violet}, Light={StaticResource Violet}}"
                                              WidthRequest="3"/>
 
-                                        <StackLayout Grid.Column="1" Margin="15,1,5,0" Orientation="Vertical"
-                                                 VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                        <StackLayout Grid.Column="1" Margin="15,1,15,0" Orientation="Vertical"
+                                                 VerticalOptions="FillAndExpand" HorizontalOptions="Center">
                                             <Label Text="ARM Mode" 
                                                    HeightRequest="50" VerticalOptions="Center" VerticalTextAlignment="Center"
                                                    TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black}}"
@@ -91,12 +91,16 @@
                                                        HasShadow="True" IsClippedToBounds="True" CornerRadius="5" Padding="0">
                                                     
                                                     <Grid ColumnDefinitions="30, *" Margin="5,1,1,1">
+                                                        <Frame CornerRadius="10" Grid.Column="0" Padding="0" Margin="5,10" HasShadow="False"
+                                                               BackgroundColor="{AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}"
+                                                               BorderColor="{AppThemeBinding Dark={StaticResource BlackSmoke}, Light={StaticResource WhiteSmoke}}"/>
+                                                        
                                                         <Frame CornerRadius="10" Grid.Column="0" Padding="0" Margin="5,10"
                                                                IsVisible="{Binding DeviceStatus.EnableARMAway}" HasShadow="False"
                                                                BackgroundColor="{AppThemeBinding Dark={StaticResource Green}, Light={StaticResource Green}}"
                                                                BorderColor="{AppThemeBinding Dark={StaticResource BlackSmoke}, Light={StaticResource WhiteSmoke}}"/>
 
-                                                        <mdc:MaterialButton Grid.Column="1" Margin="0" Text="ARM AWAY" FontSize="{OnPlatform Android=20, iOS=18}"
+                                                        <mdc:MaterialButton Grid.Column="1" Margin="0,0,30,0" Text="ARM AWAY" FontSize="{OnPlatform Android=18, iOS=16}"
                                                                             TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black}}"
                                                                             BackgroundColor="{AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}"
                                                                             BorderColor="{AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}"
@@ -109,12 +113,16 @@
                                                        HorizontalOptions="Center" VerticalOptions="Center"
                                                        HasShadow="True" IsClippedToBounds="True" CornerRadius="5" Padding="0">
                                                     <Grid ColumnDefinitions="30, *" Margin="5,1,1,1">
+                                                        <Frame CornerRadius="10" Grid.Column="0" Padding="0" Margin="5,10" HasShadow="False"
+                                                               BackgroundColor="{AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}"
+                                                               BorderColor="{AppThemeBinding Dark={StaticResource BlackSmoke}, Light={StaticResource WhiteSmoke}}"/>
+                                                        
                                                         <Frame CornerRadius="10" Grid.Column="0" Padding="0" Margin="5,10"
                                                                IsVisible="{Binding DeviceStatus.EnableARMHome}" HasShadow="False"
                                                                BackgroundColor="{AppThemeBinding Dark={StaticResource Green}, Light={StaticResource Green}}"
                                                                BorderColor="{AppThemeBinding Dark={StaticResource BlackSmoke}, Light={StaticResource WhiteSmoke}}"/>
 
-                                                        <mdc:MaterialButton Grid.Column="1" Margin="0" Text="ARM HOME" FontSize="{OnPlatform Android=20, iOS=18}"
+                                                        <mdc:MaterialButton Grid.Column="1" Margin="0,0,30,0" Text="ARM HOME" FontSize="{OnPlatform Android=18, iOS=16}"
                                                                             TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black}}"
                                                                             BackgroundColor="{AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}"
                                                                             BorderColor="{AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}"
@@ -127,11 +135,15 @@
                                                        HorizontalOptions="Center" VerticalOptions="Center"
                                                        HasShadow="True" IsClippedToBounds="True" CornerRadius="5" Padding="0">
                                                     <Grid ColumnDefinitions="30, *" Margin="5,1,1,1">
+                                                        <Frame CornerRadius="10" Grid.Column="0" Padding="0" Margin="5,10" HasShadow="False"
+                                                               BackgroundColor="{AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}"
+                                                               BorderColor="{AppThemeBinding Dark={StaticResource BlackSmoke}, Light={StaticResource WhiteSmoke}}"/>
+                                                        
                                                         <Frame CornerRadius="10" Grid.Column="0" Padding="0" Margin="5,10" 
                                                            IsVisible="{Binding DeviceStatus.EnableDISARM}" HasShadow="False"
                                                            BackgroundColor="{AppThemeBinding Dark={StaticResource Green}, Light={StaticResource Green}}"/>
 
-                                                        <mdc:MaterialButton Grid.Column="1" Margin="0" Text="DISARM" FontSize="{OnPlatform Android=20, iOS=18}"
+                                                        <mdc:MaterialButton Grid.Column="1" Margin="0,0,30,0" Text="DISARM" FontSize="{OnPlatform Android=18, iOS=16}"
                                                                             TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black}}"
                                                                             BackgroundColor="{AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}"
                                                                             BorderColor="{AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}"
@@ -182,7 +194,7 @@
                                                         <Label Text="RELAY 1" Grid.Column="1"
                                                                HeightRequest="50" VerticalOptions="Center" VerticalTextAlignment="Center"
                                                                TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black}}"
-                                                               FontSize="{OnPlatform Android=20, iOS=18}"/>
+                                                               FontSize="{OnPlatform Android=18, iOS=16}"/>
                                                     </Grid>
 
                                                     <Grid ColumnDefinitions="30, *" Grid.Column="1">
@@ -198,7 +210,7 @@
                                                         <Label Text="RELAY 2" Grid.Column="1"
                                                                HeightRequest="50" VerticalOptions="Center" VerticalTextAlignment="Center"
                                                                TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black}}"
-                                                               FontSize="{OnPlatform Android=20, iOS=18}"/>
+                                                               FontSize="{OnPlatform Android=18, iOS=16}"/>
                                                     </Grid>
                                                 </Grid>
 
@@ -215,7 +227,7 @@
                                                         <Label Text="RELAY 3" Grid.Column="1"
                                                            HeightRequest="50" VerticalOptions="Center" VerticalTextAlignment="Center"
                                                            TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black}}"
-                                                           FontSize="{OnPlatform Android=20, iOS=18}"/>
+                                                           FontSize="{OnPlatform Android=18, iOS=16}"/>
                                                     </Grid>
 
                                                     <Grid ColumnDefinitions="30, *" Grid.Column="1">
@@ -230,13 +242,13 @@
                                                         <Label Text="RELAY 4" Grid.Column="1"
                                                                HeightRequest="50" VerticalOptions="Center" VerticalTextAlignment="Center"
                                                                TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black}}"
-                                                               FontSize="{OnPlatform Android=20, iOS=18}"/>
+                                                               FontSize="{OnPlatform Android=18, iOS=16}"/>
                                                     </Grid>
                                                 </Grid>
                                             </StackLayout>
                                             <!--#endregion-->
 
-                                            <mdc:MaterialButton Margin="25,5" Text="CLEAR ALARM" FontSize="{OnPlatform Android=20, iOS=18}"
+                                            <mdc:MaterialButton Margin="25,5" Text="CLEAR ALARM" FontSize="{OnPlatform Android=18, iOS=16}"
                                                                 TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black}}"
                                                                 BorderColor="{AppThemeBinding Dark={StaticResource BlackSmoke}, Light={StaticResource WhiteSmoke}}"
                                                                 BackgroundColor="{AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}"
