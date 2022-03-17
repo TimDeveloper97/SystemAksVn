@@ -42,6 +42,20 @@ namespace System_aks_vn.ViewModels
                 $"?{nameof(DeviceV30ViewModel.ParameterDeviceId)}={device.Id}");
             }
         });
+        public ICommand ChangePasswordCommand => new Command(async () =>
+        {
+            await Shell.Current.GoToAsync($"{nameof(SettingPage)}");
+        });
+
+        public ICommand LogoutCommand => new Command(async () =>
+        {
+            Mqtt.Disconnect();
+            Topic = null;
+            Token = null;
+
+            await Shell.Current.GoToAsync("//LoginPage");
+        });
+
         public ICommand LoadDeviceCommand { get; set; }
         #endregion
 

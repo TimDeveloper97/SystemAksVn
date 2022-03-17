@@ -61,7 +61,7 @@ namespace System_aks_vn.ViewModels
         void Init()
         {
             Title = "Settings";
-            DependencyService.Get<IStatusBar>().SetWhiteStatusBar();
+            DependencyService.Get<IStatusBar>().SetColoredStatusBar("#007bff");
             Reset();
         }
 
@@ -126,6 +126,9 @@ namespace System_aks_vn.ViewModels
                         await MaterialDialog.Instance.SnackbarAsync(message: res.Message,
                               msDuration: MaterialSnackbar.DurationLong);
                     }    
+                    else
+                        await MaterialDialog.Instance.SnackbarAsync(message: "Success",
+                              msDuration: MaterialSnackbar.DurationLong);
                 };
                 
             }

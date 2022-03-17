@@ -264,7 +264,7 @@
                                 <StackLayout HorizontalOptions="Center" Margin="10,5" Orientation="Horizontal">
                                     <StackLayout Orientation="Horizontal">
                                         <Label  FontFamily="MaterialIcons" Text="{Static icon:FontIcons.Toolbox}" FontSize="20"
-                                                VerticalTextAlignment="Center" HorizontalOptions="End" Margin="0,0,-5,0"
+                                                VerticalTextAlignment="Center" HorizontalOptions="End" 
                                                 TextColor="{AppThemeBinding Dark={StaticResource Green}, Light={StaticResource Green}}"/>
                                         <Label Text="{Static lang:LanguageResource.deviceSetting}"
                                                TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black}}"
@@ -277,7 +277,7 @@
 
                                     <StackLayout Orientation="Horizontal" Margin="15,0">
                                         <Label  FontFamily="MaterialIcons" Text="{Static icon:FontIcons.History}" FontSize="20"
-                                                VerticalTextAlignment="Center" HorizontalOptions="End" Margin="0,0,-5,0"
+                                                VerticalTextAlignment="Center" HorizontalOptions="End"
                                                 TextColor="{AppThemeBinding Dark={StaticResource Violet}, Light={StaticResource Violet}}"/>
                                         <Label Text="{Static lang:LanguageResource.deviceHistory}"
                                                TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black}}"

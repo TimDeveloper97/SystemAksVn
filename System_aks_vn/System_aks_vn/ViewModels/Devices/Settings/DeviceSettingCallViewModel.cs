@@ -8,6 +8,7 @@ using System_aks_vn.Controls;
 using System_aks_vn.Domain;
 using System_aks_vn.Models.View;
 using Xamarin.Forms;
+using XF.Material.Forms.UI.Dialogs;
 
 namespace System_aks_vn.ViewModels.Devices.Settings
 {
@@ -46,7 +47,7 @@ namespace System_aks_vn.ViewModels.Devices.Settings
             Init();
             GetData();
         });
-        public ICommand SubmitCallCommand => new Command(() =>
+        public ICommand SubmitCallCommand => new Command(async () =>
         {
             IsBusy = true;
 
@@ -69,6 +70,8 @@ namespace System_aks_vn.ViewModels.Devices.Settings
             finally
             {
                 IsBusy = false;
+                await MaterialDialog.Instance.SnackbarAsync(message: "Success",
+                              msDuration: MaterialSnackbar.DurationLong);
             }
         });
 

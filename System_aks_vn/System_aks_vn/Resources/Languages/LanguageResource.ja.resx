@@ -133,7 +133,7 @@
     <value>ここでセキュリティ電話番号を設定します</value>
   </data>
   <data name="deviceSettingSubmitBtn" xml:space="preserve">
-    <value>参加する</value>
+    <value>保存</value>
   </data>
   <data name="devicesettingTitle" xml:space="preserve">
     <value>デバイス制御</value>

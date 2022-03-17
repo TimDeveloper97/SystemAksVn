@@ -33,6 +33,7 @@ namespace System_aks_vn
         {
             Routing.RegisterRoute(nameof(DeviceV30Page), typeof(DeviceV30Page));
             Routing.RegisterRoute(nameof(ProfilePage), typeof(ProfilePage));
+            Routing.RegisterRoute(nameof(SettingPage), typeof(SettingPage));
             Routing.RegisterRoute(nameof(DeviceSettingPage), typeof(DeviceSettingPage));
             Routing.RegisterRoute(nameof(DeviceHistoryPage), typeof(DeviceHistoryPage));
             Routing.RegisterRoute(nameof(DeviceSettingSmsPage), typeof(DeviceSettingSmsPage));

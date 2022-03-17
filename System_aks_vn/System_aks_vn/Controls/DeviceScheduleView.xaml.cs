@@ -56,6 +56,9 @@ namespace System_aks_vn.Controls
             ((DeviceScheduleView)bindable).Day = (int)newValue;
         }
 
+        SwipeGestureRecognizer leftSwipeGesture = new SwipeGestureRecognizer { Direction = SwipeDirection.Left };
+        SwipeGestureRecognizer rightSwipeGesture = new SwipeGestureRecognizer { Direction = SwipeDirection.Right };
+
         public static List<MyBoxView> MyBoxViews { get; set; }
 
         public DeviceScheduleView()
@@ -79,6 +82,21 @@ namespace System_aks_vn.Controls
                     ItemSource.Add("-1");
                 }
             }
+
+            leftSwipeGesture.Swiped += (s, e) =>
+            {
+                if (Day == 7)
+                    Day = 0;
+                else
+                    Day++;
+            };
+
+            rightSwipeGesture.Swiped += (s, e) =>
+            {
+                if (Day == 0)
+                    Day = 7;
+                else Day--;
+            };
         }
 
         public static void UpdateViewWhenChangeDay(List<string> sources)
@@ -112,13 +130,16 @@ namespace System_aks_vn.Controls
         void DrawFrameView()
         {
             var scrollview = new ScrollView { Content = DrawListBoxView() };
+            var grid = new Grid { Children = { scrollview } };
 
             var stackContent = new StackLayout
             {
                 Orientation = StackOrientation.Vertical,
-                Children = { DrawTitleView(), scrollview }
+                Children = { DrawTitleView(), grid }
             };
             gContent.Children.Add(stackContent);
+            grid.GestureRecognizers.Add(rightSwipeGesture);
+            grid.GestureRecognizers.Add(leftSwipeGesture);
         }
 
         Grid DrawTitleView()
@@ -196,9 +217,14 @@ namespace System_aks_vn.Controls
                         VerticalOptions = LayoutOptions.Center,
                         Text = $"{h}:{m}",
                         FontSize = GetSizeText(),
+                        Margin = 0,
+                        Padding = 0,
                     },
-                    Padding = 2,
-                    BorderColor = GetBorderColorBoxView()
+                    HasShadow = false,
+                    Padding = 0,
+                    BorderColor = GetBorderColorBoxView(),
+                    Margin = new Thickness(0, 0, 0, -1),
+                    IsClippedToBounds = false,
                 };
 
                 gBoxView.Children.Add(frame, 0, i);
@@ -218,7 +244,7 @@ namespace System_aks_vn.Controls
                     var box = new MyBoxView
                     {
                         BackgroundColor = GetColorBoxView(),
-                        Margin = 2,
+                        Margin = new Thickness(1,1,0,0),
                         X = i,
                         Y = j,
                         Opacity = 0.5,
@@ -251,22 +277,6 @@ namespace System_aks_vn.Controls
                     gBoxView.Children.Add(box, j, i);
                 }
             }
-            var leftSwipeGesture = new SwipeGestureRecognizer { Direction = SwipeDirection.Left };
-            var rightSwipeGesture = new SwipeGestureRecognizer { Direction = SwipeDirection.Right };
-            leftSwipeGesture.Swiped += (s, e) =>
-            {
-                if (Day == 7)
-                    Day = 0;
-                else
-                    Day++;
-            };
-
-            rightSwipeGesture.Swiped += (s, e) =>
-            {
-                if (Day == 0)
-                    Day = 7;
-                else Day--;
-            };
 
             gBoxView.GestureRecognizers.Add(leftSwipeGesture);
             gBoxView.GestureRecognizers.Add(rightSwipeGesture);

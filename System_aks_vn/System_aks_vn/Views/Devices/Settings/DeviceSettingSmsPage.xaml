@@ -9,7 +9,7 @@
              xmlns:icon="clr-namespace:System_aks_vn.Resources"
              xmlns:lang="clr-namespace:System_aks_vn.Resources.Languages"
              xmlns:vm="clr-namespace:System_aks_vn.ViewModels.Devices.Settings"
-             x:Name="devicesettingsmspage" Title="{Static lang:LanguageResource.settingSms}"
+             x:Name="devicesettingsmspage"
              
              x:Class="System_aks_vn.Views.Devices.Settings.DeviceSettingSmsPage">
     <ContentPage.BindingContext>
@@ -20,6 +20,30 @@
                 EventName="Appearing"
                 Command="{Binding PageAppearingCommand}" />
     </ContentPage.Behaviors>
+    <Shell.TitleView>
+        <Grid>
+            <Label  Text="{Static lang:LanguageResource.settingSms}"
+                    TextColor="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource White}}"
+                    FontSize="{OnPlatform Android=22, iOS=20}"
+                    HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                    HorizontalOptions="Start"/>
+            
+            <StackLayout Orientation="Horizontal" HorizontalOptions="End">
+                <Label  Text="{Static lang:LanguageResource.deviceSettingSubmitBtn}" 
+                        TextColor="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource White}}"
+                        FontSize="{OnPlatform Android=20, iOS=18}"
+                        HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Margin="0,0,20,0"
+                        VerticalOptions="CenterAndExpand">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer NumberOfTapsRequired="1" CommandParameter="{Binding .}"
+                                              Command="{Binding Path=BindingContext.SubmitSmsCommand, 
+                                              Source={x:Reference Name=devicesettingsmspage}}"/>
+                    </Label.GestureRecognizers>
+                </Label>
+            </StackLayout>
+        </Grid>
+    </Shell.TitleView>
+    
     <ContentPage.Content>
         <Grid BackgroundColor="{AppThemeBinding Dark={StaticResource BlackSmoke}, Light={StaticResource WhiteGray}}">
             <StackLayout Margin="30,20,30,5">
@@ -75,11 +99,11 @@
                                            BackgroundColor="{AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}"
                                            BorderColor="{AppThemeBinding Dark={StaticResource GrayLight}, Light={StaticResource GrayLight}}"/>
 
-                <mdc:MaterialButton BackgroundColor="{AppThemeBinding Dark={StaticResource AppColor}, Light={StaticResource AppColor}}"
+                <!--<mdc:MaterialButton BackgroundColor="{AppThemeBinding Dark={StaticResource AppColor}, Light={StaticResource AppColor}}"
                                             TextColor="{AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}"
                                             WidthRequest="100" Text="{Static lang:LanguageResource.deviceSettingSubmitBtn}"
                                             FontSize="{OnPlatform Android=16, iOS=14}" Margin="0,10" IsBusy="{Binding IsBusy}"
-                                            HorizontalOptions="Center" Command="{Binding SubmitSmsCommand}"/>
+                                            HorizontalOptions="Center" Command="{Binding SubmitSmsCommand}"/>-->
             </StackLayout>
         </Grid>
     </ContentPage.Content>

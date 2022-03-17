@@ -4,6 +4,7 @@
        xmlns:view="clr-namespace:System_aks_vn.Views" 
        
        Shell.FlyoutBehavior="Disabled"
+       Shell.TabBarIsVisible="False"
        Shell.TabBarBackgroundColor="{StaticResource AppColor}"
        xmlns:lang="clr-namespace:System_aks_vn.Resources.Languages"
        
@@ -31,14 +32,16 @@
         <ShellContent ContentTemplate="{DataTemplate view:LoginPage}" />
     </ShellItem>
 
-    <TabBar>
+
+    <!--<TabBar>
         <ShellContent Title="{Static lang:LanguageResource.shellHome}" 
                       Icon="home.png" FlyoutIcon="20" Route="HomePage" ContentTemplate="{DataTemplate view:HomePage}" />
         <ShellContent Title="{Static lang:LanguageResource.shellSetting}"
                       Icon="setting.png" FlyoutIcon="20" Route="SettingPage" ContentTemplate="{DataTemplate view:SettingPage}" />
-    </TabBar>
+    </TabBar>-->
     
     <TabBar>
         <ShellContent Route="LoginPage"  ContentTemplate="{DataTemplate view:LoginPage}" />
+        <ShellContent Route="HomePage"  ContentTemplate="{DataTemplate view:HomePage}" />
     </TabBar>
 </Shell>

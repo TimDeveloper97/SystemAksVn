@@ -3,13 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:System_aks_vn.ViewModels"
              
-             Shell.NavBarIsVisible="False"
+             Shell.NavBarIsVisible="True"
              xmlns:mdc="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
              xmlns:xf="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              xmlns:icon="clr-namespace:System_aks_vn.Resources"
              xmlns:lang="clr-namespace:System_aks_vn.Resources.Languages"
-             x:Name="settingpage"
+             x:Name="settingpage" Title="{Static lang:LanguageResource.settingTitle}"
              
              x:Class="System_aks_vn.Views.SettingPage">
     <ContentPage.BindingContext>
@@ -22,7 +22,7 @@
     </ContentPage.Behaviors>
     <ContentPage.Content>
         <Grid BackgroundColor="{AppThemeBinding Dark={StaticResource BlackSmoke}, Light={StaticResource WhiteSmoke}}">
-            <StackLayout Orientation="Horizontal" HorizontalOptions="End" VerticalOptions="Start"
+            <!--<StackLayout Orientation="Horizontal" HorizontalOptions="End" VerticalOptions="Start"
                          Margin="10">
                 <Label  FontFamily="MaterialIcons" Text="{Static icon:FontIcons.Logout}" FontSize="30"
                         VerticalTextAlignment="Center" HorizontalOptions="End" Margin="0,0,-5,0"
@@ -34,7 +34,7 @@
                     <TapGestureRecognizer NumberOfTapsRequired="1" CommandParameter="{Binding .}"
                                           Command="{Binding Path=BindingContext.LogoutCommand, Source={x:Reference Name=settingpage}}"/>
                 </StackLayout.GestureRecognizers>
-            </StackLayout>
+            </StackLayout>-->
 
             <Frame BackgroundColor="{AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}"
                    BorderColor="{AppThemeBinding Dark={StaticResource Gray}, Light={StaticResource WhiteGray}}"
