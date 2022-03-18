@@ -88,21 +88,27 @@ namespace System_aks_vn.ViewModels.Devices
 
                 Mqtt.MessageReceived += async (s, e) =>
                 {
-                    var res = (s as Mqtt).Response;
-                    if (res.Code == 100)
-                        await TimeoutSession(res.Message);
-
-                    if (res.Count == 2 || res.Value == null)
+                    try
                     {
-                        await MaterialDialog.Instance.SnackbarAsync(message: "Notthing response",
-                              msDuration: MaterialSnackbar.DurationLong);
-                        return;
+                        var res = (s as Mqtt).Response;
+                        if (res.Code == 100)
+                            await TimeoutSession(res.Message);
+
+                        if (res.Count == 2 || res.Value == null)
+                        {
+                            await MaterialDialog.Instance.SnackbarAsync(message: "Notthing response",
+                                  msDuration: MaterialSnackbar.DurationLong);
+                            return;
+                        }
+
+                        var ldevice = JsonConvert.DeserializeObject<List<DeviceModel>>(res.Value.ToString());
+                        var device = ldevice.Find(x => x.Id == ParameterDeviceId);
+
+                        _setting = device.Setting;
                     }
-
-                    var ldevice = JsonConvert.DeserializeObject<List<DeviceModel>>(res.Value.ToString());
-                    var device = ldevice.Find(x => x.Id == ParameterDeviceId);
-
-                    _setting = device.Setting;
+                    catch (Exception)
+                    { 
+                    }
                 };
             }
             catch (Exception ex)
