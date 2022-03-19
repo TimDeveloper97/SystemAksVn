@@ -29,7 +29,7 @@
               Margin="0,-10,0,0">
 
             <!--#region Layout -->
-            <Frame Padding="0" CornerRadius="20"
+            <!--<Frame Padding="0" CornerRadius="20"
                    HasShadow="False" IsClippedToBounds="True" 
                    VerticalOptions="Start" HeightRequest="60"
                    BackgroundColor="{AppThemeBinding Dark={StaticResource AppColor} ,Light={StaticResource AppColor}}"/>
@@ -37,17 +37,19 @@
             <Frame Padding="0"
                    HasShadow="False" IsClippedToBounds="True" 
                    VerticalOptions="Start" HeightRequest="40"
-                   BackgroundColor="{AppThemeBinding Dark={StaticResource AppColor} ,Light={StaticResource AppColor}}"/>
+                   BackgroundColor="{AppThemeBinding Dark={StaticResource AppColor} ,Light={StaticResource AppColor}}"/>-->
             <!--#endregion-->
 
             <Grid x:Name="gMain" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
                   RowDefinitions="60, *">
 
                 <!--#region Header -->
-                <Label FontAttributes="Bold"
-                       FontSize="{OnPlatform Android=24, iOS=22}"
-                       Text="{Binding Title}" HorizontalOptions="Center" VerticalOptions="Center"
-                       TextColor="{AppThemeBinding Dark={StaticResource Black} ,Light={StaticResource White}}"/>
+                <Grid>
+                    <Label FontAttributes="Bold" Opacity="0.7"
+                           FontSize="{OnPlatform Android=28, iOS=26}" Margin="0,10,0,-5"
+                           Text="{Binding Title}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"
+                           TextColor="{AppThemeBinding Dark={StaticResource WhiteSmoke} ,Light={StaticResource BlackSmoke}}"/>
+                </Grid>
                 <!--#endregion-->
                 <xf:MaterialCircularLoadingView IsPlaying="{Binding IsBusy}" Grid.Row="1"
                                                 TintColor="{StaticResource AppColor}" IsVisible="false"

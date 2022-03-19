@@ -31,7 +31,7 @@
             <!--#region Layout -->
             <Frame Padding="0" CornerRadius="20"
                    HasShadow="true" IsClippedToBounds="True" 
-                   VerticalOptions="Start" HeightRequest="70"
+                   VerticalOptions="Start" HeightRequest="75"
                    BackgroundColor="{AppThemeBinding Dark={StaticResource AppColor} ,Light={StaticResource AppColor}}"/>
 
             <Frame Padding="0"
@@ -87,7 +87,7 @@
                 <!--#endregion-->
 
                 <!--#region Title -->
-                <Label Grid.Row="1" VerticalTextAlignment="Center"
+                <Label Grid.Row="1" VerticalTextAlignment="Center" 
                        FontSize="{OnPlatform Android=22, iOS=20}" Text="{Static lang:LanguageResource.homeDevice}"
                        TextColor="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource Black}}"
                        Margin="20,20,0,0" />
