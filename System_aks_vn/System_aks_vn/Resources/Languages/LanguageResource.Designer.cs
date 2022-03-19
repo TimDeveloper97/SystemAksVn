@@ -142,6 +142,15 @@ namespace System_aks_vn.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Menu.
+        /// </summary>
+        internal static string homeMenu {
+            get {
+                return ResourceManager.GetString("homeMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Password.
         /// </summary>
         internal static string loginPasswordPlaceHold {

@@ -53,9 +53,9 @@
                 <StackLayout Padding="0" Grid.Row="1">
                     <!--#region Title -->
                     <Label Grid.Row="2" FontFamily="MuliBold" VerticalTextAlignment="Center"
-                           FontSize="Title" Text="{Static lang:LanguageResource.shellSetting}" 
+                           FontSize="{OnPlatform Android=28, iOS=26}" Text="{Static lang:LanguageResource.shellSetting}" 
                            TextColor="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource Black}}"
-                           Margin="30,25,0,0" 
+                           Margin="30,20,0,10" 
                            BackgroundColor="{AppThemeBinding Dark={StaticResource BlackSmoke} ,Light={StaticResource WhiteSmoke}}"/>
                     <!--#endregion-->
 
@@ -70,19 +70,21 @@
                                            CornerRadius="30"
                                            BorderColor="{AppThemeBinding Dark={StaticResource Black} ,Light={StaticResource White}}"
                                            HorizontalOptions="End" VerticalOptions="Center" HasShadow="False" IsClippedToBounds="False"
-                                           WidthRequest="30" HeightRequest="30" Padding="0">
+                                           WidthRequest="40" HeightRequest="40" Padding="0">
                                         <Label FontFamily="MaterialIcons" Text="{x:Static icon:FontIcons.Message}"
-                                               VerticalOptions="Center" FontSize="Subtitle" HorizontalOptions="Center" 
+                                               VerticalOptions="Center" 
+                                               FontSize="{OnPlatform Android=24, iOS=22}"
+                                               HorizontalOptions="Center" 
                                                TextColor="{AppThemeBinding Dark={StaticResource Green} ,Light={StaticResource Green}}"/>
                                     </Frame>
-                                    <Label Grid.Column="1" Text="{Static lang:LanguageResource.settingSms}" FontSize="Subtitle"
-                                           VerticalOptions="Center" 
+                                    <Label Grid.Column="1" Text="{Static lang:LanguageResource.settingSms}"
+                                           VerticalOptions="Center" FontSize="{OnPlatform Android=20, iOS=18}"
                                            TextColor="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource Black}}"/>
 
                                     <Label Grid.Column="2" FontFamily="MaterialIcons" Text="{x:Static icon:FontIcons.ChevronRight}"
                                            VerticalOptions="Center" HorizontalOptions="Center"
                                            TextColor="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource Black}}"
-                                           FontSize="Title"/>
+                                           FontSize="{OnPlatform Android=24, iOS=22}"/>
                                 </Grid>
                                 <Frame.GestureRecognizers>
                                     <TapGestureRecognizer NumberOfTapsRequired="1" CommandParameter="{Binding .}"
@@ -100,19 +102,19 @@
                                            CornerRadius="30"
                                            BorderColor="{AppThemeBinding Dark={StaticResource Black} ,Light={StaticResource White}}"
                                            HorizontalOptions="End" VerticalOptions="Center" HasShadow="False" IsClippedToBounds="False"
-                                           WidthRequest="30" HeightRequest="30" Padding="0">
+                                           WidthRequest="40" HeightRequest="40" Padding="0">
                                         <Label FontFamily="MaterialIcons" Text="{x:Static icon:FontIcons.Phone}"
-                                               VerticalOptions="Center" FontSize="Subtitle" HorizontalOptions="Center" 
+                                               VerticalOptions="Center" FontSize="{OnPlatform Android=24, iOS=22}" HorizontalOptions="Center" 
                                                TextColor="{AppThemeBinding Dark={StaticResource Yellow} ,Light={StaticResource Yellow}}"/>
                                     </Frame>
-                                    <Label Grid.Column="1" Text="{Static lang:LanguageResource.settingCall}" FontSize="Subtitle"
-                                           VerticalOptions="Center" 
+                                    <Label Grid.Column="1" Text="{Static lang:LanguageResource.settingCall}" 
+                                           VerticalOptions="Center" FontSize="{OnPlatform Android=20, iOS=18}"
                                            TextColor="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource Black}}"/>
 
                                     <Label Grid.Column="2" FontFamily="MaterialIcons" Text="{x:Static icon:FontIcons.ChevronRight}"
                                            VerticalOptions="Center" HorizontalOptions="Center"
                                            TextColor="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource Black}}"
-                                           FontSize="Title"/>
+                                           FontSize="{OnPlatform Android=24, iOS=22}"/>
                                 </Grid>
                                 <Frame.GestureRecognizers>
                                     <TapGestureRecognizer NumberOfTapsRequired="1" CommandParameter="{Binding .}"
@@ -130,19 +132,19 @@
                                            CornerRadius="30"
                                            BorderColor="{AppThemeBinding Dark={StaticResource Black} ,Light={StaticResource White}}"
                                            HorizontalOptions="End" VerticalOptions="Center" HasShadow="False" IsClippedToBounds="False"
-                                           WidthRequest="30" HeightRequest="30" Padding="0">
+                                           WidthRequest="40" HeightRequest="40" Padding="0">
                                         <Label FontFamily="MaterialIcons" Text="{x:Static icon:FontIcons.Calendar}"
-                                               VerticalOptions="Center" FontSize="Subtitle" HorizontalOptions="Center" 
+                                               VerticalOptions="Center" FontSize="{OnPlatform Android=24, iOS=22}" HorizontalOptions="Center" 
                                                TextColor="{AppThemeBinding Dark={StaticResource Violet} ,Light={StaticResource Violet}}"/>
                                     </Frame>
-                                    <Label Grid.Column="1" Text="{Static lang:LanguageResource.settingSchedule}" FontSize="Subtitle"
-                                           VerticalOptions="Center" 
+                                    <Label Grid.Column="1" Text="{Static lang:LanguageResource.settingSchedule}"
+                                           VerticalOptions="Center" FontSize="{OnPlatform Android=20, iOS=18}"
                                            TextColor="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource Black}}"/>
 
                                     <Label Grid.Column="2" FontFamily="MaterialIcons" Text="{x:Static icon:FontIcons.ChevronRight}"
                                            VerticalOptions="Center" HorizontalOptions="Center"
                                            TextColor="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource Black}}"
-                                           FontSize="Title"/>
+                                           FontSize="{OnPlatform Android=24, iOS=22}"/>
                                 </Grid>
                                 <Frame.GestureRecognizers>
                                     <TapGestureRecognizer NumberOfTapsRequired="1" CommandParameter="{Binding .}"

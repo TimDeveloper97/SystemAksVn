@@ -42,18 +42,20 @@ namespace System_aks_vn.ViewModels
                 $"?{nameof(DeviceV30ViewModel.ParameterDeviceId)}={device.Id}");
             }
         });
-        public ICommand ChangePasswordCommand => new Command(async () =>
+        public ICommand MenuCommand => new Command(async () =>
         {
-            await Shell.Current.GoToAsync($"{nameof(SettingPage)}");
-        });
+            var actions = new string[]
+            {
+                Resources.Languages.LanguageResource.settingTitle,
+                Resources.Languages.LanguageResource.settingLogout 
+            };
+            var result = await MaterialDialog.Instance.SelectActionAsync(
+                title: Resources.Languages.LanguageResource.homeMenu, actions: actions);
 
-        public ICommand LogoutCommand => new Command(async () =>
-        {
-            Mqtt.Disconnect();
-            Topic = null;
-            Token = null;
-
-            await Shell.Current.GoToAsync("//LoginPage");
+            if (result == 0)
+                await ExecuteLoadChangePassword();
+            else if (result == 1)
+                await ExecuteLoadLogout();
         });
 
         public ICommand LoadDeviceCommand { get; set; }
@@ -118,6 +120,20 @@ namespace System_aks_vn.ViewModels
                 IsBusy = false;
             }
 
+        }
+
+        async Task ExecuteLoadChangePassword()
+        {
+            await Shell.Current.GoToAsync($"{nameof(SettingPage)}");
+        }
+
+        async Task ExecuteLoadLogout()
+        {
+            Mqtt.Disconnect();
+            Topic = null;
+            Token = null;
+
+            await Shell.Current.GoToAsync("//LoginPage");
         }
         #endregion
     }

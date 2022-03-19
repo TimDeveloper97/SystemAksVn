@@ -144,6 +144,9 @@
   <data name="homeDevice" xml:space="preserve">
     <value>Danh sách thiết bị</value>
   </data>
+  <data name="homeMenu" xml:space="preserve">
+    <value>Danh sách</value>
+  </data>
   <data name="loginPasswordPlaceHold" xml:space="preserve">
     <value>Mật khẩu</value>
   </data>

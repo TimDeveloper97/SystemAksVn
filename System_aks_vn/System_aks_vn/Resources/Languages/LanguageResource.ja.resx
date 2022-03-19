@@ -144,6 +144,9 @@
   <data name="homeDevice" xml:space="preserve">
     <value>デバイスのリスト</value>
   </data>
+  <data name="homeMenu" xml:space="preserve">
+    <value>アクション</value>
+  </data>
   <data name="loginPasswordPlaceHold" xml:space="preserve">
     <value>パスワード</value>
   </data>

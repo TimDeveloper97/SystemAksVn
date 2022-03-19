@@ -109,43 +109,43 @@ namespace System_aks_vn.ViewModels.Version
 
                     Mqtt.MessageReceived += async (s, e) =>
                     {
-                        var res = (s as Mqtt).Response;
-                        if (res.Code == 100)
-                            await TimeoutSession(res.Message);
-
-                        if (res.Count == 2 || res.Value == null)
+                        try
                         {
-                            //await MaterialDialog.Instance.SnackbarAsync(message: "Notthing response",
-                            //      msDuration: MaterialSnackbar.DurationLong);
-                            return;
-                        }
+                            var res = (s as Mqtt).Response;
+                            if (res.Code == 100)
+                                await TimeoutSession(res.Message);
 
-                        var status = JObject.Parse(res.Value.ToString());
-                        var tmp = new DeviceStatusModel();
+                            if (res.Count == 2 || res.Value == null)
+                                return;
 
-                        foreach (var tag in DeviceStatusModel.Tags)
-                        {
-                            var value = status[tag]?.ToString();
-                            if (!string.IsNullOrEmpty(value))
+                            var status = JObject.Parse(res.Value.ToString());
+                            var tmp = new DeviceStatusModel();
+
+                            foreach (var tag in DeviceStatusModel.Tags)
                             {
-                                Type myType = tmp.GetType();
-                                var props = new List<PropertyInfo>(myType.GetProperties());
-
-                                foreach (PropertyInfo prop in props)
+                                var value = status[tag]?.ToString();
+                                if (!string.IsNullOrEmpty(value))
                                 {
-                                    var propTag = prop.GetCustomAttribute<DescriptionAttribute>()?.Description;
-                                    var propValue = bool.Parse(prop.GetValue(tmp).ToString());
-                                    if (propTag != null && propTag == tag)
+                                    Type myType = tmp.GetType();
+                                    var props = new List<PropertyInfo>(myType.GetProperties());
+
+                                    foreach (PropertyInfo prop in props)
                                     {
-                                        // neu 2 trang thai khac nhau
-                                        if (propValue == false)
-                                            prop.SetValue(tmp, true);
+                                        var propTag = prop.GetCustomAttribute<DescriptionAttribute>()?.Description;
+                                        var propValue = bool.Parse(prop.GetValue(tmp).ToString());
+                                        if (propTag != null && propTag == tag)
+                                        {
+                                            // neu 2 trang thai khac nhau
+                                            if (propValue == false)
+                                                prop.SetValue(tmp, true);
+                                        }
                                     }
                                 }
                             }
-                        }
 
-                        DeviceStatus = tmp;
+                            DeviceStatus = tmp;
+                        }
+                        catch (Exception) { }
                     };
 
                     return true; // True = Repeat again, False = Stop the timer
