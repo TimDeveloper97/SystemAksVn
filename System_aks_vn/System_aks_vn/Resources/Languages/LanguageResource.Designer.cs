@@ -106,7 +106,7 @@ namespace System_aks_vn.Resources.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Save.
+        ///   Looks up a localized string similar to Send.
         /// </summary>
         internal static string deviceSettingSubmitBtn {
             get {

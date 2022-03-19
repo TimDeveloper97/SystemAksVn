@@ -15,6 +15,7 @@ using System_aks_vn.Views;
 using System_aks_vn.Views.Version;
 using Xamarin.Forms;
 using XF.Material.Forms.UI.Dialogs;
+using XF.Material.Forms.UI.Dialogs.Configurations;
 
 namespace System_aks_vn.ViewModels
 {
@@ -44,13 +45,18 @@ namespace System_aks_vn.ViewModels
         });
         public ICommand MenuCommand => new Command(async () =>
         {
+            var configuration = new MaterialSimpleDialogConfiguration
+            {
+                TextColor = GetColorTextMenu(),
+            };
+
             var actions = new string[]
             {
                 Resources.Languages.LanguageResource.settingTitle,
                 Resources.Languages.LanguageResource.settingLogout 
             };
             var result = await MaterialDialog.Instance.SelectActionAsync(
-                title: Resources.Languages.LanguageResource.homeMenu, actions: actions);
+                title: Resources.Languages.LanguageResource.homeMenu, actions: actions, configuration);
 
             if (result == 0)
                 await ExecuteLoadChangePassword();
@@ -82,33 +88,35 @@ namespace System_aks_vn.ViewModels
 
             try
             {
-                if (Devices != null && Devices.Count != 0)
-                    return;
-
+                Devices?.Clear();
                 Mqtt.ClearEvent();
                 Mqtt.Publish(Topic, Api.DeviceList, new { token = Token });
 
                 Mqtt.MessageReceived += async (s, e) =>
                 {
-                    var res = (s as Mqtt).Response;
-                    if (res.Code == 100)
-                        await TimeoutSession(res.Message);
-                    if (res.Count == 2 || res.Value == null)
+                    try
                     {
-                        await MaterialDialog.Instance.SnackbarAsync(message: "Notthing response",
-                              msDuration: MaterialSnackbar.DurationLong);
-                        return;
-                    }
-
-                    var ldevice = JsonConvert.DeserializeObject<List<DeviceModel>>(res.Value.ToString());
-
-                    await Device.InvokeOnMainThreadAsync(() =>
-                    {
-                        foreach (var device in ldevice)
+                        var res = (s as Mqtt).Response;
+                        if (res.Code == 100)
+                            await TimeoutSession(res.Message);
+                        if (res.Value == null)
                         {
-                            Devices.Add(device);
+                            await MaterialDialog.Instance.SnackbarAsync(message: "Notthing response",
+                                  msDuration: MaterialSnackbar.DurationLong);
+                            return;
                         }
-                    });
+
+                        var ldevice = JsonConvert.DeserializeObject<List<DeviceModel>>(res.Value.ToString());
+
+                        await Device.InvokeOnMainThreadAsync(() =>
+                        {
+                            foreach (var device in ldevice)
+                            {
+                                Devices.Add(device);
+                            }
+                        });
+                    }
+                    catch (Exception) { }
                 };
             }
             catch (Exception ex)
@@ -134,6 +142,11 @@ namespace System_aks_vn.ViewModels
             Token = null;
 
             await Shell.Current.GoToAsync("//LoginPage");
+        }
+        Color GetColorTextMenu()
+        {
+            OSAppTheme currentTheme = Application.Current.RequestedTheme;
+            return currentTheme == OSAppTheme.Dark ? Color.FromHex("#d9d9d9") : Color.FromHex("#666666");
         }
         #endregion
     }
