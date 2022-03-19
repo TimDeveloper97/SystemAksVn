@@ -10,7 +10,7 @@
              xmlns:icon="clr-namespace:System_aks_vn.Resources"
              xmlns:lang="clr-namespace:System_aks_vn.Resources.Languages"
              xmlns:vm="clr-namespace:System_aks_vn.ViewModels.Devices"
-             x:Name="devicesettingpage" Title="{Static lang:LanguageResource.devicesettingTitle}"
+             x:Name="devicesettingpage" Title="{Static lang:LanguageResource.shellSetting}"
              
              x:Class="System_aks_vn.Views.Devices.DeviceSettingPage">
     <ContentPage.BindingContext>
@@ -29,7 +29,7 @@
               Margin="0,-10,0,0">
 
             <!--#region Layout -->
-            <Frame Padding="0" CornerRadius="20"
+            <!--<Frame Padding="0" CornerRadius="20"
                    HasShadow="False" IsClippedToBounds="True" 
                    VerticalOptions="Start" HeightRequest="60"
                    BackgroundColor="{AppThemeBinding Dark={StaticResource AppColor} ,Light={StaticResource AppColor}}"/>
@@ -37,38 +37,40 @@
             <Frame Padding="0"
                    HasShadow="False" IsClippedToBounds="True" 
                    VerticalOptions="Start" HeightRequest="40"
-                   BackgroundColor="{AppThemeBinding Dark={StaticResource AppColor} ,Light={StaticResource AppColor}}"/>
+                   BackgroundColor="{AppThemeBinding Dark={StaticResource AppColor} ,Light={StaticResource AppColor}}"/>-->
             <!--#endregion-->
 
             <Grid x:Name="gMain" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
                   RowDefinitions="60, *">
 
                 <!--#region Header -->
-                <Label FontAttributes="Bold"
-                       FontSize="{OnPlatform Android=24, iOS=22}"
-                       Text="{Binding Title}" HorizontalOptions="Center" VerticalOptions="Center"
-                       TextColor="{AppThemeBinding Dark={StaticResource Black} ,Light={StaticResource White}}"/>
+                <Grid>
+                    <Label FontAttributes="Bold" Opacity="0.7"
+                           FontSize="{OnPlatform Android=28, iOS=26}" Margin="0,10,0,-5"
+                           Text="{Binding Title}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"
+                           TextColor="{AppThemeBinding Dark={StaticResource WhiteSmoke} ,Light={StaticResource BlackSmoke}}"/>
+                </Grid>
                 <!--#endregion-->
 
                 <StackLayout Padding="0" Grid.Row="1">
                     <!--#region Title -->
-                    <Label Grid.Row="2" FontFamily="MuliBold" VerticalTextAlignment="Center"
+                    <!--<Label Grid.Row="2" FontFamily="MuliBold" VerticalTextAlignment="Center"
                            FontSize="{OnPlatform Android=28, iOS=26}" Text="{Static lang:LanguageResource.shellSetting}" 
                            TextColor="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource Black}}"
                            Margin="30,20,0,10" 
-                           BackgroundColor="{AppThemeBinding Dark={StaticResource BlackSmoke} ,Light={StaticResource WhiteSmoke}}"/>
+                           BackgroundColor="{AppThemeBinding Dark={StaticResource BlackSmoke} ,Light={StaticResource WhiteSmoke}}"/>-->
                     <!--#endregion-->
 
                     <ScrollView>
                         <StackLayout Spacing="-1" Orientation="Vertical">
                             <!--#region Item -->
-                            <Frame HasShadow="False" Padding="0"
+                            <Frame HasShadow="False" Padding="0" IsClippedToBounds="False" Margin="0,2,0,1"
                                    BackgroundColor="{AppThemeBinding Dark={StaticResource Black} ,Light={StaticResource White}}"
                                    BorderColor="{AppThemeBinding Dark={StaticResource BlackSmoke} ,Light={StaticResource WhiteSmoke}}">
                                 <Grid ColumnDefinitions="60, *, 60" Padding="5,10">
                                     <Frame BackgroundColor="{AppThemeBinding Dark={StaticResource BlackSmoke} ,Light={StaticResource WhiteSmoke}}" 
                                            CornerRadius="30"
-                                           BorderColor="{AppThemeBinding Dark={StaticResource Black} ,Light={StaticResource White}}"
+                                           BorderColor="{AppThemeBinding Dark={StaticResource Gray} ,Light={StaticResource White}}"
                                            HorizontalOptions="End" VerticalOptions="Center" HasShadow="False" IsClippedToBounds="False"
                                            WidthRequest="40" HeightRequest="40" Padding="0">
                                         <Label FontFamily="MaterialIcons" Text="{x:Static icon:FontIcons.Message}"
@@ -77,9 +79,14 @@
                                                HorizontalOptions="Center" 
                                                TextColor="{AppThemeBinding Dark={StaticResource Green} ,Light={StaticResource Green}}"/>
                                     </Frame>
-                                    <Label Grid.Column="1" Text="{Static lang:LanguageResource.settingSms}"
-                                           VerticalOptions="Center" FontSize="{OnPlatform Android=20, iOS=18}"
-                                           TextColor="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource Black}}"/>
+                                    <StackLayout Grid.Column="1" Margin="5,0">
+                                        <Label Text="{Static lang:LanguageResource.settingSms}"
+                                               VerticalOptions="End" FontSize="{OnPlatform Android=20, iOS=18}" Margin="0,0,0,-5"
+                                               TextColor="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource Black}}"/>
+                                        <Label Text="{Static lang:LanguageResource.settingSmsDes}" MaxLines="2"
+                                               VerticalOptions="Center" FontSize="{OnPlatform Android=15, iOS=13}" Margin="0,0,-20,0"
+                                               TextColor="{AppThemeBinding Dark={StaticResource WhiteSmoke} ,Light={StaticResource BlackSmoke}}"/>
+                                    </StackLayout>
 
                                     <Label Grid.Column="2" FontFamily="MaterialIcons" Text="{x:Static icon:FontIcons.ChevronRight}"
                                            VerticalOptions="Center" HorizontalOptions="Center"
@@ -94,7 +101,7 @@
                             <!--#endregion-->
 
                             <!--#region Item -->
-                            <Frame HasShadow="False" Padding="0"
+                            <Frame HasShadow="False" Padding="0" IsClippedToBounds="False" Margin="0,0,0,10"
                                    BackgroundColor="{AppThemeBinding Dark={StaticResource Black} ,Light={StaticResource White}}"
                                    BorderColor="{AppThemeBinding Dark={StaticResource BlackSmoke} ,Light={StaticResource WhiteSmoke}}">
                                 <Grid ColumnDefinitions="60, *, 60" Padding="5,10">
@@ -107,10 +114,15 @@
                                                VerticalOptions="Center" FontSize="{OnPlatform Android=24, iOS=22}" HorizontalOptions="Center" 
                                                TextColor="{AppThemeBinding Dark={StaticResource Yellow} ,Light={StaticResource Yellow}}"/>
                                     </Frame>
-                                    <Label Grid.Column="1" Text="{Static lang:LanguageResource.settingCall}" 
-                                           VerticalOptions="Center" FontSize="{OnPlatform Android=20, iOS=18}"
-                                           TextColor="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource Black}}"/>
 
+                                    <StackLayout Grid.Column="1" Margin="5,0">
+                                        <Label Text="{Static lang:LanguageResource.settingCall}" 
+                                               VerticalOptions="End" FontSize="{OnPlatform Android=20, iOS=18}" Margin="0,0,0,-5"
+                                               TextColor="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource Black}}"/>
+                                        <Label Text="{Static lang:LanguageResource.settingCallDes}" MaxLines="2"
+                                               VerticalOptions="Center" FontSize="{OnPlatform Android=15, iOS=13}" Margin="0,0,-20,0"
+                                               TextColor="{AppThemeBinding Dark={StaticResource WhiteSmoke} ,Light={StaticResource BlackSmoke}}"/>
+                                    </StackLayout>
                                     <Label Grid.Column="2" FontFamily="MaterialIcons" Text="{x:Static icon:FontIcons.ChevronRight}"
                                            VerticalOptions="Center" HorizontalOptions="Center"
                                            TextColor="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource Black}}"
@@ -124,7 +136,7 @@
                             <!--#endregion-->
 
                             <!--#region Item -->
-                            <Frame HasShadow="False" Padding="0"
+                            <Frame HasShadow="False" Padding="0" IsClippedToBounds="False" Margin="0,2"
                                    BackgroundColor="{AppThemeBinding Dark={StaticResource Black} ,Light={StaticResource White}}"
                                    BorderColor="{AppThemeBinding Dark={StaticResource BlackSmoke} ,Light={StaticResource WhiteSmoke}}">
                                 <Grid ColumnDefinitions="60, *, 60" Padding="5,10">
@@ -137,10 +149,15 @@
                                                VerticalOptions="Center" FontSize="{OnPlatform Android=24, iOS=22}" HorizontalOptions="Center" 
                                                TextColor="{AppThemeBinding Dark={StaticResource Violet} ,Light={StaticResource Violet}}"/>
                                     </Frame>
-                                    <Label Grid.Column="1" Text="{Static lang:LanguageResource.settingSchedule}"
-                                           VerticalOptions="Center" FontSize="{OnPlatform Android=20, iOS=18}"
-                                           TextColor="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource Black}}"/>
 
+                                    <StackLayout Grid.Column="1" Margin="5,0">
+                                        <Label Text="{Static lang:LanguageResource.settingSchedule}"
+                                               VerticalOptions="End" FontSize="{OnPlatform Android=20, iOS=18}" Margin="0,0,0,-5"
+                                               TextColor="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource Black}}"/>
+                                        <Label Text="{Static lang:LanguageResource.settingScheduleDes}" MaxLines="2"
+                                               VerticalOptions="Center" FontSize="{OnPlatform Android=15, iOS=13}" Margin="0,0,-20,0"
+                                               TextColor="{AppThemeBinding Dark={StaticResource WhiteSmoke} ,Light={StaticResource BlackSmoke}}"/>
+                                    </StackLayout>
                                     <Label Grid.Column="2" FontFamily="MaterialIcons" Text="{x:Static icon:FontIcons.ChevronRight}"
                                            VerticalOptions="Center" HorizontalOptions="Center"
                                            TextColor="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource Black}}"

@@ -171,6 +171,9 @@
   <data name="settingCall" xml:space="preserve">
     <value>Cuộc gọi</value>
   </data>
+  <data name="settingCallDes" xml:space="preserve">
+    <value>Cài đặt số điện thoại cho thiết bị</value>
+  </data>
   <data name="settingConfirmPassword" xml:space="preserve">
     <value>Xác nhận</value>
   </data>
@@ -195,8 +198,14 @@
   <data name="settingSchedule" xml:space="preserve">
     <value>Lịch trình</value>
   </data>
+  <data name="settingScheduleDes" xml:space="preserve">
+    <value>Cài đặt lịch làm việc cho thiết bị</value>
+  </data>
   <data name="settingSms" xml:space="preserve">
     <value>Tin nhắn</value>
+  </data>
+  <data name="settingSmsDes" xml:space="preserve">
+    <value>Cài đặt số sms cho thiết bị</value>
   </data>
   <data name="settingSubmitBtn" xml:space="preserve">
     <value>Gửi</value>

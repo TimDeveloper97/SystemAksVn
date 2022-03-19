@@ -214,11 +214,20 @@ namespace System_aks_vn.Resources.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Call config.
+        ///   Looks up a localized string similar to Call.
         /// </summary>
         internal static string settingCall {
             get {
                 return ResourceManager.GetString("settingCall", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set call number for device.
+        /// </summary>
+        internal static string settingCallDes {
+            get {
+                return ResourceManager.GetString("settingCallDes", resourceCulture);
             }
         }
         
@@ -286,7 +295,7 @@ namespace System_aks_vn.Resources.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Schedule config.
+        ///   Looks up a localized string similar to Schedule.
         /// </summary>
         internal static string settingSchedule {
             get {
@@ -295,11 +304,29 @@ namespace System_aks_vn.Resources.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sms config.
+        ///   Looks up a localized string similar to Set up a configuration schedule for the device.
+        /// </summary>
+        internal static string settingScheduleDes {
+            get {
+                return ResourceManager.GetString("settingScheduleDes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sms.
         /// </summary>
         internal static string settingSms {
             get {
                 return ResourceManager.GetString("settingSms", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set sms number for device.
+        /// </summary>
+        internal static string settingSmsDes {
+            get {
+                return ResourceManager.GetString("settingSmsDes", resourceCulture);
             }
         }
         

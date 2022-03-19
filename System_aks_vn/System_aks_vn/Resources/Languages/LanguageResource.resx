@@ -169,7 +169,10 @@
     <value>User</value>
   </data>
   <data name="settingCall" xml:space="preserve">
-    <value>Call config</value>
+    <value>Call</value>
+  </data>
+  <data name="settingCallDes" xml:space="preserve">
+    <value>Set call number for device</value>
   </data>
   <data name="settingConfirmPassword" xml:space="preserve">
     <value>Confirm</value>
@@ -193,10 +196,16 @@
     <value>Profile</value>
   </data>
   <data name="settingSchedule" xml:space="preserve">
-    <value>Schedule config</value>
+    <value>Schedule</value>
+  </data>
+  <data name="settingScheduleDes" xml:space="preserve">
+    <value>Set up a configuration schedule for the device</value>
   </data>
   <data name="settingSms" xml:space="preserve">
-    <value>Sms config</value>
+    <value>Sms</value>
+  </data>
+  <data name="settingSmsDes" xml:space="preserve">
+    <value>Set sms number for device</value>
   </data>
   <data name="settingSubmitBtn" xml:space="preserve">
     <value>Submit</value>

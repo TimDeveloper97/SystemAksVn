@@ -171,6 +171,9 @@
   <data name="settingCall" xml:space="preserve">
     <value>電話</value>
   </data>
+  <data name="settingCallDes" xml:space="preserve">
+    <value>デバイスの電話番号を設定する</value>
+  </data>
   <data name="settingConfirmPassword" xml:space="preserve">
     <value>パスワードを認証する</value>
   </data>
@@ -195,8 +198,14 @@
   <data name="settingSchedule" xml:space="preserve">
     <value>スケジュール</value>
   </data>
+  <data name="settingScheduleDes" xml:space="preserve">
+    <value>デバイスの構成スケジュールを設定します</value>
+  </data>
   <data name="settingSms" xml:space="preserve">
     <value>SMS</value>
+  </data>
+  <data name="settingSmsDes" xml:space="preserve">
+    <value>デバイスのSMS番号を設定します</value>
   </data>
   <data name="settingSubmitBtn" xml:space="preserve">
     <value>参加する</value>
