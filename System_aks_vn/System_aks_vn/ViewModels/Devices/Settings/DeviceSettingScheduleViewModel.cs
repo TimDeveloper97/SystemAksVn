@@ -29,6 +29,7 @@ namespace System_aks_vn.ViewModels.Devices.Settings
             set
             {
                 parameterDeviceId = Uri.UnescapeDataString(value ?? string.Empty);
+                Title = ParameterDeviceId;
                 SetProperty(ref parameterDeviceId, value);
             }
         }

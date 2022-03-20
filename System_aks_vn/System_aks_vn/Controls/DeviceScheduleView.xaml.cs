@@ -135,11 +135,11 @@ namespace System_aks_vn.Controls
             var stackContent = new StackLayout
             {
                 Orientation = StackOrientation.Vertical,
-                Children = { DrawTitleView(), grid }
+                Children = { DrawTitleView(), grid },
             };
             gContent.Children.Add(stackContent);
-            grid.GestureRecognizers.Add(rightSwipeGesture);
-            grid.GestureRecognizers.Add(leftSwipeGesture);
+            stackContent.GestureRecognizers.Add(rightSwipeGesture);
+            stackContent.GestureRecognizers.Add(leftSwipeGesture);
         }
 
         Grid DrawTitleView()
