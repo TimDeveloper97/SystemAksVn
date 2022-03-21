@@ -78,7 +78,7 @@ namespace System_aks_vn.ViewModels
             Title = "Home";
             Devices = new ObservableCollection<DeviceModel>();
             DependencyService.Get<IStatusBar>().SetColoredStatusBar("#007bff");
-            WidthCard = Application.Current.MainPage.Width * 0.8;
+            WidthCard = App.ScreenWidth * 0.8;
             IsBusy = true;
         }
 

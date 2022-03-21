@@ -1,7 +1,9 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Linq;
 using System.Text;
 using System.Windows.Input;
 using System_aks_vn.Controls;
@@ -18,7 +20,9 @@ namespace System_aks_vn.ViewModels.Devices.Settings
     {
         #region Property
         private string parameterDeviceId, parameterSms;
-        private DeviceSettingNumberModel sms;
+        private NumberId number;
+        private double widthCard;
+        private ObservableCollection<NumberId> smss;
 
         public string ParameterDeviceId
         {
@@ -39,15 +43,17 @@ namespace System_aks_vn.ViewModels.Devices.Settings
             }
         }
 
-        public DeviceSettingNumberModel Sms { get => sms; set => SetProperty(ref sms, value); }
-
+        public ObservableCollection<NumberId> Smss { get => smss; set => SetProperty(ref smss, value); }
+        public double WidthCard { get => widthCard; set => SetProperty(ref widthCard, value); }
+        public NumberId Number { get => number; set => SetProperty(ref number, value); }
         #endregion
 
         #region Command 
+        public ICommand LoadSmsCommand { get; set; }
         public ICommand PageAppearingCommand => new Command(() =>
         {
             Init();
-            GetData();
+            IsBusy = true;
         });
         public ICommand SubmitSmsCommand => new Command(async () =>
         {
@@ -58,7 +64,7 @@ namespace System_aks_vn.ViewModels.Devices.Settings
                 Mqtt.ClearEvent();
                 Mqtt.Publish(Topic, new DeviceContext
                 {
-                    Args = new List<string>(5) { Sms.Number1, Sms.Number2, Sms.Number3, Sms.Number4, Sms.Number5 },
+                    Args = GetListString(Smss),
                     DeviceId = ParameterDeviceId,
                     Token = Token,
                     Func = "SMS",
@@ -77,33 +83,84 @@ namespace System_aks_vn.ViewModels.Devices.Settings
             }
         });
 
-
+        public ICommand ChangeCommand => new Command<NumberId>(async (item) =>
+        {
+            var sms = Smss.FirstOrDefault(i => i.Id == item.Id);
+            sms.Number = item.Number;
+        });
+        public ICommand EditCommand => new Command<NumberId>((item) =>
+        {
+            Number = item;
+        });
+        public ICommand RemoveCommand => new Command<NumberId>((item) =>
+        {
+            var sms = Smss.FirstOrDefault(i => i.Id == item.Id);
+            sms.Number = "";
+        });
         #endregion
 
         public DeviceSettingSmsViewModel()
         {
+            LoadSmsCommand = new Command(() => ExecuteLoadSmsCommand());
         }
 
         #region Method
         void Init()
         {
             DependencyService.Get<IStatusBar>().SetColoredStatusBar("#007bff");
-            Sms = new DeviceSettingNumberModel();
+            WidthCard = App.ScreenWidth * 0.8;
+            Smss = new ObservableCollection<NumberId>();
+
+            for (int i = 0; i < 5; i++)
+            {
+                Smss.Add(new NumberId
+                {
+                    Number = "",
+                    Id = i.ToString(),
+                });
+            }
         }
 
-        void GetData()
+        void ExecuteLoadSmsCommand()
         {
-            if (parameterSms != string.Empty)
+            try
             {
-                var lsms = JsonConvert.DeserializeObject<List<string>>(ParameterSms);
-                if (lsms == null && lsms.Count == 0) return;
+                IsBusy = true;
+                if (parameterSms != string.Empty)
+                {
+                    var lsms = JsonConvert.DeserializeObject<List<string>>(ParameterSms);
+                    if (lsms == null && lsms.Count == 0) return;
 
-                Sms.Number1 = lsms[0];
-                Sms.Number2 = lsms[1];
-                Sms.Number3 = lsms[2];
-                Sms.Number4 = lsms[3];
-                Sms.Number5 = lsms[4];
+                    for (int i = 0; i < lsms.Count; i++)
+                    {
+                        var item = Smss[i];
+                        item.Number = lsms[i];
+                    }
+                }
             }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+            finally
+            {
+                IsBusy = false;
+            }
+        }
+
+        bool IsValidatePhoneNumber(string number)
+        {
+            return System.Text.RegularExpressions.Regex.Match(number, @"^(\+[0-9]{9})$").Success;
+        }
+        
+        List<string> GetListString(IEnumerable<NumberId> Smss)
+        {
+            var list = new List<string>();
+            foreach (var sms in Smss)
+            {
+                list.Add(sms.Number);
+            }
+            return list;
         }
         #endregion
     }

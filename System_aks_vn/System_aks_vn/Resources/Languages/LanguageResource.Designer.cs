@@ -88,7 +88,7 @@ namespace System_aks_vn.Resources.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Set the security phone numbers here.
+        ///   Looks up a localized string similar to Set the alarm phone numbers here.
         /// </summary>
         internal static string deviceSettingCallTitle {
             get {
@@ -97,7 +97,7 @@ namespace System_aks_vn.Resources.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Set the security phone numbers here.
+        ///   Looks up a localized string similar to Set the alarm phone numbers here.
         /// </summary>
         internal static string deviceSettingSmsTitle {
             get {

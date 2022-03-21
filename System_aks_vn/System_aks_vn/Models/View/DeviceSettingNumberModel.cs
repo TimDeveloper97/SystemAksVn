@@ -19,4 +19,11 @@ namespace System_aks_vn.Models.View
         public string Number4 { get => number4; set => SetProperty(ref number4, value ?? ""); }
         public string Number5 { get => number5; set => SetProperty(ref number5, value ?? ""); }
     }
+
+    public class NumberId : BaseBinding
+    {
+        private string number;
+        public string Id { get; set; }
+        public string Number { get => number; set => SetProperty(ref number, value); }
+    }
 }

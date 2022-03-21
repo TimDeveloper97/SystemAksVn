@@ -127,10 +127,10 @@
     <value>Settings</value>
   </data>
   <data name="deviceSettingCallTitle" xml:space="preserve">
-    <value>Set the security phone numbers here</value>
+    <value>Set the alarm phone numbers here</value>
   </data>
   <data name="deviceSettingSmsTitle" xml:space="preserve">
-    <value>Set the security phone numbers here</value>
+    <value>Set the alarm phone numbers here</value>
   </data>
   <data name="deviceSettingSubmitBtn" xml:space="preserve">
     <value>Send</value>

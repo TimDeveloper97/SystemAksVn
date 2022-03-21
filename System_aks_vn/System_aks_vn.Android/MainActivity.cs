@@ -18,6 +18,9 @@ namespace System_aks_vn.Droid
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
 
             #region Style Init
+            App.ScreenHeight = (int)(Resources.DisplayMetrics.HeightPixels / Resources.DisplayMetrics.Density);
+            App.ScreenWidth = (int)(Resources.DisplayMetrics.WidthPixels / Resources.DisplayMetrics.Density);
+
             CrossCurrentActivity.Current.Init(this, savedInstanceState);
             Plugin.MaterialDesignControls.Android.Renderer.Init();
             XF.Material.Droid.Material.Init(this, savedInstanceState);

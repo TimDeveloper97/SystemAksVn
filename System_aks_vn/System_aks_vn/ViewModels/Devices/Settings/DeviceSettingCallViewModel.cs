@@ -1,7 +1,9 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Linq;
 using System.Text;
 using System.Windows.Input;
 using System_aks_vn.Controls;
@@ -18,7 +20,9 @@ namespace System_aks_vn.ViewModels.Devices.Settings
     {
         #region Property
         private string parameterDeviceId, parameterCall;
-        private DeviceSettingNumberModel call;
+        private NumberId number;
+        private double widthCard;
+        private ObservableCollection<NumberId> calls;
 
         public string ParameterDeviceId
         {
@@ -39,14 +43,18 @@ namespace System_aks_vn.ViewModels.Devices.Settings
             }
         }
 
-        public DeviceSettingNumberModel Call { get => call; set => SetProperty(ref call, value); }
+        public ObservableCollection<NumberId> Calls { get => calls; set => SetProperty(ref calls, value); }
+        public double WidthCard { get => widthCard; set => SetProperty(ref widthCard, value); }
+        public NumberId Number { get => number; set => SetProperty(ref number, value); }
         #endregion
 
         #region Command 
+
+        public ICommand LoadCallCommand { get; set; }
         public ICommand PageAppearingCommand => new Command(() =>
         {
             Init();
-            GetData();
+            IsBusy = true;
         });
         public ICommand SubmitCallCommand => new Command(async () =>
         {
@@ -57,7 +65,7 @@ namespace System_aks_vn.ViewModels.Devices.Settings
                 Mqtt.ClearEvent();
                 Mqtt.Publish(Topic, new DeviceContext
                 {
-                    Args = new List<string>(5) { Call.Number1, Call.Number2, Call.Number3, Call.Number4, Call.Number5 },
+                    Args = GetListString(Calls),
                     DeviceId = ParameterDeviceId,
                     Token = Token,
                     Func = "CALL",
@@ -75,32 +83,85 @@ namespace System_aks_vn.ViewModels.Devices.Settings
                               msDuration: MaterialSnackbar.DurationLong);
             }
         });
-
+        public ICommand ChangeCommand => new Command<NumberId>(async (item) =>
+        {
+            var sms = Calls.FirstOrDefault(i => i.Id == item.Id);
+            sms.Number = item.Number;
+        });
+        public ICommand EditCommand => new Command<NumberId>((item) =>
+        {
+            Number = item;
+        });
+        public ICommand RemoveCommand => new Command<NumberId>((item) =>
+        {
+            var sms = Calls.FirstOrDefault(i => i.Id == item.Id);
+            sms.Number = "";
+        });
         #endregion
 
         public DeviceSettingCallViewModel()
         {
+            LoadCallCommand = new Command(() => ExecuteLoadCallCommand());
         }
 
         #region Method
         void Init()
         {
             DependencyService.Get<IStatusBar>().SetColoredStatusBar("#007bff");
-            Call = new DeviceSettingNumberModel();
-        }
-        void GetData()
-        {
-            if (parameterCall != string.Empty)
-            {
-                var lcall = JsonConvert.DeserializeObject<List<string>>(parameterCall);
-                if (lcall == null && lcall.Count == 0) return;
+            WidthCard = App.ScreenWidth * 0.8;
+            Calls = new ObservableCollection<NumberId>();
 
-                Call.Number1 = lcall[0];
-                Call.Number2 = lcall[1];
-                Call.Number3 = lcall[2];
-                Call.Number4 = lcall[3];
-                Call.Number5 = lcall[4];
+            for (int i = 0; i < 5; i++)
+            {
+                Calls.Add(new NumberId
+                {
+                    Number = "",
+                    Id = i.ToString(),
+                });
             }
+        }
+        void ExecuteLoadCallCommand()
+        {
+            try
+            {
+                IsBusy = true;
+                if (ParameterCall != string.Empty)
+                {
+                    Calls?.Clear();
+
+                    var lcall = JsonConvert.DeserializeObject<List<string>>(ParameterCall);
+                    if (lcall == null && lcall.Count == 0) return;
+
+                    for (int i = 0; i < lcall.Count; i++)
+                    {
+                        var item = Calls[i];
+                        item.Number = lcall[i];
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+            finally
+            {
+                IsBusy = false;
+            }
+        }
+
+        bool IsValidatePhoneNumber(string number)
+        {
+            return System.Text.RegularExpressions.Regex.Match(number, @"^(\+[0-9]{9})$").Success;
+        }
+
+        List<string> GetListString(IEnumerable<NumberId> Calls)
+        {
+            var list = new List<string>();
+            foreach (var sms in Calls)
+            {
+                list.Add(sms.Number);
+            }
+            return list;
         }
         #endregion
     }

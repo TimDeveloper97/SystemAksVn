@@ -25,6 +25,9 @@ namespace System_aks_vn.iOS
             global::Xamarin.Forms.Forms.Init();
 
             #region Style Init
+            App.ScreenHeight = (int)UIScreen.MainScreen.Bounds.Height;
+            App.ScreenWidth = (int)UIScreen.MainScreen.Bounds.Width;
+
             Plugin.MaterialDesignControls.iOS.Renderer.Init();
             XF.Material.iOS.Material.Init();
             #endregion

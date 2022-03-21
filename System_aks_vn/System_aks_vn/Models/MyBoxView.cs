@@ -10,4 +10,5 @@ namespace System_aks_vn.Models
         public new int X { get; set; }
         public new int Y { get; set; }
     }
+
 }
