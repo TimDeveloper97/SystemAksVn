@@ -202,7 +202,7 @@
     <value>Set up a configuration schedule for the device</value>
   </data>
   <data name="settingSms" xml:space="preserve">
-    <value>Sms</value>
+    <value>SMS</value>
   </data>
   <data name="settingSmsDes" xml:space="preserve">
     <value>Set sms number for device</value>

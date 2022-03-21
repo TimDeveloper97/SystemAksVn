@@ -83,7 +83,7 @@
                                         <Label Text="{Static lang:LanguageResource.settingSms}"
                                                VerticalOptions="End" FontSize="{OnPlatform Android=20, iOS=18}" Margin="0,0,0,-5"
                                                TextColor="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource Black}}"/>
-                                        <Label Text="{Static lang:LanguageResource.settingSmsDes}" MaxLines="2"
+                                        <Label Text="{Static lang:LanguageResource.settingSmsDes}" MaxLines="2" Opacity="0.5"
                                                VerticalOptions="Center" FontSize="{OnPlatform Android=15, iOS=13}" Margin="0,0,-20,0"
                                                TextColor="{AppThemeBinding Dark={StaticResource WhiteSmoke} ,Light={StaticResource BlackSmoke}}"/>
                                     </StackLayout>
@@ -101,7 +101,7 @@
                             <!--#endregion-->
 
                             <!--#region Item -->
-                            <Frame HasShadow="False" Padding="0" IsClippedToBounds="False" Margin="0,0,0,10"
+                            <Frame HasShadow="False" Padding="0" IsClippedToBounds="False" Margin="0,0,0,20"
                                    BackgroundColor="{AppThemeBinding Dark={StaticResource Black} ,Light={StaticResource White}}"
                                    BorderColor="{AppThemeBinding Dark={StaticResource BlackSmoke} ,Light={StaticResource WhiteSmoke}}">
                                 <Grid ColumnDefinitions="60, *, 60" Padding="5,10">
@@ -119,7 +119,7 @@
                                         <Label Text="{Static lang:LanguageResource.settingCall}" 
                                                VerticalOptions="End" FontSize="{OnPlatform Android=20, iOS=18}" Margin="0,0,0,-5"
                                                TextColor="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource Black}}"/>
-                                        <Label Text="{Static lang:LanguageResource.settingCallDes}" MaxLines="2"
+                                        <Label Text="{Static lang:LanguageResource.settingCallDes}" MaxLines="2"  Opacity="0.5"
                                                VerticalOptions="Center" FontSize="{OnPlatform Android=15, iOS=13}" Margin="0,0,-20,0"
                                                TextColor="{AppThemeBinding Dark={StaticResource WhiteSmoke} ,Light={StaticResource BlackSmoke}}"/>
                                     </StackLayout>
@@ -154,7 +154,7 @@
                                         <Label Text="{Static lang:LanguageResource.settingSchedule}"
                                                VerticalOptions="End" FontSize="{OnPlatform Android=20, iOS=18}" Margin="0,0,0,-5"
                                                TextColor="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource Black}}"/>
-                                        <Label Text="{Static lang:LanguageResource.settingScheduleDes}" MaxLines="2"
+                                        <Label Text="{Static lang:LanguageResource.settingScheduleDes}" MaxLines="2" Opacity="0.5"
                                                VerticalOptions="Center" FontSize="{OnPlatform Android=15, iOS=13}" Margin="0,0,-20,0"
                                                TextColor="{AppThemeBinding Dark={StaticResource WhiteSmoke} ,Light={StaticResource BlackSmoke}}"/>
                                     </StackLayout>

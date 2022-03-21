@@ -80,7 +80,7 @@
                                TextColor="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource White}}"/>
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer NumberOfTapsRequired="1" CommandParameter="{Binding Number}"
-                                                  Command="{Binding Path=BindingContext.AddCommand, Source={x:Reference Name=devicesettingcallpage}}"/>
+                                                  Command="{Binding Path=BindingContext.ChangeCommand, Source={x:Reference Name=devicesettingcallpage}}"/>
                         </Frame.GestureRecognizers>
                     </Frame>
                 </StackLayout>
@@ -105,7 +105,7 @@
                                                    BorderColor="{AppThemeBinding Dark={StaticResource Black} ,Light={StaticResource White}}"
                                                    HorizontalOptions="Center" VerticalOptions="Center" HasShadow="False" IsClippedToBounds="False"
                                                    Grid.Column="0">
-                                                <Label FontFamily="MaterialIcons" Text="{x:Static icon:FontIcons.Message}"
+                                                <Label FontFamily="MaterialIcons" Text="{x:Static icon:FontIcons.Phone}"
                                                        VerticalOptions="Center" FontSize="{OnPlatform Android=28, iOS=26}"
                                                        HorizontalOptions="Center" 
                                                        TextColor="{AppThemeBinding Dark={StaticResource Blue} ,Light={StaticResource Blue}}"/>
@@ -132,6 +132,11 @@
                                                 </Grid>
                                             </StackLayout>
                                         </Grid>
+                                        <Frame.GestureRecognizers>
+                                            <TapGestureRecognizer NumberOfTapsRequired="1" CommandParameter="{Binding .}"
+                                                                  Command="{Binding Path=BindingContext.EditCommand,
+                                                                  Source={x:Reference Name=devicesettingcallpage}}"/>
+                                        </Frame.GestureRecognizers>
                                     </Frame>
                                 </DataTemplate>
                             </BindableLayout.ItemTemplate>

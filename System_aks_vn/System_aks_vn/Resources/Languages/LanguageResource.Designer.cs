@@ -313,7 +313,7 @@ namespace System_aks_vn.Resources.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sms.
+        ///   Looks up a localized string similar to SMS.
         /// </summary>
         internal static string settingSms {
             get {

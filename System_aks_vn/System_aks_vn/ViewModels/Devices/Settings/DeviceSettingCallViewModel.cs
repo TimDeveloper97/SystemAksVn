@@ -85,12 +85,18 @@ namespace System_aks_vn.ViewModels.Devices.Settings
         });
         public ICommand ChangeCommand => new Command<NumberId>(async (item) =>
         {
+            if (item == null) return;
+
             var sms = Calls.FirstOrDefault(i => i.Id == item.Id);
             sms.Number = item.Number;
         });
         public ICommand EditCommand => new Command<NumberId>((item) =>
         {
-            Number = item;
+            if (Number == null)
+                Number = new NumberId();
+
+            Number.Number = item.Number;
+            Number.Id = item.Id;
         });
         public ICommand RemoveCommand => new Command<NumberId>((item) =>
         {
@@ -127,8 +133,6 @@ namespace System_aks_vn.ViewModels.Devices.Settings
                 IsBusy = true;
                 if (ParameterCall != string.Empty)
                 {
-                    Calls?.Clear();
-
                     var lcall = JsonConvert.DeserializeObject<List<string>>(ParameterCall);
                     if (lcall == null && lcall.Count == 0) return;
 
