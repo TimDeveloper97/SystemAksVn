@@ -85,23 +85,41 @@ namespace System_aks_vn.ViewModels.Devices.Settings
         });
         public ICommand ChangeCommand => new Command<NumberId>(async (item) =>
         {
-            if (item == null) return;
+            if (item == null || string.IsNullOrEmpty(item.Number)) return;
 
-            var sms = Calls.FirstOrDefault(i => i.Id == item.Id);
-            sms.Number = item.Number;
+            if (item.Id == null)
+            {
+                var callnull = Calls.FirstOrDefault(i => string.IsNullOrEmpty(i.Number));
+                if (callnull == null) return;
+
+                callnull.Number = item.Number;
+            }
+            else
+            {
+                var call = Calls.FirstOrDefault(i => i.Id == item.Id);
+                call.Number = item.Number;
+            }
+
+            Number.Number = null;
         });
         public ICommand EditCommand => new Command<NumberId>((item) =>
         {
-            if (Number == null)
-                Number = new NumberId();
+            if (string.IsNullOrEmpty(item.Number))
+                return;
+
+            Number = new NumberId();
 
             Number.Number = item.Number;
             Number.Id = item.Id;
         });
         public ICommand RemoveCommand => new Command<NumberId>((item) =>
         {
-            var sms = Calls.FirstOrDefault(i => i.Id == item.Id);
-            sms.Number = "";
+            Calls.Remove(item);
+            Calls.Add(new NumberId
+            {
+                Id = "4",
+                Number = "",
+            });
         });
         #endregion
 

@@ -85,29 +85,48 @@ namespace System_aks_vn.ViewModels.Devices.Settings
 
         public ICommand ChangeCommand => new Command<NumberId>(async (item) =>
         {
-            if (item == null) return;
+            if (item == null || string.IsNullOrEmpty(item.Number)) return;
 
-            var sms = Smss.FirstOrDefault(i => i.Id == item.Id);
-            sms.Number = item.Number;
+            if(item.Id == null)
+            {
+                var smsnull = Smss.FirstOrDefault(i => string.IsNullOrEmpty(i.Number));
+                if (smsnull == null) return;
+
+                smsnull.Number = item.Number;
+            }   
+            else
+            {
+                var sms = Smss.FirstOrDefault(i => i.Id == item.Id);
+                sms.Number = item.Number;
+            }    
+            
+            Number.Number = null;
         });
         public ICommand EditCommand => new Command<NumberId>((item) =>
         {
-            if (Number == null)
-                Number = new NumberId();
+            if (string.IsNullOrEmpty(item.Number))
+                return;
+
+            Number = new NumberId();
 
             Number.Number = item.Number;
             Number.Id = item.Id;
         });
         public ICommand RemoveCommand => new Command<NumberId>((item) =>
         {
-            var sms = Smss.FirstOrDefault(i => i.Id == item.Id);
-            sms.Number = "";
+            Smss.Remove(item);
+            Smss.Add(new NumberId
+            {
+                Id = "4",
+                Number = "",
+            });
         });
         #endregion
 
         public DeviceSettingSmsViewModel()
         {
             LoadSmsCommand = new Command(() => ExecuteLoadSmsCommand());
+            Number = new NumberId();
         }
 
         #region Method
