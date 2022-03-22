@@ -61,6 +61,9 @@ namespace System_aks_vn.ViewModels.Devices.Settings
 
             try
             {
+                if (!Mqtt.IsConnected)
+                    Mqtt.Connect();
+
                 Mqtt.ClearEvent();
                 Mqtt.Publish(Topic, new DeviceContext
                 {
@@ -116,13 +119,17 @@ namespace System_aks_vn.ViewModels.Devices.Settings
             if (string.IsNullOrEmpty(item.Number))
                 return;
 
-            Number = new NumberId();
+            if(Number == null)
+                Number = new NumberId();
 
             Number.Number = item.Number;
             Number.Id = item.Id;
         });
         public ICommand RemoveCommand => new Command<NumberId>((item) =>
         {
+            Number.Number = item.Number;
+            Number.Id = null;
+
             Smss.Remove(item);
             Smss.Add(new NumberId
             {

@@ -57,7 +57,7 @@
 
             <StackLayout Grid.Row="1" HorizontalOptions="Fill" VerticalOptions="Fill">
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Fill" VerticalOptions="Fill" Margin="15,0">
-                    <mdc:MaterialEntry Type="Filled" LeadingIcon="sms" Padding="0"
+                    <mdc:MaterialEntry Type="Filled" Padding="10,0,0,0"
                                        LabelText="{Static lang:LanguageResource.deviceSettingCallTitle}" 
                                        Placeholder="#number" WidthRequest="{Binding WidthCard}"
                                        MaxLength="15" Text="{Binding Number.Number}" CornerRadius="0"
@@ -105,24 +105,25 @@
                                                    BorderColor="{AppThemeBinding Dark={StaticResource Black} ,Light={StaticResource White}}"
                                                    HorizontalOptions="Center" VerticalOptions="Center" HasShadow="False" IsClippedToBounds="False"
                                                    Grid.Column="0">
-                                                <Label FontFamily="MaterialIcons" Text="{x:Static icon:FontIcons.Phone}"
+                                                <!--<Label FontFamily="MaterialIcons" Text="{x:Static icon:FontIcons.Phone}"
                                                        VerticalOptions="Center" FontSize="{OnPlatform Android=28, iOS=26}"
                                                        HorizontalOptions="Center" 
-                                                       TextColor="{AppThemeBinding Dark={StaticResource Blue} ,Light={StaticResource Blue}}"/>
+                                                       TextColor="{AppThemeBinding Dark={StaticResource Blue} ,Light={StaticResource Blue}}"/>-->
+                                                <Image  Aspect="AspectFit" Source="callSetting" Margin="12"/>
                                             </Frame>
                                             <StackLayout Grid.Column="1" VerticalOptions="Center">
                                                 <Grid ColumnDefinitions="*, auto">
                                                     <Label Text="{Binding Number}" FontSize="{OnPlatform Android=24, iOS=22}" Opacity="0.5"
                                                            TextColor="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource Black}}"/>
 
-                                                    <Frame BackgroundColor="{AppThemeBinding Dark={StaticResource Red} ,Light={StaticResource Red}}" 
-                                                           WidthRequest="30" HeightRequest="30" CornerRadius="30" Padding="0" Margin="0,0,-5,0" Grid.Column="1"
-                                                           BorderColor="{AppThemeBinding Dark={StaticResource Red} ,Light={StaticResource Red}}"
+                                                    <Frame BackgroundColor="{AppThemeBinding Dark={StaticResource Black} ,Light={StaticResource White}}" 
+                                                           WidthRequest="30" HeightRequest="30" Padding="0" Margin="0,0,-5,0" Grid.Column="1"
+                                                           BorderColor="{AppThemeBinding Dark={StaticResource Black} ,Light={StaticResource White}}"
                                                            HorizontalOptions="End" VerticalOptions="End" HasShadow="False" IsClippedToBounds="False">
                                                         <Label FontFamily="MaterialIcons" Text="{x:Static icon:FontIcons.TrashCan}"
-                                                               VerticalOptions="Center" FontSize="{OnPlatform Android=28, iOS=26}"
+                                                               VerticalOptions="Center" FontSize="{OnPlatform Android=36, iOS=34}"
                                                                HorizontalOptions="Center" 
-                                                               TextColor="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource White}}"/>
+                                                               TextColor="{AppThemeBinding Dark={StaticResource Red} ,Light={StaticResource Red}}"/>
                                                         <Frame.GestureRecognizers>
                                                             <TapGestureRecognizer NumberOfTapsRequired="1" CommandParameter="{Binding .}"
                                                                                   Command="{Binding Path=BindingContext.RemoveCommand,

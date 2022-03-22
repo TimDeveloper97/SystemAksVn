@@ -101,6 +101,9 @@ namespace System_aks_vn.ViewModels
 
             try
             {
+                if (!Mqtt.IsConnected)
+                    Mqtt.Connect();
+
                 Mqtt.ClearEvent();
                 Mqtt.Publish(Topic, new AccountContext
                 {

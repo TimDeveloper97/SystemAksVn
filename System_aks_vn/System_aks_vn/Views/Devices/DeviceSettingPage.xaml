@@ -73,11 +73,12 @@
                                            BorderColor="{AppThemeBinding Dark={StaticResource Gray} ,Light={StaticResource White}}"
                                            HorizontalOptions="End" VerticalOptions="Center" HasShadow="False" IsClippedToBounds="False"
                                            WidthRequest="40" HeightRequest="40" Padding="0">
-                                        <Label FontFamily="MaterialIcons" Text="{x:Static icon:FontIcons.Message}"
+                                        <!--<Label FontFamily="MaterialIcons" Text="{x:Static icon:FontIcons.Message}"
                                                VerticalOptions="Center" 
                                                FontSize="{OnPlatform Android=24, iOS=22}"
                                                HorizontalOptions="Center" 
-                                               TextColor="{AppThemeBinding Dark={StaticResource Green} ,Light={StaticResource Green}}"/>
+                                               TextColor="{AppThemeBinding Dark={StaticResource Green} ,Light={StaticResource Green}}"/>-->
+                                        <Image  Aspect="AspectFit" Source="sms" Margin="10"/>
                                     </Frame>
                                     <StackLayout Grid.Column="1" Margin="5,0">
                                         <Label Text="{Static lang:LanguageResource.settingSms}"
@@ -110,9 +111,10 @@
                                            BorderColor="{AppThemeBinding Dark={StaticResource Black} ,Light={StaticResource White}}"
                                            HorizontalOptions="End" VerticalOptions="Center" HasShadow="False" IsClippedToBounds="False"
                                            WidthRequest="40" HeightRequest="40" Padding="0">
-                                        <Label FontFamily="MaterialIcons" Text="{x:Static icon:FontIcons.Phone}"
+                                        <!--<Label FontFamily="MaterialIcons" Text="{x:Static icon:FontIcons.Phone}"
                                                VerticalOptions="Center" FontSize="{OnPlatform Android=24, iOS=22}" HorizontalOptions="Center" 
-                                               TextColor="{AppThemeBinding Dark={StaticResource Yellow} ,Light={StaticResource Yellow}}"/>
+                                               TextColor="{AppThemeBinding Dark={StaticResource Yellow} ,Light={StaticResource Yellow}}"/>-->
+                                        <Image  Aspect="AspectFit" Source="call" Margin="10"/>
                                     </Frame>
 
                                     <StackLayout Grid.Column="1" Margin="5,0">
@@ -145,9 +147,10 @@
                                            BorderColor="{AppThemeBinding Dark={StaticResource Black} ,Light={StaticResource White}}"
                                            HorizontalOptions="End" VerticalOptions="Center" HasShadow="False" IsClippedToBounds="False"
                                            WidthRequest="40" HeightRequest="40" Padding="0">
-                                        <Label FontFamily="MaterialIcons" Text="{x:Static icon:FontIcons.Calendar}"
+                                        <!--<Label FontFamily="MaterialIcons" Text="{x:Static icon:FontIcons.Calendar}"
                                                VerticalOptions="Center" FontSize="{OnPlatform Android=24, iOS=22}" HorizontalOptions="Center" 
-                                               TextColor="{AppThemeBinding Dark={StaticResource Violet} ,Light={StaticResource Violet}}"/>
+                                               TextColor="{AppThemeBinding Dark={StaticResource Violet} ,Light={StaticResource Violet}}"/>-->
+                                        <Image  Aspect="AspectFit" Source="schedule" Margin="10"/>
                                     </Frame>
 
                                     <StackLayout Grid.Column="1" Margin="5,0">

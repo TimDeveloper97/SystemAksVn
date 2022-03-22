@@ -71,6 +71,8 @@ namespace System_aks_vn.ViewModels.Devices.Settings
             {
                 var day = Day;
                 var x = HexStatus;
+                if (!Mqtt.IsConnected)
+                    Mqtt.Connect();
 
                 Mqtt.ClearEvent();
                 Mqtt.Publish(Topic, new DeviceContext

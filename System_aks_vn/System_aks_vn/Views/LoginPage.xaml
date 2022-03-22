@@ -49,7 +49,7 @@
                                FontSize="{OnPlatform Android=20, iOS=18}" FontAttributes="Bold" FontFamily="MuliBold"/>
 
                         <StackLayout Margin="20,20">
-                            <mdc:MaterialEntry Type="Filled" LeadingIcon="server" Padding="0"
+                            <mdc:MaterialEntry Type="Filled" LeadingIcon="{AppThemeBinding Dark=serverdark, Light=serverlight}" Padding="0"
                                                 LabelText="{Static lang:LanguageResource.loginServer}" 
                                                 Placeholder="{Static lang:LanguageResource.loginServerPlaceHold}"
                                                 MaxLength="20" Text="{Binding ServerName}"
@@ -64,7 +64,7 @@
                                                 AssistiveTextColor="{StaticResource Red}" />
 
 
-                            <mdc:MaterialEntry Type="Filled" LeadingIcon="user" Padding="0" Margin="0,20,0,0"
+                            <mdc:MaterialEntry Type="Filled" LeadingIcon="{AppThemeBinding Dark=userdark, Light=userlight}" Padding="0" Margin="0,20,0,0"
                                                LabelText="{Static lang:LanguageResource.loginUserName}" 
                                                Placeholder="{Static lang:LanguageResource.loginUserNamePlaceHold}"
                                                MaxLength="20" 
@@ -78,7 +78,7 @@
                                                BackgroundColor="{AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}"
                                                BorderColor="{AppThemeBinding Dark={StaticResource GrayLight}, Light={StaticResource GrayLight}}" 
                                                AssistiveTextColor="{StaticResource Red}" />
-                            <mdc:MaterialEntry Type="Filled" LeadingIcon="password" Padding="0"
+                            <mdc:MaterialEntry Type="Filled" LeadingIcon="{AppThemeBinding Dark=passworddark, Light=passwordlight}" Padding="0"
                                                Placeholder="{Static lang:LanguageResource.loginPasswordPlaceHold}" IsPassword="True"
                                                MaxLength="20" Text="{Binding Password}"
                                                AssistiveText="{Binding ErrorPassword}" 

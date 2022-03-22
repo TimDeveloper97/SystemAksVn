@@ -89,6 +89,9 @@ namespace System_aks_vn.ViewModels
             try
             {
                 Devices?.Clear();
+                if (!Mqtt.IsConnected)
+                    Mqtt.Connect();
+
                 Mqtt.ClearEvent();
                 Mqtt.Publish(Topic, Api.DeviceList, new { token = Token });
 

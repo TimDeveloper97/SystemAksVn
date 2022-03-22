@@ -263,9 +263,11 @@
                                   Padding="0,10" HorizontalOptions="Fill">
                                 <StackLayout HorizontalOptions="Center" Margin="10,5" Orientation="Horizontal">
                                     <StackLayout Orientation="Horizontal">
-                                        <Label  FontFamily="MaterialIcons" Text="{Static icon:FontIcons.Toolbox}" FontSize="20"
+                                        <!--<Label  FontFamily="MaterialIcons" Text="{Static icon:FontIcons.Toolbox}" FontSize="20"
                                                 VerticalTextAlignment="Center" HorizontalOptions="End" 
-                                                TextColor="{AppThemeBinding Dark={StaticResource Green}, Light={StaticResource Green}}"/>
+                                                TextColor="{AppThemeBinding Dark={StaticResource Green}, Light={StaticResource Green}}"/>-->
+                                        <Image  Aspect="AspectFit" Source="setting"
+                                                HeightRequest="18" WidthRequest="18"/>
                                         <Label Text="{Static lang:LanguageResource.deviceSetting}"
                                                TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black}}"
                                                FontSize="{OnPlatform Android=18, iOS=16}" VerticalTextAlignment="Center"/>
@@ -276,7 +278,7 @@
                                     </StackLayout>
 
                                     <StackLayout Orientation="Horizontal" Margin="15,0">
-                                        <Label  FontFamily="MaterialIcons" Text="{Static icon:FontIcons.History}" FontSize="20"
+                                        <Label  FontFamily="MaterialIcons" Text="{Static icon:FontIcons.History}" FontSize="{OnPlatform Android=24, iOS=22}"
                                                 VerticalTextAlignment="Center" HorizontalOptions="End"
                                                 TextColor="{AppThemeBinding Dark={StaticResource Violet}, Light={StaticResource Violet}}"/>
                                         <Label Text="{Static lang:LanguageResource.deviceHistory}"

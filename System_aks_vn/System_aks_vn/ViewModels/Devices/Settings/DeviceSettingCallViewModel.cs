@@ -62,6 +62,9 @@ namespace System_aks_vn.ViewModels.Devices.Settings
 
             try
             {
+                if (!Mqtt.IsConnected)
+                    Mqtt.Connect();
+
                 Mqtt.ClearEvent();
                 Mqtt.Publish(Topic, new DeviceContext
                 {

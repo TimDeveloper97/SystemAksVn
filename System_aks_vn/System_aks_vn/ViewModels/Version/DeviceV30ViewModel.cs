@@ -100,6 +100,9 @@ namespace System_aks_vn.ViewModels.Version
             {
                 DependencyService.Get<ITimer>().StartTimer(TimeSpan.FromSeconds(3), () =>
                 {
+                    if (!Mqtt.IsConnected)
+                        Mqtt.Connect();
+
                     Mqtt.ClearEvent();
                     Mqtt.Publish(Topic, new DeviceContext
                     {
