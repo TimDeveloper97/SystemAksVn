@@ -268,7 +268,7 @@
                                                 TextColor="{AppThemeBinding Dark={StaticResource Green}, Light={StaticResource Green}}"/>
                                         <Label Text="{Static lang:LanguageResource.deviceSetting}"
                                                TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black}}"
-                                               FontSize="{OnPlatform Android=16, iOS=12}" VerticalTextAlignment="Center"/>
+                                               FontSize="{OnPlatform Android=18, iOS=16}" VerticalTextAlignment="Center"/>
                                         <StackLayout.GestureRecognizers>
                                             <TapGestureRecognizer NumberOfTapsRequired="1" CommandParameter="{Binding Title}"
                                                                   Command="{Binding Path=BindingContext.DeviceSettingCommand, Source={x:Reference Name=devicev30page}}"/>
@@ -281,7 +281,7 @@
                                                 TextColor="{AppThemeBinding Dark={StaticResource Violet}, Light={StaticResource Violet}}"/>
                                         <Label Text="{Static lang:LanguageResource.deviceHistory}"
                                                TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black}}"
-                                               FontSize="{OnPlatform Android=16, iOS=12}" VerticalTextAlignment="Center"/>
+                                               FontSize="{OnPlatform Android=18, iOS=16}" VerticalTextAlignment="Center"/>
                                         <StackLayout.GestureRecognizers>
                                             <TapGestureRecognizer NumberOfTapsRequired="1" CommandParameter="{Binding Title}"
                                                                   Command="{Binding Path=BindingContext.DeviceHistoryCommand, Source={x:Reference Name=devicev30page}}"/>

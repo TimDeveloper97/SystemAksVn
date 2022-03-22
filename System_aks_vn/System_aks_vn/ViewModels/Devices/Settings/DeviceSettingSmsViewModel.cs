@@ -87,20 +87,29 @@ namespace System_aks_vn.ViewModels.Devices.Settings
         {
             if (item == null || string.IsNullOrEmpty(item.Number)) return;
 
-            if(item.Id == null)
+            if (item.Id == null)
             {
                 var smsnull = Smss.FirstOrDefault(i => string.IsNullOrEmpty(i.Number));
                 if (smsnull == null) return;
 
                 smsnull.Number = item.Number;
-            }   
+            }
             else
             {
                 var sms = Smss.FirstOrDefault(i => i.Id == item.Id);
-                sms.Number = item.Number;
-            }    
-            
+                if (sms == null)
+                {
+                    var smsnull = Smss.FirstOrDefault(i => string.IsNullOrEmpty(i.Number));
+                    if (smsnull == null) return;
+
+                    smsnull.Number = item.Number;
+                }
+                else
+                    sms.Number = item.Number;
+            }
+
             Number.Number = null;
+            Number.Id = null;
         });
         public ICommand EditCommand => new Command<NumberId>((item) =>
         {
@@ -177,7 +186,7 @@ namespace System_aks_vn.ViewModels.Devices.Settings
         {
             return System.Text.RegularExpressions.Regex.Match(number, @"^(\+[0-9]{9})$").Success;
         }
-        
+
         List<string> GetListString(IEnumerable<NumberId> Smss)
         {
             var list = new List<string>();

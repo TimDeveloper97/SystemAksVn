@@ -97,10 +97,19 @@ namespace System_aks_vn.ViewModels.Devices.Settings
             else
             {
                 var call = Calls.FirstOrDefault(i => i.Id == item.Id);
-                call.Number = item.Number;
+                if (call == null)
+                {
+                    var callnull = Calls.FirstOrDefault(i => string.IsNullOrEmpty(i.Number));
+                    if (callnull == null) return;
+
+                    callnull.Number = item.Number;
+                }
+                else
+                    call.Number = item.Number;
             }
 
             Number.Number = null;
+            Number.Id = null;
         });
         public ICommand EditCommand => new Command<NumberId>((item) =>
         {
@@ -126,6 +135,7 @@ namespace System_aks_vn.ViewModels.Devices.Settings
         public DeviceSettingCallViewModel()
         {
             LoadCallCommand = new Command(() => ExecuteLoadCallCommand());
+            Number = new NumberId();
         }
 
         #region Method

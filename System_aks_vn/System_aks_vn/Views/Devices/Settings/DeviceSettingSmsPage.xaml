@@ -117,7 +117,7 @@
                                                            TextColor="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource Black}}"/>
 
                                                     <Frame BackgroundColor="{AppThemeBinding Dark={StaticResource Red} ,Light={StaticResource Red}}" 
-                                                           WidthRequest="30" HeightRequest="30" CornerRadius="30" Padding="0" Margin="0,0,-10,0" 
+                                                           WidthRequest="30" HeightRequest="30" CornerRadius="30" Padding="0" Margin="0,0,-5,0" Grid.Column="1"
                                                            BorderColor="{AppThemeBinding Dark={StaticResource Red} ,Light={StaticResource Red}}"
                                                            HorizontalOptions="End" VerticalOptions="End" HasShadow="False" IsClippedToBounds="False">
                                                         <Label FontFamily="MaterialIcons" Text="{x:Static icon:FontIcons.TrashCan}"
