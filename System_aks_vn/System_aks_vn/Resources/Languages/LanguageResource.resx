@@ -150,6 +150,9 @@
   <data name="loginPasswordPlaceHold" xml:space="preserve">
     <value>Password</value>
   </data>
+  <data name="loginSaveInfo" xml:space="preserve">
+    <value>Remember me</value>
+  </data>
   <data name="loginServer" xml:space="preserve">
     <value>Enter the owner server name</value>
   </data>

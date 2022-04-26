@@ -75,7 +75,7 @@
                            WidthRequest="45" HeightRequest="40" Padding="0" Margin="-7,0,0,0" 
                            BorderColor="{AppThemeBinding Dark={StaticResource Green} ,Light={StaticResource Green}}"
                            HorizontalOptions="End" VerticalOptions="End" HasShadow="False" IsClippedToBounds="False">
-                        <Label FontFamily="MaterialIcons" Text="{x:Static icon:FontIcons.Pen}"
+                        <Label FontFamily="MaterialIcons" Text="{x:Static icon:FontIcons.CheckBold}"
                                VerticalOptions="Center" FontSize="{OnPlatform Android=28, iOS=26}"
                                HorizontalOptions="Center" 
                                TextColor="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource White}}"/>
@@ -110,7 +110,7 @@
                                                        VerticalOptions="Center" FontSize="{OnPlatform Android=28, iOS=26}"
                                                        HorizontalOptions="Center" 
                                                        TextColor="{AppThemeBinding Dark={StaticResource Blue} ,Light={StaticResource Blue}}"/>-->
-                                                <Image  Aspect="AspectFit" Source="smsSetting" Margin="12"/>
+                                                <Image  Aspect="AspectFit" Source="sms" Margin="12"/>
                                             </Frame>
                                             <StackLayout Grid.Column="1" VerticalOptions="Center">
                                                 <Grid ColumnDefinitions="*, auto">

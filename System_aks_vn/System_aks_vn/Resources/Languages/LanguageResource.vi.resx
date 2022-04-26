@@ -150,6 +150,9 @@
   <data name="loginPasswordPlaceHold" xml:space="preserve">
     <value>Mật khẩu</value>
   </data>
+  <data name="loginSaveInfo" xml:space="preserve">
+    <value>Nhớ thông tin đăng nhập</value>
+  </data>
   <data name="loginServer" xml:space="preserve">
     <value>Nhập tên máy chủ của bạn</value>
   </data>

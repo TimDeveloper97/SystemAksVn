@@ -25,7 +25,9 @@ namespace System_aks_vn.ViewModels
         private string errorServerName, errorUserName, errorPassword, selectedLanguage;
         private ObservableCollection<string> languages;
         private static string _currentLanguage;
+        private bool isSaveInfo;
 
+        public bool IsSaveInfo { get => isSaveInfo; set => SetProperty(ref isSaveInfo, value); }
         public string ServerName { get => serverName; set { SetProperty(ref serverName, value); Topic = serverName; } }
         public string UserName { get => userName; set => SetProperty(ref userName, value); }
         public string Password { get => password; set => SetProperty(ref password, value); }
@@ -75,13 +77,14 @@ namespace System_aks_vn.ViewModels
         });
 
 
+
         #endregion
 
         public LoginViewModel()
         {
-            ServerName = "aks";
-            UserName = "admin";
-            Password = "Aks@1234";
+            //ServerName = "aks";
+            //UserName = "admin";
+            //Password = "Aks@1234";
         }
 
         #region Method
@@ -90,6 +93,14 @@ namespace System_aks_vn.ViewModels
             Title = "Login";
             Languages = new ObservableCollection<string> { "English", "Vietnamese", "Japanese" };
             SelectedLanguage = Preferences.Get("language", "English");
+            IsSaveInfo = Preferences.Get("saveinfo", false);
+
+            if(IsSaveInfo)
+            {
+                ServerName = Preferences.Get("servername", null);
+                UserName = Preferences.Get("username", null);
+            }    
+
             if (Mqtt.IsConnected == false)
                 Mqtt.Connect();
 
@@ -131,6 +142,13 @@ namespace System_aks_vn.ViewModels
             var loadingDialog = await XF.Material.Forms.UI.Dialogs.MaterialDialog.Instance
                     .LoadingDialogAsync(message: $"Waiting to connect server {ServerName}");
             IsBusy = true;
+
+            if (IsSaveInfo)
+            {
+                Preferences.Set("servername", ServerName);
+                Preferences.Set("username", UserName);
+            }
+            Preferences.Set("saveinfo", IsSaveInfo);
 
             try
             {

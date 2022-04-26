@@ -160,6 +160,15 @@ namespace System_aks_vn.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Remember me.
+        /// </summary>
+        internal static string loginSaveInfo {
+            get {
+                return ResourceManager.GetString("loginSaveInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enter the owner server name.
         /// </summary>
         internal static string loginServer {

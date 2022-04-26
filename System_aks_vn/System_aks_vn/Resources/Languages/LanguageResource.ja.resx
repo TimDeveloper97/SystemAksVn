@@ -150,6 +150,9 @@
   <data name="loginPasswordPlaceHold" xml:space="preserve">
     <value>パスワード</value>
   </data>
+  <data name="loginSaveInfo" xml:space="preserve">
+    <value>私を覚えてますか</value>
+  </data>
   <data name="loginServer" xml:space="preserve">
     <value>所有者サーバー名を入力します</value>
   </data>

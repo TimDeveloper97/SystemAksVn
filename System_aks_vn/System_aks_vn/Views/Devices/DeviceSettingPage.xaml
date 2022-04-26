@@ -78,7 +78,7 @@
                                                FontSize="{OnPlatform Android=24, iOS=22}"
                                                HorizontalOptions="Center" 
                                                TextColor="{AppThemeBinding Dark={StaticResource Green} ,Light={StaticResource Green}}"/>-->
-                                        <Image  Aspect="AspectFit" Source="sms" Margin="10"/>
+                                        <Image  Aspect="AspectFit" Source="smsSetting" Margin="10"/>
                                     </Frame>
                                     <StackLayout Grid.Column="1" Margin="5,0">
                                         <Label Text="{Static lang:LanguageResource.settingSms}"
@@ -114,7 +114,7 @@
                                         <!--<Label FontFamily="MaterialIcons" Text="{x:Static icon:FontIcons.Phone}"
                                                VerticalOptions="Center" FontSize="{OnPlatform Android=24, iOS=22}" HorizontalOptions="Center" 
                                                TextColor="{AppThemeBinding Dark={StaticResource Yellow} ,Light={StaticResource Yellow}}"/>-->
-                                        <Image  Aspect="AspectFit" Source="call" Margin="10"/>
+                                        <Image  Aspect="AspectFit" Source="callSetting" Margin="10"/>
                                     </Frame>
 
                                     <StackLayout Grid.Column="1" Margin="5,0">
