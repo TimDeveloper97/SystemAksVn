@@ -4,6 +4,7 @@
              xmlns:vm="clr-namespace:System_aks_vn.ViewModels"
              
              Shell.NavBarIsVisible="False"
+             xmlns:control="clr-namespace:System_aks_vn.Controls"
              xmlns:mdc="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
              xmlns:xf="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
@@ -32,7 +33,7 @@
                                     BackgroundColor="{AppThemeBinding Dark={StaticResource BlackSmoke}, Light={StaticResource WhiteSmoke}}"
                                     BorderColor="{AppThemeBinding Dark={StaticResource BlackSmoke}, Light={StaticResource WhiteSmoke}}"/>
             </StackLayout>
-           
+
 
             <Frame BackgroundColor="{AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}"
                    BorderColor="{AppThemeBinding Dark={StaticResource Gray}, Light={StaticResource WhiteGray}}"

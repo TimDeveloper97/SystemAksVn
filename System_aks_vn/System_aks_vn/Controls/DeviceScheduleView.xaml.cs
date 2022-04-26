@@ -160,7 +160,7 @@ namespace System_aks_vn.Controls
             }
 
             //title
-            var ltitle = new List<string> { "Timeline", "DISARM", "ARM0", "ARM1" };
+            var ltitle = new List<string> { "Timeline", "DISARM", "ARM1", "ARM2" };
             for (int j = 0; j < 4; j++)
             {
                 var frame = new Frame
@@ -172,9 +172,10 @@ namespace System_aks_vn.Controls
                         HorizontalTextAlignment = TextAlignment.Center,
                         VerticalTextAlignment = TextAlignment.Center,
                         Text = ltitle[j],
+                        FontSize = GetSizeText(),
                     },
-                    Padding = 2,
-                    BorderColor = GetBorderColorBoxView()
+                    Padding = new Thickness(0, 0, 2, 0),
+                    BorderColor = GetBorderColorBoxView(),
                 };
                 gTitleView.Children.Add(frame, j, 0);
             }

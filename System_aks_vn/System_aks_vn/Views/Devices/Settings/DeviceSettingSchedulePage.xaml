@@ -28,7 +28,7 @@
                     FontSize="{OnPlatform Android=22, iOS=20}"
                     HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
                     HorizontalOptions="Start"/>
-            
+
             <StackLayout Orientation="Horizontal" HorizontalOptions="End">
                 <Label  Text="{Static lang:LanguageResource.deviceSettingSubmitBtn}" 
                         TextColor="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource White}}"
@@ -44,7 +44,7 @@
             </StackLayout>
         </Grid>
     </Shell.TitleView>
-    
+
     <ContentPage.Content>
         <Grid x:Name="gMain" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
               RowDefinitions="60, *"
@@ -52,7 +52,7 @@
 
             <!--#region Header -->
             <Label FontAttributes="Bold" Opacity="0.7"
-                           FontSize="{OnPlatform Android=28, iOS=26}" Margin="0,10,0,-5"
+                           FontSize="{OnPlatform Android=24, iOS=22}" Margin="0,10,0,-5"
                            Text="{Binding Title}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"
                            TextColor="{AppThemeBinding Dark={StaticResource WhiteSmoke} ,Light={StaticResource BlackSmoke}}"/>
             <!--#endregion-->
@@ -62,25 +62,25 @@
                              TabStripHeight="30" SelectedIndex="{Binding Day}" Margin="0,10,0,10"
                              TabIndicatorColor="{AppThemeBinding Dark={StaticResource AppColor} ,Light={StaticResource AppColor}}"
                              TabContentBackgroundColor="{AppThemeBinding Dark={StaticResource BlackSmoke} ,Light={StaticResource WhiteSmoke}}">
-                        <xct:TabViewItem Text="SUN" FontFamily="MuliBlack" 
-                                 TextColor="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource Black}}"/>
-                        <xct:TabViewItem Text="MON" FontFamily="MuliBlack" 
+                        <xct:TabViewItem Text="SUN"
+                                 TextColor="{AppThemeBinding Dark={StaticResource Red} ,Light={StaticResource Red}}"/>
+                        <xct:TabViewItem Text="MON"
                                     TextColor="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource Black}}"/>
-                        <xct:TabViewItem Text="TUE" FontFamily="MuliBlack" 
+                        <xct:TabViewItem Text="TUE" 
                                  TextColor="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource Black}}"/>
-                        <xct:TabViewItem Text="WED" FontFamily="MuliBlack" 
+                        <xct:TabViewItem Text="WED"
                                  TextColor="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource Black}}"/>
-                        <xct:TabViewItem Text="THU" FontFamily="MuliBlack" 
+                        <xct:TabViewItem Text="THU"
                                  TextColor="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource Black}}"/>
-                        <xct:TabViewItem Text="FRI" FontFamily="MuliBlack" 
+                        <xct:TabViewItem Text="FRI"
                                  TextColor="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource Black}}"/>
-                        <xct:TabViewItem Text="SAT" FontFamily="MuliBlack" 
-                                 TextColor="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource Black}}"/>
-                        <xct:TabViewItem Text="ALL" FontFamily="MuliBlack" 
+                        <xct:TabViewItem Text="SAT"
+                                 TextColor="{AppThemeBinding Dark={StaticResource Blue} ,Light={StaticResource Blue}}"/>
+                        <xct:TabViewItem Text="ALL"
                                      TextColor="{AppThemeBinding Dark={StaticResource White} ,Light={StaticResource Black}}"/>
                     </xct:TabView>
-                    <control:DeviceScheduleView ItemSource="{Binding HexStatus, Mode=TwoWay}" Day="{Binding Day, Mode=TwoWay}">
-                    </control:DeviceScheduleView>
+                    <control:DeviceScheduleView ItemSource="{Binding HexStatus, Mode=TwoWay}" Day="{Binding Day, Mode=TwoWay}"/>
+
 
                     <!--<mdc:MaterialButton BackgroundColor="{AppThemeBinding Dark={StaticResource AppColor}, Light={StaticResource AppColor}}"
                                     TextColor="{AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}"

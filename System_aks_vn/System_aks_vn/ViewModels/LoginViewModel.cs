@@ -99,6 +99,7 @@ namespace System_aks_vn.ViewModels
             {
                 ServerName = Preferences.Get("servername", null);
                 UserName = Preferences.Get("username", null);
+                Password = Preferences.Get("password", null);
             }    
 
             if (Mqtt.IsConnected == false)
@@ -147,6 +148,7 @@ namespace System_aks_vn.ViewModels
             {
                 Preferences.Set("servername", ServerName);
                 Preferences.Set("username", UserName);
+                Preferences.Set("password", Password);
             }
             Preferences.Set("saveinfo", IsSaveInfo);
 
